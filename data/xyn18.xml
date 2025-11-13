@@ -1,0 +1,1771 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root version="5" dataversion="20250919" release="8.1|CoreRPG:7">
+	<character>
+		<abilities>
+			<charisma>
+				<bonus type="number">-1</bonus>
+				<save type="number">0</save>
+				<savemodifier type="number">1</savemodifier>
+				<saveprof type="number">0</saveprof>
+				<score type="number">8</score>
+			</charisma>
+			<constitution>
+				<bonus type="number">2</bonus>
+				<save type="number">9</save>
+				<savemodifier type="number">1</savemodifier>
+				<saveprof type="number">1</saveprof>
+				<score type="number">15</score>
+			</constitution>
+			<dexterity>
+				<bonus type="number">1</bonus>
+				<save type="number">2</save>
+				<savemodifier type="number">1</savemodifier>
+				<saveprof type="number">0</saveprof>
+				<score type="number">13</score>
+			</dexterity>
+			<intelligence>
+				<bonus type="number">6</bonus>
+				<save type="number">7</save>
+				<savemodifier type="number">1</savemodifier>
+				<saveprof type="number">0</saveprof>
+				<score type="number">22</score>
+			</intelligence>
+			<strength>
+				<bonus type="number">2</bonus>
+				<save type="number">9</save>
+				<savemodifier type="number">1</savemodifier>
+				<saveprof type="number">1</saveprof>
+				<score type="number">14</score>
+			</strength>
+			<wisdom>
+				<bonus type="number">2</bonus>
+				<save type="number">3</save>
+				<savemodifier type="number">1</savemodifier>
+				<saveprof type="number">0</saveprof>
+				<score type="number">14</score>
+			</wisdom>
+		</abilities>
+		<backgroundlink type="windowreference">
+			<class />
+			<recordname />
+		</backgroundlink>
+		<classes>
+			<id-00001>
+				<casterlevelinvmult type="number">0</casterlevelinvmult>
+				<casterpactmagic type="number">0</casterpactmagic>
+				<hddie type="dice">1d10</hddie>
+				<hdused type="number">0</hdused>
+				<level type="number">18</level>
+				<name type="string">Fighter</name>
+				<shortcut type="windowreference">
+					<class>reference_class</class>
+					<recordname>class.id-00006@WOTC50PHB</recordname>
+				</shortcut>
+				<specialization type="string">Psi Warrior</specialization>
+				<specializationlink type="windowreference">
+					<class>reference_class_specialization</class>
+					<recordname>class_specialization.id-00023@WOTC50PHB</recordname>
+				</specializationlink>
+				<specializationversion type="string">2024</specializationversion>
+				<version type="string">2024</version>
+			</id-00001>
+		</classes>
+		<coins>
+			<id-00001>
+				<amount type="number">0</amount>
+				<name type="string">PP</name>
+			</id-00001>
+			<id-00002>
+				<amount type="number">155</amount>
+				<name type="string">GP</name>
+			</id-00002>
+			<id-00003>
+				<amount type="number">0</amount>
+				<name type="string">EP</name>
+			</id-00003>
+			<id-00004>
+				<amount type="number">0</amount>
+				<name type="string">SP</name>
+			</id-00004>
+			<id-00005>
+				<amount type="number">0</amount>
+				<name type="string">CP</name>
+			</id-00005>
+		</coins>
+		<defenses>
+			<ac>
+				<armor type="number">0</armor>
+				<disstealth type="number">0</disstealth>
+				<misc type="number">0</misc>
+				<prof type="number">1</prof>
+				<shield type="number">0</shield>
+				<temporary type="number">1</temporary>
+				<total type="number">12</total>
+			</ac>
+		</defenses>
+		<encumbrance>
+			<encumbered type="number">70</encumbered>
+			<encumberedheavy type="number">140</encumberedheavy>
+			<liftpushdrag type="number">420</liftpushdrag>
+			<load type="number">10</load>
+			<max type="number">210</max>
+		</encumbrance>
+		<exp type="number">0</exp>
+		<expneeded type="number">305000</expneeded>
+		<featlist>
+			<id-00001>
+				<category type="string">Origin</category>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Alert</name>
+				<repeatable type="number">0</repeatable>
+				<text type="formattedtext">
+					<p>You gain the following benefits.</p>
+					<p>
+						<b>Initiative Proficiency. </b>When you roll Initiative, you can add your Proficiency Bonus to the roll.</p>
+					<p>
+						<b>Initiative Swap. </b>Immediately after you roll Initiative, you can swap your Initiative with the Initiative of one willing ally in the same combat. You can't make this swap if you or the ally has the Incapacitated condition.</p>
+				</text>
+				<version type="string">2024</version>
+			</id-00001>
+			<id-00002>
+				<category type="string">General</category>
+				<level type="number">4</level>
+				<locked type="number">1</locked>
+				<name type="string">Great Weapon Master</name>
+				<prerequisite type="string">Strength 13+</prerequisite>
+				<repeatable type="number">0</repeatable>
+				<text type="formattedtext">
+					<p>You gain the following benefits.</p>
+					<p>
+						<b>Ability Score Increase. </b>Increase your Strength score by 1, to a maximum of 20.</p>
+					<p>
+						<b>Heavy Weapon Mastery. </b>When you hit a creature with a weapon that has the Heavy property as part of the Attack action on your turn, you can cause the weapon to deal extra damage to the target. The extra damage equals your Proficiency Bonus.</p>
+					<p>
+						<b>Hew. </b>Immediately after you score a Critical Hit with a Melee weapon or reduce a creature to 0 Hit Points with one, you can make one attack with the same weapon as a Bonus Action.</p>
+				</text>
+				<version type="string">2024</version>
+			</id-00002>
+			<id-00003>
+				<category type="string">Fighting Style</category>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Blind Fighting</name>
+				<prerequisite type="string">Fighting Style Feature</prerequisite>
+				<repeatable type="number">0</repeatable>
+				<text type="formattedtext">
+					<p>You have Blindsight with a range of 10 feet.</p>
+				</text>
+				<version type="string">2024</version>
+			</id-00003>
+			<id-00004>
+				<category type="string">General</category>
+				<level type="number">4</level>
+				<locked type="number">1</locked>
+				<name type="string">Keen Mind</name>
+				<prerequisite type="string">Intelligence 13+</prerequisite>
+				<repeatable type="number">0</repeatable>
+				<text type="formattedtext">
+					<p>You gain the following benefits.</p>
+					<p>
+						<b>Ability Score Increase. </b>Increase your Intelligence score by 1, to a maximum of 20.</p>
+					<p>
+						<b>Lore Knowledge. </b>Choose one of the following skills: Arcana, History, Investigation, Nature, or Religion. If you lack proficiency in the chosen skill, you gain proficiency in it, and if you already have proficiency in it, you gain Expertise in it.</p>
+					<p>
+						<b>Quick Study. </b>You can take the Study action as a Bonus Action.</p>
+				</text>
+				<version type="string">2024</version>
+			</id-00004>
+			<id-00005>
+				<category type="string">General</category>
+				<level type="number">4</level>
+				<locked type="number">1</locked>
+				<name type="string">Mage Slayer</name>
+				<repeatable type="number">0</repeatable>
+				<text type="formattedtext">
+					<p>You gain the following benefits.</p>
+					<p>
+						<b>Ability Score Increase. </b>Increase your Strength or Dexterity score by 1, to a maximum of 20.</p>
+					<p>
+						<b>Concentration Breaker. </b>When you damage a creature that is concentrating, it has Disadvantage on the saving throw it makes to maintain Concentration.</p>
+					<p>
+						<b>Guarded Mind. </b>If you fail an Intelligence, a Wisdom, or a Charisma saving throw, you can cause yourself to succeed instead. Once you use this benefit, you can't use it again until you finish a Short or Long Rest.</p>
+				</text>
+				<version type="string">2024</version>
+			</id-00005>
+			<id-00006>
+				<category type="string">General</category>
+				<level type="number">4</level>
+				<locked type="number">1</locked>
+				<name type="string">Heavy Armor Master</name>
+				<prerequisite type="string">Heavy Armor Training</prerequisite>
+				<repeatable type="number">0</repeatable>
+				<text type="formattedtext">
+					<p>You gain the following benefits.</p>
+					<p>
+						<b>Ability Score Increase. </b>Increase your Constitution or Strength score by 1, to a maximum of 20.</p>
+					<p>
+						<b>Damage Reduction. </b>When you're hit by an attack while you're wearing Heavy armor, any Bludgeoning, Piercing, and Slashing damage dealt to you by that attack is reduced by an amount equal to your Proficiency Bonus.</p>
+				</text>
+				<version type="string">2024</version>
+			</id-00006>
+		</featlist>
+		<featurelist>
+			<id-00001>
+				<level type="number">1</level>
+				<locked type="number">1</locked>
+				<name type="string">Fighting Style</name>
+				<text type="formattedtext">
+					<p>You have honed your martial prowess and gain a Fighting Style feat of your choice (see chapter 5). Defense is recommended.</p>
+					<p>Whenever you gain a Fighter level, you can replace the feat you chose with a different Fighting Style feat.</p>
+				</text>
+			</id-00001>
+			<id-00002>
+				<level type="number">1</level>
+				<locked type="number">1</locked>
+				<name type="string">Second Wind</name>
+				<text type="formattedtext">
+					<p>You have a limited well of physical and mental stamina that you can draw on. As a Bonus Action, you can use it to regain Hit Points equal to 1d10 plus your Fighter level.</p>
+					<p>You can use this feature twice. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest.</p>
+					<p>When you reach certain Fighter levels, you gain more uses of this feature, as shown in the Second Wind column of the Fighter Features table.</p>
+				</text>
+			</id-00002>
+			<id-00003>
+				<level type="number">1</level>
+				<locked type="number">1</locked>
+				<name type="string">Weapon Mastery</name>
+				<text type="formattedtext">
+					<p>Your training with weapons allows you to use the mastery properties of three kinds of Simple or Martial weapons of your choice. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices.</p>
+					<p>When you reach certain Fighter levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Fighter Features table.</p>
+				</text>
+			</id-00003>
+			<id-00004>
+				<level type="number">2</level>
+				<locked type="number">1</locked>
+				<name type="string">Action Surge</name>
+				<text type="formattedtext">
+					<p>You can push yourself beyond your normal limits for a moment. On your turn, you can take one additional action, except the Magic action.</p>
+					<p>Once you use this feature, you can't do so again until you finish a Short or Long Rest. Starting at level 17, you can use it twice before a rest but only once on a turn.</p>
+				</text>
+			</id-00004>
+			<id-00005>
+				<level type="number">2</level>
+				<locked type="number">1</locked>
+				<name type="string">Tactical Mind</name>
+				<text type="formattedtext">
+					<p>You have a mind for tactics on and off the battlefield. When you fail an ability check, you can expend a use of your Second Wind to push yourself toward success. Rather than regaining Hit Points, you roll 1d10 and add the number rolled to the ability check, potentially turning it into a success. If the check still fails, this use of Second Wind isn't expended.</p>
+				</text>
+			</id-00005>
+			<id-00006>
+				<level type="number">3</level>
+				<locked type="number">1</locked>
+				<name type="string">Fighter Subclass</name>
+				<text type="formattedtext">
+					<p>You gain a Fighter subclass of your choice. The Battle Master, Champion, Eldritch Knight, and Psi Warrior subclasses are detailed after this class's description. A subclass is a specialization that grants you features at certain Fighter levels. For the rest of your career, you gain each of your subclass's features that are of your Fighter level or lower.</p>
+				</text>
+			</id-00006>
+			<id-00007>
+				<level type="number">3</level>
+				<locked type="number">1</locked>
+				<name type="string">Psionic Power (Psi Warrior)</name>
+				<text type="formattedtext">
+					<p>You harbor a wellspring of psionic energy within yourself. It is represented by your Psionic Energy Dice, which fuel powers you have from this subclass. The Psi Warrior Energy Dice table shows the die size and number of these dice you have when you reach certain Fighter levels.</p>
+					<p>
+						<b>Psi Warrior Energy Dice</b>
+					</p>
+					<table>
+						<tr>
+							<td>
+								<b>Fighter Level</b>
+							</td>
+							<td>
+								<b>Die Size</b>
+							</td>
+							<td>
+								<b>Number</b>
+							</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>D6</td>
+							<td>4</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>D8</td>
+							<td>6</td>
+						</tr>
+						<tr>
+							<td>9</td>
+							<td>D8</td>
+							<td>8</td>
+						</tr>
+						<tr>
+							<td>11</td>
+							<td>D10</td>
+							<td>8</td>
+						</tr>
+						<tr>
+							<td>13</td>
+							<td>D10</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>17</td>
+							<td>D12</td>
+							<td>12</td>
+						</tr>
+					</table>
+					<p>Any features in this subclass that use a Psionic Energy Die use only the dice from this subclass. Some of your powers expend the Psionic Energy Die, as specified in a power's description, and you can't use a power if it requires you to use a die when all your Psionic Energy Dice are expended.</p>
+					<p>You regain one of your expended Psionic Energy Dice when you finish a Short Rest, and you regain all of them when you finish a Long Rest.</p>
+					<p>
+						<b>
+							<i>Protective Field. </i>
+						</b>When you or another creature you can see within 30 feet of you takes damage, you can take a Reaction to expend one Psionic Energy Die, roll the die, and reduce the damage taken by the number rolled plus your Intelligence modifier (minimum reduction of 1), as you create a momentary shield of telekinetic force.</p>
+					<p>
+						<b>
+							<i>Psionic Strike. </i>
+						</b>You can propel your weapons with psionic force. Once on each of your turns, immediately after you hit a target within 30 feet of yourself with an attack and deal damage to it with a weapon, you can expend one Psionic Energy Die, rolling it and dealing Force damage to the target equal to the number rolled plus your Intelligence modifier.</p>
+					<p>
+						<b>
+							<i>Telekinetic Movement. </i>
+						</b>You can move an object or a creature with your mind. As a Magic action, choose one target you can see within 30 feet of yourself; the target must be a loose object that is Large or smaller or one willing creature other than you. You transport the target up to 30 feet to an unoccupied space you can see. Alternatively, if the target is a Tiny object, you can transport it to or from your hand.</p>
+					<p>Once you take this action, you can't do so again until you finish a Short or Long Rest unless you expend a Psionic Energy Die (no action required) to restore your use of it.</p>
+				</text>
+			</id-00007>
+			<id-00008>
+				<level type="number">4</level>
+				<locked type="number">1</locked>
+				<name type="string">Second Wind (L4)</name>
+				<text type="formattedtext">
+					<p>You gain one more use of your second wind feature.</p>
+				</text>
+			</id-00008>
+			<id-00009>
+				<level type="number">5</level>
+				<locked type="number">1</locked>
+				<name type="string">Extra Attack</name>
+				<text type="formattedtext">
+					<p>You can attack twice instead of once whenever you take the Attack action on your turn.</p>
+				</text>
+			</id-00009>
+			<id-00010>
+				<level type="number">5</level>
+				<locked type="number">1</locked>
+				<name type="string">Tactical Shift</name>
+				<text type="formattedtext">
+					<p>Whenever you activate your Second Wind with a Bonus Action, you can move up to half your Speed without provoking Opportunity Attacks.</p>
+				</text>
+			</id-00010>
+			<id-00011>
+				<level type="number">5</level>
+				<locked type="number">1</locked>
+				<name type="string">Psi Warrior Energy Dice (L5)</name>
+				<text type="formattedtext">
+					<p>Your energy dice size is now d8 and you have 6 dice.</p>
+				</text>
+			</id-00011>
+			<id-00012>
+				<level type="number">7</level>
+				<locked type="number">1</locked>
+				<name type="string">Telekinetic Adept</name>
+				<text type="formattedtext">
+					<p>You have mastered new ways to use your telekinetic abilities, detailed below.</p>
+					<p>
+						<b>
+							<i>Psi-Powered Leap. </i>
+						</b>As a Bonus Action, you gain a Fly Speed equal to twice your Speed until the end of the current turn. Once you take this Bonus Action, you can't do so again until you finish a Short or Long Rest unless you expend a Psionic Energy Die (no action required) to restore your use of it.</p>
+					<p>
+						<b>
+							<i>Telekinetic Thrust. </i>
+						</b>When you deal damage to a target with your Psionic Strike, you can force the target to make a Strength saving throw (DC 8 plus your Intelligence modifier and Proficiency Bonus). On a failed save, you can give the target the Prone condition or transport it up to 10 feet horizontally.</p>
+				</text>
+			</id-00012>
+			<id-00013>
+				<level type="number">9</level>
+				<locked type="number">1</locked>
+				<name type="string">Indomitable</name>
+				<text type="formattedtext">
+					<p>If you fail a saving throw, you can reroll it with a bonus equal to your Fighter level. You must use the new roll, and you can't use this feature again until you finish a Long Rest.</p>
+					<p>You can use this feature twice before a Long Rest starting at level 13 and three times before a Long Rest starting at level 17.</p>
+				</text>
+			</id-00013>
+			<id-00014>
+				<level type="number">9</level>
+				<locked type="number">1</locked>
+				<name type="string">Tactical Master</name>
+				<text type="formattedtext">
+					<p>When you attack with a weapon whose mastery property you can use, you can replace that property with the Push, Sap, or Slow property for that attack.</p>
+				</text>
+			</id-00014>
+			<id-00015>
+				<level type="number">9</level>
+				<locked type="number">1</locked>
+				<name type="string">Psi Warrior Energy Dice (L9)</name>
+				<text type="formattedtext">
+					<p>Your now have 8 energy dice.</p>
+				</text>
+			</id-00015>
+			<id-00016>
+				<level type="number">10</level>
+				<locked type="number">1</locked>
+				<name type="string">Second Wind (L10)</name>
+				<text type="formattedtext">
+					<p>You gain one more use of your second wind feature.</p>
+				</text>
+			</id-00016>
+			<id-00017>
+				<level type="number">10</level>
+				<locked type="number">1</locked>
+				<name type="string">Guarded Mind</name>
+				<text type="formattedtext">
+					<p>You have Resistance to Psychic damage. Moreover, if you start your turn with the Charmed or Frightened condition, you can expend a Psionic Energy Die (no action required) and end every effect on yourself giving you those conditions.</p>
+				</text>
+			</id-00017>
+			<id-00018>
+				<level type="number">11</level>
+				<locked type="number">1</locked>
+				<name type="string">Two Extra Attacks</name>
+				<text type="formattedtext">
+					<p>You can attack three times instead of once whenever you take the Attack action on your turn.</p>
+				</text>
+			</id-00018>
+			<id-00019>
+				<level type="number">11</level>
+				<locked type="number">1</locked>
+				<name type="string">Psi Warrior Energy Dice (L11)</name>
+				<text type="formattedtext">
+					<p>Your energy dice size is now d10.</p>
+				</text>
+			</id-00019>
+			<id-00020>
+				<level type="number">13</level>
+				<locked type="number">1</locked>
+				<name type="string">Studied Attacks</name>
+				<text type="formattedtext">
+					<p>You study your opponents and learn from each attack you make. If you make an attack roll against a creature and miss, you have Advantage on your next attack roll against that creature before the end of your next turn.</p>
+				</text>
+			</id-00020>
+			<id-00021>
+				<level type="number">13</level>
+				<locked type="number">1</locked>
+				<name type="string">Indomitable (L13)</name>
+				<text type="formattedtext">
+					<p>You can now use this feature twice before a long rest.</p>
+				</text>
+			</id-00021>
+			<id-00022>
+				<level type="number">13</level>
+				<locked type="number">1</locked>
+				<name type="string">Psi Warrior Energy Dice (L13)</name>
+				<text type="formattedtext">
+					<p>Your now have 10 energy dice.</p>
+				</text>
+			</id-00022>
+			<id-00023>
+				<level type="number">15</level>
+				<locked type="number">1</locked>
+				<name type="string">Bulwark of Force</name>
+				<text type="formattedtext">
+					<p>You can shield yourself and others with telekinetic force. As a Bonus Action, you can choose creatures, including yourself, within 30 feet of yourself, up to a number of creatures equal to your Intelligence modifier (minimum of one creature). Each of the chosen creatures has Half Cover for 1 minute or until you have the Incapacitated condition.</p>
+					<p>Once you use this feature, you can't do so again until you finish a Long Rest unless you expend a Psionic Energy Die (no action required) to restore your use of it.</p>
+				</text>
+			</id-00023>
+			<id-00024>
+				<level type="number">17</level>
+				<locked type="number">1</locked>
+				<name type="string">Action Surge (L17)</name>
+				<text type="formattedtext">
+					<p>You can now use action surge twice before a rest but only once per turn.</p>
+				</text>
+			</id-00024>
+			<id-00025>
+				<level type="number">17</level>
+				<locked type="number">1</locked>
+				<name type="string">Indomitable (L17)</name>
+				<text type="formattedtext">
+					<p>You can now use this feature three times before a long rest.</p>
+				</text>
+			</id-00025>
+			<id-00026>
+				<level type="number">17</level>
+				<locked type="number">1</locked>
+				<name type="string">Psi Warrior Energy Dice (L17)</name>
+				<text type="formattedtext">
+					<p>Your energy dice size is now d12 and you have 12 dice.</p>
+				</text>
+			</id-00026>
+			<id-00027>
+				<level type="number">18</level>
+				<locked type="number">0</locked>
+				<name type="string">Telekinetic Master</name>
+				<text type="formattedtext">
+					<p>You always have the Telekinesis spell prepared. With this feature, you can cast it without a spell slot or components, and your spellcasting ability for it is Intelligence. On each of your turns while you maintain Concentration on it, including the turn when you cast it, you can make one attack with a weapon as a Bonus Action.</p>
+					<p>Once you cast the spell with this feature, you can't do so in this way again until you finish a Long Rest unless you expend a Psionic Energy Die (no action required) to restore your use of it.</p>
+				</text>
+			</id-00027>
+		</featurelist>
+		<hp>
+			<deathsavefail type="number">0</deathsavefail>
+			<deathsavesuccess type="number">0</deathsavesuccess>
+			<temporary type="number">0</temporary>
+			<total type="number">148</total>
+			<wounds type="number">0</wounds>
+		</hp>
+		<initiative>
+			<misc type="number">0</misc>
+			<prof type="number">1</prof>
+			<temporary type="number">0</temporary>
+			<total type="number">7</total>
+		</initiative>
+		<inspiration type="number">0</inspiration>
+		<inventorylist>
+			<id-00001>
+				<attune type="number">0</attune>
+				<bonus type="number">0</bonus>
+				<carried type="number">2</carried>
+				<cost type="string">4,002 gp</cost>
+				<count type="number">1</count>
+				<damage type="string">1d4 Piercing</damage>
+				<description type="formattedtext">
+					<p>
+						<b>Enspelled Weapon (Level 3) Notes</b>
+					</p>
+					<h>Enspelled Weapon</h>
+					<p>
+						<i>Weapon (Any Simple or Martial), Rarity Varies (Requires Attunement)</i>
+					</p>
+					<p>Bound into this weapon is a spell of level 8 or lower. The spell is determined when the weapon is created and must belong to the Conjuration, Divination, Evocation, Necromancy, or Transmutation school of magic. The weapon has 6 charges and regains 1d6 expended charges daily at dawn. While holding the weapon, you can expend 1 charge to cast its spell.</p>
+					<p>The level of the spell bound into the weapon determines the spell's saving throw DC and attack bonus, as well as the weapon's rarity, as shown in the following table.</p>
+					<table>
+						<tr>
+							<td>
+								<b>Spell Level</b>
+							</td>
+							<td>
+								<b>Rarity</b>
+							</td>
+							<td>
+								<b>Save DC</b>
+							</td>
+							<td>
+								<b>Attack Bonus</b>
+							</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Rare</td>
+							<td>15</td>
+							<td>+7</td>
+						</tr>
+					</table>
+				</description>
+				<locked type="number">1</locked>
+				<mastery type="string">Nick</mastery>
+				<name type="string">Enspelled Dagger (Level 3)</name>
+				<picture type="token">images/Weapon Dagger.webp@WOTC50PHB</picture>
+				<properties type="string">Finesse, Light, Thrown (Range 20/60), magic</properties>
+				<rarity type="string">Rare (Requires Attunement)</rarity>
+				<subtype type="string">Simple Melee Weapons</subtype>
+				<type type="string">Weapon</type>
+				<version type="string">2024</version>
+				<weight type="number">1</weight>
+			</id-00001>
+			<id-00002>
+				<attune type="number">0</attune>
+				<bonus type="number">3</bonus>
+				<carried type="number">2</carried>
+				<cost type="string">5,001 - 50,000 gp</cost>
+				<count type="number">1</count>
+				<damage type="string">2d6 slashing, silver</damage>
+				<description type="formattedtext">
+					<h>Description</h>
+					<p>Magic weapons are unmistakably finer in quality than their ordinary counterparts. You have a +3 bonus to the attack rolls and damage rolls you make with this weapon.</p>
+				</description>
+				<locked type="number">1</locked>
+				<name type="string">Silvered Greatsword, +3</name>
+				<nonid_name type="string">Exquisite Greatsword</nonid_name>
+				<nonidentified type="string">The highest quality materials and craftsmanship have gone into the making of this extra special weapon.</nonidentified>
+				<properties type="string">Heavy, two-handed, magic</properties>
+				<rarity type="string">Very Rare</rarity>
+				<spells>
+					<id-00001>
+						<link type="windowreference">
+							<class />
+							<recordname />
+						</link>
+						<name type="string">Weapon, +3</name>
+					</id-00001>
+					<id-00002>
+						<link type="windowreference">
+							<class />
+							<recordname />
+						</link>
+						<name type="string">Greatsword</name>
+					</id-00002>
+				</spells>
+				<subtype type="string">Martial Weapons</subtype>
+				<type type="string">Weapon</type>
+				<weight type="number">6</weight>
+			</id-00002>
+			<id-00003>
+				<attune type="number">1</attune>
+				<carried type="number">2</carried>
+				<cost type="string">4,000 gp</cost>
+				<count type="number">1</count>
+				<description type="formattedtext">
+					<h>Belt of Giant Strength</h>
+					<p>
+						<i>Wondrous Item, Rarity Varies (Requires Attunement)</i>
+					</p>
+					<p>While wearing this belt, your Strength changes to a score granted by the belt. The type of giant determines the score (see the table below). The item has no effect on you if your Strength without the belt is equal to or greater than the belt's score.</p>
+					<table>
+						<tr>
+							<td colspan="3">
+								<b>Belt</b>
+							</td>
+							<td>
+								<b>Str.</b>
+							</td>
+							<td colspan="2">
+								<b>Rarity</b>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								<i>Belt of Giant Strength </i>(hill)</td>
+							<td>21</td>
+							<td colspan="2">Rare</td>
+						</tr>
+					</table>
+				</description>
+				<locked type="number">1</locked>
+				<name type="string">Belt of Giant Strength (Hill)</name>
+				<rarity type="string">Rare (Requires Attunement)</rarity>
+				<type type="string">Wondrous Item</type>
+				<version type="string">2024</version>
+				<weight type="number">0</weight>
+			</id-00003>
+		</inventorylist>
+		<languagelist />
+		<level type="number">18</level>
+		<locked type="number">1</locked>
+		<name type="string">Xyn 2024</name>
+		<perception type="number">18</perception>
+		<perceptionmodifier type="number">0</perceptionmodifier>
+		<powergroup>
+			<id-00001>
+				<name type="string">Spells (Githyanki)</name>
+				<stat type="string">charisma</stat>
+			</id-00001>
+			<id-00002>
+				<name type="string">Feats</name>
+			</id-00002>
+			<id-00003>
+				<name type="string">Second Wind (Fighter)</name>
+				<stat type="string">strength</stat>
+			</id-00003>
+			<id-00004>
+				<name type="string">Class (Fighter)</name>
+			</id-00004>
+			<id-00005>
+				<name type="string">Psionic Energy (Fighter)</name>
+				<stat type="string">intelligence</stat>
+			</id-00005>
+			<id-00006>
+				<name type="string">Psionic Power (Fighter)</name>
+				<stat type="string">intelligence</stat>
+			</id-00006>
+		</powergroup>
+		<powermeta>
+			<pactmagicslots1>
+				<max type="number">0</max>
+			</pactmagicslots1>
+			<pactmagicslots2>
+				<max type="number">0</max>
+			</pactmagicslots2>
+			<pactmagicslots3>
+				<max type="number">0</max>
+			</pactmagicslots3>
+			<pactmagicslots4>
+				<max type="number">0</max>
+			</pactmagicslots4>
+			<pactmagicslots5>
+				<max type="number">0</max>
+			</pactmagicslots5>
+			<pactmagicslots6>
+				<max type="number">0</max>
+			</pactmagicslots6>
+			<pactmagicslots7>
+				<max type="number">0</max>
+			</pactmagicslots7>
+			<pactmagicslots8>
+				<max type="number">0</max>
+			</pactmagicslots8>
+			<pactmagicslots9>
+				<max type="number">0</max>
+			</pactmagicslots9>
+			<spellslots1>
+				<max type="number">0</max>
+			</spellslots1>
+			<spellslots2>
+				<max type="number">0</max>
+			</spellslots2>
+			<spellslots3>
+				<max type="number">0</max>
+			</spellslots3>
+			<spellslots4>
+				<max type="number">0</max>
+			</spellslots4>
+			<spellslots5>
+				<max type="number">0</max>
+			</spellslots5>
+			<spellslots6>
+				<max type="number">0</max>
+			</spellslots6>
+			<spellslots7>
+				<max type="number">0</max>
+			</spellslots7>
+			<spellslots8>
+				<max type="number">0</max>
+			</spellslots8>
+			<spellslots9>
+				<max type="number">0</max>
+			</spellslots9>
+		</powermeta>
+		<powers>
+			<id-00001>
+				<actions>
+					<id-00001>
+						<durmod type="number">1</durmod>
+						<durunit type="string">minute</durunit>
+						<label type="string">Mage Hand</label>
+						<order type="number">1</order>
+						<targeting type="string">self</targeting>
+						<type type="string">effect</type>
+					</id-00001>
+				</actions>
+				<castingtime type="string">1 action</castingtime>
+				<components type="string">V, S</components>
+				<description type="formattedtext">
+					<p>A spectral, floating hand appears at a point you choose within range. The hand lasts for the duration or until you dismiss it as an action. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again.</p>
+					<p>You can use your action to control the hand. You can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial. You can move the hand up to 30 feet each time you use it.</p>
+					<p>The hand can't attack, activate magic items, or carry more than 10 pounds.</p>
+				</description>
+				<duration type="string">1 minute</duration>
+				<group type="string">Spells (Githyanki)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Mage Hand</name>
+				<prepared type="number">1</prepared>
+				<range type="string">30 feet</range>
+				<school type="string">Conjuration</school>
+				<source type="string">Bard, Eldritch Knight, Sorcerer, Warlock, Wizard, Arcane Trickster</source>
+			</id-00001>
+			<id-00002>
+				<actions />
+				<category type="string">Origin</category>
+				<description type="formattedtext">
+					<p>You gain the following benefits.</p>
+					<p>
+						<b>Initiative Proficiency. </b>When you roll Initiative, you can add your Proficiency Bonus to the roll.</p>
+					<p>
+						<b>Initiative Swap. </b>Immediately after you roll Initiative, you can swap your Initiative with the Initiative of one willing ally in the same combat. You can't make this swap if you or the ally has the Incapacitated condition.</p>
+				</description>
+				<group type="string">Feats</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Alert (Initiative Swap)</name>
+				<prepared type="number">0</prepared>
+				<repeatable type="number">0</repeatable>
+				<version type="string">2024</version>
+			</id-00002>
+			<id-00003>
+				<actions>
+					<id-00001>
+						<apply type="string">action</apply>
+						<durmod type="number">1</durmod>
+						<label type="string">Great Weapon Master (Heavy Weapon Mastery); DMG: [PRF]</label>
+						<order type="number">1</order>
+						<targeting type="string">self</targeting>
+						<type type="string">effect</type>
+					</id-00001>
+				</actions>
+				<category type="string">General</category>
+				<description type="formattedtext">
+					<p>You gain the following benefits.</p>
+					<p>
+						<b>Ability Score Increase. </b>Increase your Strength score by 1, to a maximum of 20.</p>
+					<p>
+						<b>Heavy Weapon Mastery. </b>When you hit a creature with a weapon that has the Heavy property as part of the Attack action on your turn, you can cause the weapon to deal extra damage to the target. The extra damage equals your Proficiency Bonus.</p>
+					<p>
+						<b>Hew. </b>Immediately after you score a Critical Hit with a Melee weapon or reduce a creature to 0 Hit Points with one, you can make one attack with the same weapon as a Bonus Action.</p>
+				</description>
+				<group type="string">Feats</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Great Weapon Master (Heavy Weapon Mastery)</name>
+				<prepared type="number">0</prepared>
+				<prerequisite type="string">Strength 13+</prerequisite>
+				<repeatable type="number">0</repeatable>
+				<version type="string">2024</version>
+			</id-00003>
+			<id-00004>
+				<actions />
+				<category type="string">General</category>
+				<description type="formattedtext">
+					<p>You gain the following benefits.</p>
+					<p>
+						<b>Ability Score Increase. </b>Increase your Strength score by 1, to a maximum of 20.</p>
+					<p>
+						<b>Heavy Weapon Mastery. </b>When you hit a creature with a weapon that has the Heavy property as part of the Attack action on your turn, you can cause the weapon to deal extra damage to the target. The extra damage equals your Proficiency Bonus.</p>
+					<p>
+						<b>Hew. </b>Immediately after you score a Critical Hit with a Melee weapon or reduce a creature to 0 Hit Points with one, you can make one attack with the same weapon as a Bonus Action.</p>
+				</description>
+				<group type="string">Feats</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Great Weapon Master (Hew)</name>
+				<prepared type="number">0</prepared>
+				<prerequisite type="string">Strength 13+</prerequisite>
+				<repeatable type="number">0</repeatable>
+				<version type="string">2024</version>
+			</id-00004>
+			<id-00005>
+				<actions>
+					<id-00001>
+						<heallist>
+							<id-00001>
+								<bonus type="number">0</bonus>
+								<dice type="dice">d10</dice>
+								<stat type="string">fighter</stat>
+							</id-00001>
+						</heallist>
+						<healtargeting type="string">self</healtargeting>
+						<order type="number">1</order>
+						<type type="string">heal</type>
+					</id-00001>
+				</actions>
+				<description type="formattedtext">
+					<p>You have a limited well of physical and mental stamina that you can draw on. As a Bonus Action, you can use it to regain Hit Points equal to 1d10 plus your Fighter level.</p>
+					<p>You can use this feature twice. You regain one expended use when you finish a Short Rest, and you regain all expended uses when you finish a Long Rest.</p>
+					<p>When you reach certain Fighter levels, you gain more uses of this feature, as shown in the Second Wind column of the Fighter Features table.</p>
+				</description>
+				<group type="string">Second Wind (Fighter)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Second Wind</name>
+				<prepared type="number">2</prepared>
+				<usesperiod type="string">dual</usesperiod>
+				<version type="string">2024</version>
+			</id-00005>
+			<id-00006>
+				<actions />
+				<description type="formattedtext">
+					<p>Your training with weapons allows you to use the mastery properties of three kinds of Simple or Martial weapons of your choice. Whenever you finish a Long Rest, you can practice weapon drills and change one of those weapon choices.</p>
+					<p>When you reach certain Fighter levels, you gain the ability to use the mastery properties of more kinds of weapons, as shown in the Weapon Mastery column of the Fighter Features table.</p>
+				</description>
+				<group type="string">Class (Fighter)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Weapon Mastery</name>
+				<prepared type="number">0</prepared>
+				<version type="string">2024</version>
+			</id-00006>
+			<id-00007>
+				<actions />
+				<description type="formattedtext">
+					<p>You can push yourself beyond your normal limits for a moment. On your turn, you can take one additional action, except the Magic action.</p>
+					<p>Once you use this feature, you can't do so again until you finish a Short or Long Rest. Starting at level 17, you can use it twice before a rest but only once on a turn.</p>
+				</description>
+				<group type="string">Class (Fighter)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Action Surge</name>
+				<prepared type="number">1</prepared>
+				<usesperiod type="string">enc</usesperiod>
+				<version type="string">2024</version>
+			</id-00007>
+			<id-00008>
+				<actions />
+				<description type="formattedtext">
+					<p>You have a mind for tactics on and off the battlefield. When you fail an ability check, you can expend a use of your Second Wind to push yourself toward success. Rather than regaining Hit Points, you roll 1d10 and add the number rolled to the ability check, potentially turning it into a success. If the check still fails, this use of Second Wind isn't expended.</p>
+				</description>
+				<group type="string">Second Wind (Fighter)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Tactical Mind</name>
+				<prepared type="number">0</prepared>
+				<version type="string">2024</version>
+			</id-00008>
+			<id-00009>
+				<actions>
+					<id-00001>
+						<apply type="string">roll</apply>
+						<durmod type="number">1</durmod>
+						<label type="string">Protective Field; RESIST: d6 [INT]</label>
+						<order type="number">1</order>
+						<type type="string">effect</type>
+					</id-00001>
+				</actions>
+				<description type="formattedtext">
+					<p>You harbor a wellspring of psionic energy within yourself. It is represented by your Psionic Energy Dice, which fuel powers you have from this subclass. The Psi Warrior Energy Dice table shows the die size and number of these dice you have when you reach certain Fighter levels.</p>
+					<p>
+						<b>Psi Warrior Energy Dice</b>
+					</p>
+					<table>
+						<tr>
+							<td>
+								<b>Fighter Level</b>
+							</td>
+							<td>
+								<b>Die Size</b>
+							</td>
+							<td>
+								<b>Number</b>
+							</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>D6</td>
+							<td>4</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>D8</td>
+							<td>6</td>
+						</tr>
+						<tr>
+							<td>9</td>
+							<td>D8</td>
+							<td>8</td>
+						</tr>
+						<tr>
+							<td>11</td>
+							<td>D10</td>
+							<td>8</td>
+						</tr>
+						<tr>
+							<td>13</td>
+							<td>D10</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>17</td>
+							<td>D12</td>
+							<td>12</td>
+						</tr>
+					</table>
+					<p>Any features in this subclass that use a Psionic Energy Die use only the dice from this subclass. Some of your powers expend the Psionic Energy Die, as specified in a power's description, and you can't use a power if it requires you to use a die when all your Psionic Energy Dice are expended.</p>
+					<p>You regain one of your expended Psionic Energy Dice when you finish a Short Rest, and you regain all of them when you finish a Long Rest.</p>
+					<p>
+						<b>
+							<i>Protective Field. </i>
+						</b>When you or another creature you can see within 30 feet of you takes damage, you can take a Reaction to expend one Psionic Energy Die, roll the die, and reduce the damage taken by the number rolled plus your Intelligence modifier (minimum reduction of 1), as you create a momentary shield of telekinetic force.</p>
+					<p>
+						<b>
+							<i>Psionic Strike. </i>
+						</b>You can propel your weapons with psionic force. Once on each of your turns, immediately after you hit a target within 30 feet of yourself with an attack and deal damage to it with a weapon, you can expend one Psionic Energy Die, rolling it and dealing Force damage to the target equal to the number rolled plus your Intelligence modifier.</p>
+					<p>
+						<b>
+							<i>Telekinetic Movement. </i>
+						</b>You can move an object or a creature with your mind. As a Magic action, choose one target you can see within 30 feet of yourself; the target must be a loose object that is Large or smaller or one willing creature other than you. You transport the target up to 30 feet to an unoccupied space you can see. Alternatively, if the target is a Tiny object, you can transport it to or from your hand.</p>
+					<p>Once you take this action, you can't do so again until you finish a Short or Long Rest unless you expend a Psionic Energy Die (no action required) to restore your use of it.</p>
+				</description>
+				<group type="string">Psionic Energy (Fighter)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Protective Field</name>
+				<prepared type="number">0</prepared>
+				<version type="string">2024</version>
+			</id-00009>
+			<id-00010>
+				<actions>
+					<id-00001>
+						<damagelist>
+							<id-00001>
+								<bonus type="number">0</bonus>
+								<dice type="dice">d6</dice>
+								<stat type="string">intelligence</stat>
+								<type type="string">force</type>
+							</id-00001>
+						</damagelist>
+						<order type="number">1</order>
+						<type type="string">damage</type>
+					</id-00001>
+				</actions>
+				<description type="formattedtext">
+					<p>You harbor a wellspring of psionic energy within yourself. It is represented by your Psionic Energy Dice, which fuel powers you have from this subclass. The Psi Warrior Energy Dice table shows the die size and number of these dice you have when you reach certain Fighter levels.</p>
+					<p>
+						<b>Psi Warrior Energy Dice</b>
+					</p>
+					<table>
+						<tr>
+							<td>
+								<b>Fighter Level</b>
+							</td>
+							<td>
+								<b>Die Size</b>
+							</td>
+							<td>
+								<b>Number</b>
+							</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>D6</td>
+							<td>4</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>D8</td>
+							<td>6</td>
+						</tr>
+						<tr>
+							<td>9</td>
+							<td>D8</td>
+							<td>8</td>
+						</tr>
+						<tr>
+							<td>11</td>
+							<td>D10</td>
+							<td>8</td>
+						</tr>
+						<tr>
+							<td>13</td>
+							<td>D10</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>17</td>
+							<td>D12</td>
+							<td>12</td>
+						</tr>
+					</table>
+					<p>Any features in this subclass that use a Psionic Energy Die use only the dice from this subclass. Some of your powers expend the Psionic Energy Die, as specified in a power's description, and you can't use a power if it requires you to use a die when all your Psionic Energy Dice are expended.</p>
+					<p>You regain one of your expended Psionic Energy Dice when you finish a Short Rest, and you regain all of them when you finish a Long Rest.</p>
+					<p>
+						<b>
+							<i>Protective Field. </i>
+						</b>When you or another creature you can see within 30 feet of you takes damage, you can take a Reaction to expend one Psionic Energy Die, roll the die, and reduce the damage taken by the number rolled plus your Intelligence modifier (minimum reduction of 1), as you create a momentary shield of telekinetic force.</p>
+					<p>
+						<b>
+							<i>Psionic Strike. </i>
+						</b>You can propel your weapons with psionic force. Once on each of your turns, immediately after you hit a target within 30 feet of yourself with an attack and deal damage to it with a weapon, you can expend one Psionic Energy Die, rolling it and dealing Force damage to the target equal to the number rolled plus your Intelligence modifier.</p>
+					<p>
+						<b>
+							<i>Telekinetic Movement. </i>
+						</b>You can move an object or a creature with your mind. As a Magic action, choose one target you can see within 30 feet of yourself; the target must be a loose object that is Large or smaller or one willing creature other than you. You transport the target up to 30 feet to an unoccupied space you can see. Alternatively, if the target is a Tiny object, you can transport it to or from your hand.</p>
+					<p>Once you take this action, you can't do so again until you finish a Short or Long Rest unless you expend a Psionic Energy Die (no action required) to restore your use of it.</p>
+				</description>
+				<group type="string">Psionic Energy (Fighter)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Psionic Strike</name>
+				<prepared type="number">0</prepared>
+				<version type="string">2024</version>
+			</id-00010>
+			<id-00011>
+				<actions />
+				<description type="formattedtext">
+					<p>You harbor a wellspring of psionic energy within yourself. It is represented by your Psionic Energy Dice, which fuel powers you have from this subclass. The Psi Warrior Energy Dice table shows the die size and number of these dice you have when you reach certain Fighter levels.</p>
+					<p>
+						<b>Psi Warrior Energy Dice</b>
+					</p>
+					<table>
+						<tr>
+							<td>
+								<b>Fighter Level</b>
+							</td>
+							<td>
+								<b>Die Size</b>
+							</td>
+							<td>
+								<b>Number</b>
+							</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>D6</td>
+							<td>4</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>D8</td>
+							<td>6</td>
+						</tr>
+						<tr>
+							<td>9</td>
+							<td>D8</td>
+							<td>8</td>
+						</tr>
+						<tr>
+							<td>11</td>
+							<td>D10</td>
+							<td>8</td>
+						</tr>
+						<tr>
+							<td>13</td>
+							<td>D10</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>17</td>
+							<td>D12</td>
+							<td>12</td>
+						</tr>
+					</table>
+					<p>Any features in this subclass that use a Psionic Energy Die use only the dice from this subclass. Some of your powers expend the Psionic Energy Die, as specified in a power's description, and you can't use a power if it requires you to use a die when all your Psionic Energy Dice are expended.</p>
+					<p>You regain one of your expended Psionic Energy Dice when you finish a Short Rest, and you regain all of them when you finish a Long Rest.</p>
+					<p>
+						<b>
+							<i>Protective Field. </i>
+						</b>When you or another creature you can see within 30 feet of you takes damage, you can take a Reaction to expend one Psionic Energy Die, roll the die, and reduce the damage taken by the number rolled plus your Intelligence modifier (minimum reduction of 1), as you create a momentary shield of telekinetic force.</p>
+					<p>
+						<b>
+							<i>Psionic Strike. </i>
+						</b>You can propel your weapons with psionic force. Once on each of your turns, immediately after you hit a target within 30 feet of yourself with an attack and deal damage to it with a weapon, you can expend one Psionic Energy Die, rolling it and dealing Force damage to the target equal to the number rolled plus your Intelligence modifier.</p>
+					<p>
+						<b>
+							<i>Telekinetic Movement. </i>
+						</b>You can move an object or a creature with your mind. As a Magic action, choose one target you can see within 30 feet of yourself; the target must be a loose object that is Large or smaller or one willing creature other than you. You transport the target up to 30 feet to an unoccupied space you can see. Alternatively, if the target is a Tiny object, you can transport it to or from your hand.</p>
+					<p>Once you take this action, you can't do so again until you finish a Short or Long Rest unless you expend a Psionic Energy Die (no action required) to restore your use of it.</p>
+				</description>
+				<group type="string">Psionic Power (Fighter)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Telekinetic Movement</name>
+				<prepared type="number">1</prepared>
+				<usesperiod type="string">enc</usesperiod>
+				<version type="string">2024</version>
+			</id-00011>
+			<id-00012>
+				<actions />
+				<description type="formattedtext">
+					<p>You harbor a wellspring of psionic energy within yourself. It is represented by your Psionic Energy Dice, which fuel powers you have from this subclass. The Psi Warrior Energy Dice table shows the die size and number of these dice you have when you reach certain Fighter levels.</p>
+					<p>
+						<b>Psi Warrior Energy Dice</b>
+					</p>
+					<table>
+						<tr>
+							<td>
+								<b>Fighter Level</b>
+							</td>
+							<td>
+								<b>Die Size</b>
+							</td>
+							<td>
+								<b>Number</b>
+							</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>D6</td>
+							<td>4</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>D8</td>
+							<td>6</td>
+						</tr>
+						<tr>
+							<td>9</td>
+							<td>D8</td>
+							<td>8</td>
+						</tr>
+						<tr>
+							<td>11</td>
+							<td>D10</td>
+							<td>8</td>
+						</tr>
+						<tr>
+							<td>13</td>
+							<td>D10</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>17</td>
+							<td>D12</td>
+							<td>12</td>
+						</tr>
+					</table>
+					<p>Any features in this subclass that use a Psionic Energy Die use only the dice from this subclass. Some of your powers expend the Psionic Energy Die, as specified in a power's description, and you can't use a power if it requires you to use a die when all your Psionic Energy Dice are expended.</p>
+					<p>You regain one of your expended Psionic Energy Dice when you finish a Short Rest, and you regain all of them when you finish a Long Rest.</p>
+					<p>
+						<b>
+							<i>Protective Field. </i>
+						</b>When you or another creature you can see within 30 feet of you takes damage, you can take a Reaction to expend one Psionic Energy Die, roll the die, and reduce the damage taken by the number rolled plus your Intelligence modifier (minimum reduction of 1), as you create a momentary shield of telekinetic force.</p>
+					<p>
+						<b>
+							<i>Psionic Strike. </i>
+						</b>You can propel your weapons with psionic force. Once on each of your turns, immediately after you hit a target within 30 feet of yourself with an attack and deal damage to it with a weapon, you can expend one Psionic Energy Die, rolling it and dealing Force damage to the target equal to the number rolled plus your Intelligence modifier.</p>
+					<p>
+						<b>
+							<i>Telekinetic Movement. </i>
+						</b>You can move an object or a creature with your mind. As a Magic action, choose one target you can see within 30 feet of yourself; the target must be a loose object that is Large or smaller or one willing creature other than you. You transport the target up to 30 feet to an unoccupied space you can see. Alternatively, if the target is a Tiny object, you can transport it to or from your hand.</p>
+					<p>Once you take this action, you can't do so again until you finish a Short or Long Rest unless you expend a Psionic Energy Die (no action required) to restore your use of it.</p>
+				</description>
+				<group type="string">Psionic Energy (Fighter)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Psionic Energy</name>
+				<prepared type="number">4</prepared>
+				<usesperiod type="string">dual</usesperiod>
+				<version type="string">2024</version>
+			</id-00012>
+			<id-00013>
+				<actions />
+				<description type="formattedtext">
+					<p>You can attack twice instead of once whenever you take the Attack action on your turn.</p>
+				</description>
+				<group type="string">Class (Fighter)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Extra Attack</name>
+				<prepared type="number">0</prepared>
+				<version type="string">2024</version>
+			</id-00013>
+			<id-00014>
+				<actions />
+				<description type="formattedtext">
+					<p>Whenever you activate your Second Wind with a Bonus Action, you can move up to half your Speed without provoking Opportunity Attacks.</p>
+				</description>
+				<group type="string">Second Wind (Fighter)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Tactical Shift</name>
+				<prepared type="number">0</prepared>
+				<version type="string">2024</version>
+			</id-00014>
+			<id-00015>
+				<actions />
+				<category type="string">General</category>
+				<description type="formattedtext">
+					<p>You gain the following benefits.</p>
+					<p>
+						<b>Ability Score Increase. </b>Increase your Intelligence score by 1, to a maximum of 20.</p>
+					<p>
+						<b>Lore Knowledge. </b>Choose one of the following skills: Arcana, History, Investigation, Nature, or Religion. If you lack proficiency in the chosen skill, you gain proficiency in it, and if you already have proficiency in it, you gain Expertise in it.</p>
+					<p>
+						<b>Quick Study. </b>You can take the Study action as a Bonus Action.</p>
+				</description>
+				<group type="string">Feats</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Keen Mind (Quick Study)</name>
+				<prepared type="number">0</prepared>
+				<prerequisite type="string">Intelligence 13+</prerequisite>
+				<repeatable type="number">0</repeatable>
+				<version type="string">2024</version>
+			</id-00015>
+			<id-00016>
+				<actions />
+				<description type="formattedtext">
+					<p>You have mastered new ways to use your telekinetic abilities, detailed below.</p>
+					<p>
+						<b>
+							<i>Psi-Powered Leap. </i>
+						</b>As a Bonus Action, you gain a Fly Speed equal to twice your Speed until the end of the current turn. Once you take this Bonus Action, you can't do so again until you finish a Short or Long Rest unless you expend a Psionic Energy Die (no action required) to restore your use of it.</p>
+					<p>
+						<b>
+							<i>Telekinetic Thrust. </i>
+						</b>When you deal damage to a target with your Psionic Strike, you can force the target to make a Strength saving throw (DC 8 plus your Intelligence modifier and Proficiency Bonus). On a failed save, you can give the target the Prone condition or transport it up to 10 feet horizontally.</p>
+				</description>
+				<group type="string">Psionic Power (Fighter)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Psi-Powered Leap</name>
+				<prepared type="number">1</prepared>
+				<usesperiod type="string">enc</usesperiod>
+				<version type="string">2024</version>
+			</id-00016>
+			<id-00017>
+				<actions>
+					<id-00001>
+						<order type="number">1</order>
+						<savemagic type="number">1</savemagic>
+						<savetype type="string">strength</savetype>
+						<type type="string">cast</type>
+					</id-00001>
+					<id-00002>
+						<label type="string">Prone</label>
+						<order type="number">2</order>
+						<type type="string">effect</type>
+					</id-00002>
+				</actions>
+				<description type="formattedtext">
+					<p>You have mastered new ways to use your telekinetic abilities, detailed below.</p>
+					<p>
+						<b>
+							<i>Psi-Powered Leap. </i>
+						</b>As a Bonus Action, you gain a Fly Speed equal to twice your Speed until the end of the current turn. Once you take this Bonus Action, you can't do so again until you finish a Short or Long Rest unless you expend a Psionic Energy Die (no action required) to restore your use of it.</p>
+					<p>
+						<b>
+							<i>Telekinetic Thrust. </i>
+						</b>When you deal damage to a target with your Psionic Strike, you can force the target to make a Strength saving throw (DC 8 plus your Intelligence modifier and Proficiency Bonus). On a failed save, you can give the target the Prone condition or transport it up to 10 feet horizontally.</p>
+				</description>
+				<group type="string">Psionic Energy (Fighter)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Psionic Strike (Telekinetic)</name>
+				<prepared type="number">0</prepared>
+				<version type="string">2024</version>
+			</id-00017>
+			<id-00018>
+				<actions>
+					<id-00001>
+						<apply type="string">roll</apply>
+						<durmod type="number">1</durmod>
+						<label type="string">SAVE: [FIGHTER]</label>
+						<order type="number">1</order>
+						<targeting type="string">self</targeting>
+						<type type="string">effect</type>
+					</id-00001>
+				</actions>
+				<description type="formattedtext">
+					<p>If you fail a saving throw, you can reroll it with a bonus equal to your Fighter level. You must use the new roll, and you can't use this feature again until you finish a Long Rest.</p>
+					<p>You can use this feature twice before a Long Rest starting at level 13 and three times before a Long Rest starting at level 17.</p>
+				</description>
+				<group type="string">Class (Fighter)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Indomitable</name>
+				<prepared type="number">1</prepared>
+				<version type="string">2024</version>
+			</id-00018>
+			<id-00019>
+				<actions />
+				<description type="formattedtext">
+					<p>When you attack with a weapon whose mastery property you can use, you can replace that property with the Push, Sap, or Slow property for that attack.</p>
+				</description>
+				<group type="string">Class (Fighter)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Weapon Mastery (Tactical Master)</name>
+				<prepared type="number">0</prepared>
+				<version type="string">2024</version>
+			</id-00019>
+			<id-00020>
+				<actions />
+				<description type="formattedtext">
+					<p>You have Resistance to Psychic damage. Moreover, if you start your turn with the Charmed or Frightened condition, you can expend a Psionic Energy Die (no action required) and end every effect on yourself giving you those conditions.</p>
+				</description>
+				<group type="string">Psionic Energy (Fighter)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Guarded Mind</name>
+				<prepared type="number">0</prepared>
+				<version type="string">2024</version>
+			</id-00020>
+			<id-00021>
+				<actions />
+				<description type="formattedtext">
+					<p>You can attack three times instead of once whenever you take the Attack action on your turn.</p>
+				</description>
+				<group type="string">Class (Fighter)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Two Extra Attacks</name>
+				<prepared type="number">0</prepared>
+				<version type="string">2024</version>
+			</id-00021>
+			<id-00022>
+				<actions />
+				<category type="string">General</category>
+				<description type="formattedtext">
+					<p>You gain the following benefits.</p>
+					<p>
+						<b>Ability Score Increase. </b>Increase your Strength or Dexterity score by 1, to a maximum of 20.</p>
+					<p>
+						<b>Concentration Breaker. </b>When you damage a creature that is concentrating, it has Disadvantage on the saving throw it makes to maintain Concentration.</p>
+					<p>
+						<b>Guarded Mind. </b>If you fail an Intelligence, a Wisdom, or a Charisma saving throw, you can cause yourself to succeed instead. Once you use this benefit, you can't use it again until you finish a Short or Long Rest.</p>
+				</description>
+				<group type="string">Feats</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Mage Slayer (Guarded Mind)</name>
+				<prepared type="number">1</prepared>
+				<repeatable type="number">0</repeatable>
+				<usesperiod type="string">enc</usesperiod>
+				<version type="string">2024</version>
+			</id-00022>
+			<id-00023>
+				<actions>
+					<id-00001>
+						<apply type="string">roll</apply>
+						<durmod type="number">1</durmod>
+						<label type="string">[TRGT]; ADVATK</label>
+						<order type="number">1</order>
+						<targeting type="string">self</targeting>
+						<type type="string">effect</type>
+					</id-00001>
+				</actions>
+				<description type="formattedtext">
+					<p>You study your opponents and learn from each attack you make. If you make an attack roll against a creature and miss, you have Advantage on your next attack roll against that creature before the end of your next turn.</p>
+				</description>
+				<group type="string">Class (Fighter)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Studied Attacks</name>
+				<prepared type="number">1</prepared>
+				<version type="string">2024</version>
+			</id-00023>
+			<id-00024>
+				<actions>
+					<id-00001>
+						<durmod type="number">1</durmod>
+						<durunit type="string">minute</durunit>
+						<label type="string">Bulwark of Force; COVER</label>
+						<type type="string">effect</type>
+					</id-00001>
+				</actions>
+				<description type="formattedtext">
+					<p>You can shield yourself and others with telekinetic force. As a Bonus Action, you can choose creatures, including yourself, within 30 feet of yourself, up to a number of creatures equal to your Intelligence modifier (minimum of one creature). Each of the chosen creatures has Half Cover for 1 minute or until you have the Incapacitated condition.</p>
+					<p>Once you use this feature, you can't do so again until you finish a Long Rest unless you expend a Psionic Energy Die (no action required) to restore your use of it.</p>
+				</description>
+				<group type="string">Psionic Power (Fighter)</group>
+				<locked type="number">1</locked>
+				<name type="string">Bulwark of Force</name>
+				<prepared type="number">1</prepared>
+				<version type="string">2024</version>
+			</id-00024>
+			<id-00025>
+				<actions>
+					<id-00001>
+						<savetype type="string">strength</savetype>
+						<type type="string">cast</type>
+					</id-00001>
+					<id-00002>
+						<durmod type="number">10</durmod>
+						<durunit type="string">minute</durunit>
+						<label type="string">Restrained; (C)</label>
+						<type type="string">effect</type>
+					</id-00002>
+				</actions>
+				<castingtime type="string">Action</castingtime>
+				<components type="string">V, S</components>
+				<description type="formattedtext">
+					<p>You gain the ability to move or manipulate creatures or objects by thought. When you cast the spell and as a Magic action on your later turns before the spell ends, you can exert your will on one creature or object that you can see within range, causing the appropriate effect below. You can affect the same target round after round or choose a new one at any time. If you switch targets, the prior target is no longer affected by the spell.</p>
+					<p>
+						<b>Creature. </b>You can try to move a Huge or smaller creature. The target must succeed on a Strength saving throw, or you move it up to 30 feet in any direction within the spell's range. Until the end of your next turn, the creature has the Restrained condition, and if you lift it into the air, it is suspended there. It falls at the end of your next turn unless you use this option on it again and it fails the save.</p>
+					<p>
+						<b>Object. </b>You can try to move a Huge or smaller object. If the object isn't being worn or carried, you automatically move it up to 30 feet in any direction within the spell's range.</p>
+					<p>If the object is worn or carried by a creature, that creature must succeed on a Strength saving throw, or you pull the object away and move it up to 30 feet in any direction within the spell's range.</p>
+					<p>You can exert fine control on objects with your telekinetic grip, such as manipulating a simple tool, opening a door or a container, stowing or retrieving an item from an open container, or pouring the contents from a vial.</p>
+				</description>
+				<duration type="string">Concentration, up to 10 minutes</duration>
+				<group type="string">Spells (Fighter)</group>
+				<level type="number">5</level>
+				<locked type="number">1</locked>
+				<name type="string">Telekinesis</name>
+				<range type="string">60 feet</range>
+				<ritual type="number">0</ritual>
+				<school type="string">Transmutation</school>
+				<source type="string">Sorcerer, Wizard</source>
+				<version type="string">2024</version>
+			</id-00025>
+			<id-00026>
+				<actions />
+				<description type="formattedtext">
+					<p>You always have the Telekinesis spell prepared. With this feature, you can cast it without a spell slot or components, and your spellcasting ability for it is Intelligence. On each of your turns while you maintain Concentration on it, including the turn when you cast it, you can make one attack with a weapon as a Bonus Action.</p>
+					<p>Once you cast the spell with this feature, you can't do so in this way again until you finish a Long Rest unless you expend a Psionic Energy Die (no action required) to restore your use of it.</p>
+				</description>
+				<group type="string">Psionic Power (Fighter)</group>
+				<locked type="number">1</locked>
+				<name type="string">Telekinetic Master</name>
+				<prepared type="number">1</prepared>
+				<version type="string">2024</version>
+			</id-00026>
+		</powers>
+		<profbonus type="number">6</profbonus>
+		<proficiencylist>
+			<id-00001>
+				<name type="string">Armor: Light</name>
+			</id-00001>
+			<id-00002>
+				<name type="string">Armor: Medium</name>
+			</id-00002>
+			<id-00003>
+				<name type="string">Armor: Heavy</name>
+			</id-00003>
+			<id-00004>
+				<name type="string">Armor: Shields</name>
+			</id-00004>
+			<id-00005>
+				<name type="string">Weapon: Simple</name>
+			</id-00005>
+			<id-00006>
+				<name type="string">Weapon: Martial</name>
+			</id-00006>
+		</proficiencylist>
+		<race type="string">Githyanki</race>
+		<racelink type="windowreference">
+			<class>reference_race</class>
+			<recordname>reference.racedata.id-00012@DD Monsters of the Multiverse Players</recordname>
+		</racelink>
+		<senses type="string">Blindsight 10</senses>
+		<skilllist>
+			<id-00001>
+				<misc type="number">0</misc>
+				<name type="string">Perception</name>
+				<prof type="number">1</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">wisdom</stat>
+				<total type="number">8</total>
+			</id-00001>
+			<id-00002>
+				<misc type="number">0</misc>
+				<name type="string">Arcana</name>
+				<prof type="number">1</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">intelligence</stat>
+				<total type="number">12</total>
+			</id-00002>
+			<id-00003>
+				<misc type="number">0</misc>
+				<name type="string">Persuasion</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">charisma</stat>
+				<total type="number">-1</total>
+			</id-00003>
+			<id-00004>
+				<misc type="number">0</misc>
+				<name type="string">Nature</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">intelligence</stat>
+				<total type="number">6</total>
+			</id-00004>
+			<id-00005>
+				<misc type="number">0</misc>
+				<name type="string">Medicine</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">wisdom</stat>
+				<total type="number">2</total>
+			</id-00005>
+			<id-00006>
+				<misc type="number">0</misc>
+				<name type="string">Survival</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">wisdom</stat>
+				<total type="number">2</total>
+			</id-00006>
+			<id-00007>
+				<misc type="number">0</misc>
+				<name type="string">Performance</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">charisma</stat>
+				<total type="number">-1</total>
+			</id-00007>
+			<id-00008>
+				<misc type="number">0</misc>
+				<name type="string">Acrobatics</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">dexterity</stat>
+				<total type="number">1</total>
+			</id-00008>
+			<id-00009>
+				<misc type="number">0</misc>
+				<name type="string">Religion</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">intelligence</stat>
+				<total type="number">6</total>
+			</id-00009>
+			<id-00010>
+				<misc type="number">0</misc>
+				<name type="string">Athletics</name>
+				<prof type="number">1</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">strength</stat>
+				<total type="number">8</total>
+			</id-00010>
+			<id-00011>
+				<misc type="number">0</misc>
+				<name type="string">Sleight of Hand</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">dexterity</stat>
+				<total type="number">1</total>
+			</id-00011>
+			<id-00012>
+				<misc type="number">0</misc>
+				<name type="string">Insight</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">wisdom</stat>
+				<total type="number">2</total>
+			</id-00012>
+			<id-00013>
+				<misc type="number">0</misc>
+				<name type="string">Intimidation</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">charisma</stat>
+				<total type="number">-1</total>
+			</id-00013>
+			<id-00014>
+				<misc type="number">0</misc>
+				<name type="string">Deception</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">charisma</stat>
+				<total type="number">-1</total>
+			</id-00014>
+			<id-00015>
+				<misc type="number">0</misc>
+				<name type="string">Investigation</name>
+				<prof type="number">2</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">intelligence</stat>
+				<total type="number">18</total>
+			</id-00015>
+			<id-00016>
+				<misc type="number">0</misc>
+				<name type="string">Stealth</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">dexterity</stat>
+				<total type="number">1</total>
+			</id-00016>
+			<id-00017>
+				<misc type="number">0</misc>
+				<name type="string">History</name>
+				<prof type="number">1</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">intelligence</stat>
+				<total type="number">12</total>
+			</id-00017>
+			<id-00018>
+				<misc type="number">0</misc>
+				<name type="string">Animal Handling</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">wisdom</stat>
+				<total type="number">2</total>
+			</id-00018>
+		</skilllist>
+		<speed>
+			<armor type="number">0</armor>
+			<base type="number">30</base>
+			<misc type="number">0</misc>
+			<temporary type="number">0</temporary>
+			<total type="number">30</total>
+		</speed>
+		<subracelink type="windowreference">
+			<class />
+			<recordname />
+		</subracelink>
+		<temp />
+		<traitlist>
+			<id-00001>
+				<locked type="number">1</locked>
+				<name type="string">Astral Knowledge</name>
+				<text type="formattedtext">
+					<p>You can mystically access a reservoir of experiences of entities connected to the Astral Plane. Whenever you finish a long rest, you gain proficiency in one skill of your choice and with one weapon or tool of your choice, selected from the Player's Handbook, as you momentarily project your consciousness into the Astral Plane. These proficiencies last until the end of your next long rest.</p>
+				</text>
+			</id-00001>
+			<id-00002>
+				<locked type="number">1</locked>
+				<name type="string">Creature Type</name>
+				<text type="formattedtext">
+					<p>You are a Humanoid.</p>
+				</text>
+			</id-00002>
+			<id-00003>
+				<locked type="number">1</locked>
+				<name type="string">Githyanki Psionics</name>
+				<text type="formattedtext">
+					<p>You know the mage hand cantrip, and the hand is invisible when you cast the cantrip with this trait.</p>
+					<p>Starting at 3rd level, you can cast the jump spell with this trait. Starting at 5th level, you can also cast the misty step spell with it. Once you cast jump or misty step with this trait, you can't cast that spell with it again until you finish a long rest. You can also cast either of those spells using any spell slots you have of the appropriate level.</p>
+					<p>Intelligence, Wisdom, or Charisma is your spellcasting ability for these spells when you cast them with this trait (choose when you select this race).</p>
+					<p>None of these spells require spell components when you cast them with this trait.</p>
+				</text>
+			</id-00003>
+			<id-00004>
+				<locked type="number">1</locked>
+				<name type="string">Psychic Resilience</name>
+				<text type="formattedtext">
+					<p>You have resistance to psychic damage.</p>
+				</text>
+			</id-00004>
+		</traitlist>
+		<weaponlist>
+			<id-00001>
+				<attackbonus type="number">0</attackbonus>
+				<carried type="number">2</carried>
+				<damagelist>
+					<id-00001>
+						<bonus type="number">0</bonus>
+						<dice type="dice">d4</dice>
+						<stat type="string">base</stat>
+						<type type="string">piercing,magic</type>
+					</id-00001>
+				</damagelist>
+				<handling type="number">0</handling>
+				<isidentified type="number">1</isidentified>
+				<maxammo type="number">0</maxammo>
+				<name type="string">Enspelled Dagger (Level 3)</name>
+				<prof type="number">1</prof>
+				<properties type="string">Finesse, Light, Thrown (Range 20/60), magic</properties>
+				<shortcut type="windowreference">
+					<class>item</class>
+					<recordname>....inventorylist.id-00001</recordname>
+				</shortcut>
+				<type type="number">0</type>
+			</id-00001>
+			<id-00002>
+				<attackbonus type="number">0</attackbonus>
+				<carried type="number">2</carried>
+				<damagelist>
+					<id-00001>
+						<bonus type="number">0</bonus>
+						<dice type="dice">d4</dice>
+						<stat type="string">base</stat>
+						<type type="string">piercing,magic</type>
+					</id-00001>
+				</damagelist>
+				<handling type="number">0</handling>
+				<isidentified type="number">1</isidentified>
+				<maxammo type="number">0</maxammo>
+				<name type="string">Enspelled Dagger (Level 3)</name>
+				<prof type="number">1</prof>
+				<properties type="string">Finesse, Light, Thrown (Range 20/60), magic</properties>
+				<shortcut type="windowreference">
+					<class>item</class>
+					<recordname>....inventorylist.id-00001</recordname>
+				</shortcut>
+				<type type="number">2</type>
+			</id-00002>
+			<id-00003>
+				<attackbonus type="number">3</attackbonus>
+				<carried type="number">2</carried>
+				<damagelist>
+					<id-00001>
+						<bonus type="number">3</bonus>
+						<dice type="dice">2d6</dice>
+						<stat type="string">base</stat>
+						<type type="string">slashing,silver,magic</type>
+					</id-00001>
+				</damagelist>
+				<handling type="number">0</handling>
+				<isidentified type="number">1</isidentified>
+				<maxammo type="number">0</maxammo>
+				<name type="string">Silvered Greatsword, +3</name>
+				<prof type="number">1</prof>
+				<properties type="string">Heavy, two-handed, magic</properties>
+				<shortcut type="windowreference">
+					<class>item</class>
+					<recordname>....inventorylist.id-00002</recordname>
+				</shortcut>
+				<type type="number">0</type>
+			</id-00003>
+		</weaponlist>
+	</character>
+</root>

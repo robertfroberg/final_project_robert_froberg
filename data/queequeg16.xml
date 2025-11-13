@@ -1,0 +1,1829 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root version="5" dataversion="20250919" release="8.1|CoreRPG:7">
+	<character>
+		<abilities>
+			<charisma>
+				<bonus type="number">-1</bonus>
+				<save type="number">0</save>
+				<savemodifier type="number">1</savemodifier>
+				<saveprof type="number">0</saveprof>
+				<score type="number">8</score>
+			</charisma>
+			<constitution>
+				<bonus type="number">3</bonus>
+				<save type="number">4</save>
+				<savemodifier type="number">1</savemodifier>
+				<saveprof type="number">0</saveprof>
+				<score type="number">16</score>
+			</constitution>
+			<dexterity>
+				<bonus type="number">3</bonus>
+				<save type="number">9</save>
+				<savemodifier type="number">1</savemodifier>
+				<saveprof type="number">1</saveprof>
+				<score type="number">16</score>
+			</dexterity>
+			<intelligence>
+				<bonus type="number">-1</bonus>
+				<save type="number">0</save>
+				<savemodifier type="number">1</savemodifier>
+				<saveprof type="number">0</saveprof>
+				<score type="number">8</score>
+			</intelligence>
+			<strength>
+				<bonus type="number">7</bonus>
+				<save type="number">13</save>
+				<savemodifier type="number">1</savemodifier>
+				<saveprof type="number">1</saveprof>
+				<score type="number">25</score>
+			</strength>
+			<wisdom>
+				<bonus type="number">6</bonus>
+				<save type="number">7</save>
+				<savemodifier type="number">1</savemodifier>
+				<saveprof type="number">0</saveprof>
+				<score type="number">22</score>
+			</wisdom>
+		</abilities>
+		<background type="string">Farmer</background>
+		<backgroundlink type="windowreference">
+			<class>reference_background</class>
+			<recordname>background.id-00005@WOTC50PHB</recordname>
+		</backgroundlink>
+		<backgroundversion type="string">2024</backgroundversion>
+		<classes>
+			<id-00001>
+				<cantrips type="number">1</cantrips>
+				<casterlevelinvmult type="number">-2</casterlevelinvmult>
+				<hddie type="dice">1d10</hddie>
+				<hdused type="number">0</hdused>
+				<level type="number">16</level>
+				<name type="string">Ranger</name>
+				<shortcut type="windowreference">
+					<class>reference_class</class>
+					<recordname>class.id-00008@WOTC50PHB</recordname>
+				</shortcut>
+				<specialization type="string">Monster Slayer</specialization>
+				<specializationlink type="windowreference">
+					<class>reference_class_specialization</class>
+					<recordname>reference.class_specializationdata.id-00021@DD Xanathar's Guide to Everything</recordname>
+				</specializationlink>
+				<specializationversion type="string">2024</specializationversion>
+				<spellability type="string">wisdom</spellability>
+				<spellsknown type="number">0</spellsknown>
+				<spellsprepared type="number">12</spellsprepared>
+				<version type="string">2024</version>
+			</id-00001>
+		</classes>
+		<coins>
+			<id-00001>
+				<amount type="number">150</amount>
+				<name type="string">GP</name>
+			</id-00001>
+		</coins>
+		<defenses>
+			<ac>
+				<armor type="number">7</armor>
+				<dexbonus type="string">no</dexbonus>
+				<disstealth type="number">0</disstealth>
+				<misc type="number">0</misc>
+				<prof type="number">1</prof>
+				<shield type="number">0</shield>
+				<temporary type="number">1</temporary>
+				<total type="number">18</total>
+			</ac>
+		</defenses>
+		<encumbrance>
+			<encumbered type="number">125</encumbered>
+			<encumberedheavy type="number">250</encumberedheavy>
+			<liftpushdrag type="number">750</liftpushdrag>
+			<load type="number">3</load>
+			<max type="number">375</max>
+		</encumbrance>
+		<exp type="number">0</exp>
+		<expneeded type="number">225000</expneeded>
+		<featlist>
+			<id-00001>
+				<category type="string">Origin</category>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Tough</name>
+				<repeatable type="number">0</repeatable>
+				<text type="formattedtext">
+					<p>Your Hit Point maximum increases by an amount equal to twice your character level when you gain this feat. Whenever you gain a character level thereafter, your Hit Point maximum increases by an additional 2 Hit Points.</p>
+				</text>
+				<version type="string">2024</version>
+			</id-00001>
+			<id-00002>
+				<category type="string">Fighting Style</category>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Two-Weapon Fighting</name>
+				<prerequisite type="string">Fighting Style Feature</prerequisite>
+				<repeatable type="number">0</repeatable>
+				<text type="formattedtext">
+					<p>When you make an extra attack as a result of using a weapon that has the Light property, you can add your ability modifier to the damage of that attack if you aren't already adding it to the damage.</p>
+				</text>
+				<version type="string">2024</version>
+			</id-00002>
+			<id-00003>
+				<category type="string">General</category>
+				<level type="number">4</level>
+				<locked type="number">1</locked>
+				<name type="string">Dual Wielder</name>
+				<prerequisite type="string">Strength or Dexterity 13+</prerequisite>
+				<repeatable type="number">0</repeatable>
+				<text type="formattedtext">
+					<p>You gain the following benefits.</p>
+					<p>
+						<b>Ability Score Increase. </b>Increase your Strength or Dexterity score by 1, to a maximum of 20.</p>
+					<p>
+						<b>Enhanced Dual Wielding. </b>When you take the Attack action on your turn and attack with a weapon that has the Light property, you can make one extra attack as a Bonus Action later on the same turn with a different weapon, which must be a Melee weapon that lacks the Two-Handed property. You don't add your ability modifier to the extra attack's damage unless that modifier is negative.</p>
+					<p>
+						<b>Quick Draw. </b>You can draw or stow two weapons that lack the Two-Handed property when you would normally be able to draw or stow only one.</p>
+				</text>
+				<version type="string">2024</version>
+			</id-00003>
+			<id-00005>
+				<category type="string">General</category>
+				<level type="number">4</level>
+				<locked type="number">1</locked>
+				<name type="string">Mage Slayer</name>
+				<repeatable type="number">0</repeatable>
+				<text type="formattedtext">
+					<p>You gain the following benefits.</p>
+					<p>
+						<b>Ability Score Increase. </b>Increase your Strength or Dexterity score by 1, to a maximum of 20.</p>
+					<p>
+						<b>Concentration Breaker. </b>When you damage a creature that is concentrating, it has Disadvantage on the saving throw it makes to maintain Concentration.</p>
+					<p>
+						<b>Guarded Mind. </b>If you fail an Intelligence, a Wisdom, or a Charisma saving throw, you can cause yourself to succeed instead. Once you use this benefit, you can't use it again until you finish a Short or Long Rest.</p>
+				</text>
+				<version type="string">2024</version>
+			</id-00005>
+			<id-00006>
+				<category type="string">General</category>
+				<level type="number">4</level>
+				<locked type="number">1</locked>
+				<name type="string">Observant</name>
+				<prerequisite type="string">Intelligence or Wisdom 13+</prerequisite>
+				<repeatable type="number">0</repeatable>
+				<text type="formattedtext">
+					<p>You gain the following benefits.</p>
+					<p>
+						<b>Ability Score Increase. </b>Increase your Intelligence or Wisdom score by 1, to a maximum of 20.</p>
+					<p>
+						<b>Keen Observer. </b>Choose one of the following skills: Insight, Investigation, or Perception. If you lack proficiency with the chosen skill, you gain proficiency in it, and if you already have proficiency in it, you gain Expertise in it.</p>
+					<p>
+						<b>Quick Search. </b>You can take the Search action as a Bonus Action.</p>
+				</text>
+				<version type="string">2024</version>
+			</id-00006>
+		</featlist>
+		<featurelist>
+			<id-00001>
+				<level type="number">1</level>
+				<locked type="number">1</locked>
+				<name type="string">Spellcasting</name>
+				<text type="formattedtext">
+					<p>You have learned to channel the magical essence of nature to cast spells. See chapter 7 for the rules on spellcasting. The information below details how you use those rules with Ranger spells, which appear in the Ranger spell list later in the class's description.</p>
+					<p>
+						<b>
+							<i>Spell Slots. </i>
+						</b>The Ranger Features table shows how many spell slots you have to cast your level 1+ spells. You regain all expended slots when you finish a Long Rest.</p>
+					<p>
+						<b>
+							<i>Prepared Spells of Level 1+. </i>
+						</b>You prepare the list of level 1+ spells that are available for you to cast with this feature. To start, choose two level 1 Ranger spells. Cure Wounds and Ensnaring Strike are recommended.</p>
+					<p>The number of spells on your list increases as you gain Ranger levels, as shown in the Prepared Spells column of the Ranger Features table. Whenever that number increases, choose additional Ranger spells until the number of spells on your list matches the number in the Ranger Features table. The chosen spells must be of a level for which you have spell slots. For example, if you're a level 5 Ranger, your list of prepared spells can include six Ranger spells of level 1 or 2 in any combination.</p>
+					<p>If another Ranger feature gives you spells that you always have prepared, those spells don't count against the number of spells you can prepare with this feature, but those spells otherwise count as Ranger spells for you.</p>
+					<p>
+						<b>
+							<i>Changing Your Prepared Spells. </i>
+						</b>Whenever you finish a Long Rest, you can replace one spell on your list with another Ranger spell for which you have spell slots.</p>
+					<p>
+						<b>
+							<i>Spellcasting Ability. </i>
+						</b>Wisdom is your spellcasting ability for your Ranger spells.</p>
+					<p>
+						<b>
+							<i>Spellcasting Focus. </i>
+						</b>You can use a Druidic Focus as a Spellcasting Focus for your Ranger spells.</p>
+					<linklist>
+						<link class="class_spell_view" recordname="class_spell_view.ranger@WOTC50PHB">
+							<b>Spell List: </b>Ranger</link>
+					</linklist>
+					<table>
+						<tr>
+							<td colspan="4">
+								<b />
+							</td>
+							<td colspan="5">
+								<b>-Spell Slots per Spell Level</b>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<b>Level</b>
+							</td>
+							<td colspan="2">
+								<b>Prepared Spells</b>
+							</td>
+							<td>
+								<b>1</b>
+							</td>
+							<td>
+								<b>2</b>
+							</td>
+							<td>
+								<b>3</b>
+							</td>
+							<td>
+								<b>4</b>
+							</td>
+							<td>
+								<b>5</b>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">1</td>
+							<td colspan="2">2</td>
+							<td>2</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td colspan="2">2</td>
+							<td colspan="2">3</td>
+							<td>2</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td colspan="2">3</td>
+							<td colspan="2">4</td>
+							<td>3</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td colspan="2">4</td>
+							<td colspan="2">5</td>
+							<td>3</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td colspan="2">5</td>
+							<td colspan="2">6</td>
+							<td>4</td>
+							<td>2</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td colspan="2">6</td>
+							<td colspan="2">6</td>
+							<td>4</td>
+							<td>2</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td colspan="2">7</td>
+							<td colspan="2">7</td>
+							<td>4</td>
+							<td>3</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td colspan="2">8</td>
+							<td colspan="2">7</td>
+							<td>4</td>
+							<td>3</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td colspan="2">9</td>
+							<td colspan="2">9</td>
+							<td>4</td>
+							<td>3</td>
+							<td>2</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td colspan="2">10</td>
+							<td colspan="2">9</td>
+							<td>4</td>
+							<td>3</td>
+							<td>2</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td colspan="2">11</td>
+							<td colspan="2">10</td>
+							<td>4</td>
+							<td>3</td>
+							<td>3</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td colspan="2">12</td>
+							<td colspan="2">10</td>
+							<td>4</td>
+							<td>3</td>
+							<td>3</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td colspan="2">13</td>
+							<td colspan="2">11</td>
+							<td>4</td>
+							<td>3</td>
+							<td>3</td>
+							<td>1</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td colspan="2">14</td>
+							<td colspan="2">11</td>
+							<td>4</td>
+							<td>3</td>
+							<td>3</td>
+							<td>1</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td colspan="2">15</td>
+							<td colspan="2">12</td>
+							<td>4</td>
+							<td>3</td>
+							<td>3</td>
+							<td>2</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td colspan="2">16</td>
+							<td colspan="2">12</td>
+							<td>4</td>
+							<td>3</td>
+							<td>3</td>
+							<td>2</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td colspan="2">17</td>
+							<td colspan="2">14</td>
+							<td>4</td>
+							<td>3</td>
+							<td>3</td>
+							<td>3</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td colspan="2">18</td>
+							<td colspan="2">14</td>
+							<td>4</td>
+							<td>3</td>
+							<td>3</td>
+							<td>3</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td colspan="2">19</td>
+							<td colspan="2">15</td>
+							<td>4</td>
+							<td>3</td>
+							<td>3</td>
+							<td>3</td>
+							<td>2</td>
+						</tr>
+						<tr>
+							<td colspan="2">20</td>
+							<td colspan="2">15</td>
+							<td>4</td>
+							<td>3</td>
+							<td>3</td>
+							<td>3</td>
+							<td>2</td>
+						</tr>
+					</table>
+				</text>
+			</id-00001>
+			<id-00002>
+				<level type="number">1</level>
+				<locked type="number">1</locked>
+				<name type="string">Favored Enemy</name>
+				<text type="formattedtext">
+					<p>You always have the <i>Hunter's Mark </i>spell prepared. You can cast it twice without expending a spell slot, and you regain all expended uses of this ability when you finish a Long Rest.</p>
+					<p>The number of times you can cast the spell without a spell slot increases when you reach certain Ranger levels, as shown in the Favored Enemy column of the Ranger Features table.</p>
+					<linklist>
+						<link class="power" recordname="spell.huntersmark@WOTC50PHB">Spell: Hunter's Mark</link>
+					</linklist>
+				</text>
+			</id-00002>
+			<id-00003>
+				<level type="number">1</level>
+				<locked type="number">1</locked>
+				<name type="string">Weapon Mastery</name>
+				<text type="formattedtext">
+					<p>Your training with weapons allows you to use the mastery properties of two kinds of weapons of your choice with which you have proficiency, such as Longbows and Shortswords.</p>
+					<p>Whenever you finish a Long Rest, you can change the kinds of weapons you chose. For example, you could switch to using the mastery properties of Scimitars and Longswords.</p>
+				</text>
+			</id-00003>
+			<id-00004>
+				<level type="number">2</level>
+				<locked type="number">1</locked>
+				<name type="string">Deft Explorer</name>
+				<text type="formattedtext">
+					<p>Thanks to your travels, you gain the following benefits.</p>
+					<p>
+						<b>
+							<i>Expertise. </i>
+						</b>Choose one of your skill proficiencies with which you lack Expertise. You gain Expertise in that skill.</p>
+					<p>
+						<b>
+							<i>Languages. </i>
+						</b>You know two languages of your choice from the language tables in chapter 2.</p>
+				</text>
+			</id-00004>
+			<id-00005>
+				<choicetype type="string">Fighting Style</choicetype>
+				<level type="number">2</level>
+				<locked type="number">1</locked>
+				<name type="string">Fighting Style</name>
+				<text type="formattedtext">
+					<p>You gain a Fighting Style feat of your choice (see chapter 5).</p>
+				</text>
+			</id-00005>
+			<id-00006>
+				<level type="number">3</level>
+				<locked type="number">1</locked>
+				<name type="string">Ranger Subclass</name>
+				<text type="formattedtext">
+					<p>You gain a Ranger subclass of your choice. The Beast Master, Fey Wanderer, Gloom Stalker, and Hunter subclasses are detailed after this class's description. A subclass is a specialization that grants you features at certain Ranger levels. For the rest of your career, you gain each of your subclass's features that are of your Ranger level or lower.</p>
+				</text>
+			</id-00006>
+			<id-00007>
+				<level type="number">3</level>
+				<locked type="number">1</locked>
+				<name type="string">Hunter's Sense</name>
+				<text type="formattedtext">
+					<p>At 3rd level, you gain the ability to peer at a creature and magically discern how best to hurt it. As an action, choose one creature you can see within 60 feet of you. You immediately learn whether the creature has any damage immunities, resistances, or vulnerabilities and what they are. If the creature is hidden from divination magic, you sense that it has no damage immunities, resistances, or vulnerabilities.</p>
+					<p>You can use this feature a number of times equal to your Wisdom modifier (minimum of once). You regain all expended uses of it when you finish a long rest.</p>
+				</text>
+			</id-00007>
+			<id-00008>
+				<level type="number">3</level>
+				<locked type="number">1</locked>
+				<name type="string">Monster Slayer Magic</name>
+				<text type="formattedtext">
+					<p>Starting at 3rd level, you learn an additional spell when you reach certain levels in this class, as shown in the Monster Slayer Spells table. The spell counts as a ranger spell for you, but it doesn't count against the number of ranger spells you know.</p>
+					<h>Monster Slayer Spells</h>
+					<p>
+						<b>Level Spell</b>
+					</p>
+					<linklist>
+						<link class="reference_spell" recordname="reference.spelldata.protectionfromevilandgood@DD PHB Deluxe">
+							<b>3rd Level: </b>Protection from Evil and Good</link>
+						<link class="reference_spell" recordname="reference.spelldata.zoneoftruth@DD PHB Deluxe">
+							<b>5th Level: </b>Zone of Truth</link>
+						<link class="reference_spell" recordname="reference.spelldata.magiccircle@DD PHB Deluxe">
+							<b>9th Level: </b>Magic Circle</link>
+						<link class="reference_spell" recordname="reference.spelldata.banishment@DD PHB Deluxe">
+							<b>13th Level: </b>Banishment</link>
+						<link class="reference_spell" recordname="reference.spelldata.holdmonster@DD PHB Deluxe">
+							<b>17th Level: </b>Hold Monster</link>
+					</linklist>
+				</text>
+			</id-00008>
+			<id-00009>
+				<level type="number">3</level>
+				<locked type="number">1</locked>
+				<name type="string">Slayer's Prey</name>
+				<text type="formattedtext">
+					<p>Starting at 3rd level, you can focus your ire on one foe, increasing the harm you inflict on it. As a bonus action, you designate one creature you can see within 60 feet of you as the target of this feature. The first time each turn that you hit that target with a weapon attack, it takes an extra 1d6 damage from the weapon.</p>
+					<p>This benefit lasts until you finish a short or long rest. It ends early if you designate a different creature.</p>
+				</text>
+			</id-00009>
+			<id-00010>
+				<level type="number">5</level>
+				<locked type="number">1</locked>
+				<name type="string">Extra Attack</name>
+			</id-00010>
+			<id-00011>
+				<level type="number">5</level>
+				<locked type="number">1</locked>
+				<name type="string">Favored Enemy (L5)</name>
+				<text type="formattedtext">
+					<p>You can cast <i>Hunter's Mark </i>one additional time without expending a spell slot.</p>
+				</text>
+			</id-00011>
+			<id-00012>
+				<level type="number">6</level>
+				<locked type="number">1</locked>
+				<name type="string">Roving</name>
+				<text type="formattedtext">
+					<p>Your Speed increases by 10 feet while you aren't wearing Heavy armor. You also have a Climb Speed and a Swim Speed equal to your Speed.</p>
+				</text>
+			</id-00012>
+			<id-00013>
+				<level type="number">7</level>
+				<locked type="number">1</locked>
+				<name type="string">Supernatural Defense</name>
+				<text type="formattedtext">
+					<p>At 7th level, you gain extra resilience against your prey's assaults on your mind and body. Whenever the target of your Slayer's Prey forces you to make a saving throw and whenever you make an ability check to escape that target's grapple, add 1d6 to your roll.</p>
+				</text>
+			</id-00013>
+			<id-00014>
+				<level type="number">9</level>
+				<locked type="number">1</locked>
+				<name type="string">Expertise</name>
+				<text type="formattedtext">
+					<p>Choose two of your skill proficiencies with which you lack Expertise. You gain Expertise in those skills.</p>
+				</text>
+			</id-00014>
+			<id-00015>
+				<level type="number">9</level>
+				<locked type="number">1</locked>
+				<name type="string">Favored Enemy (L9)</name>
+				<text type="formattedtext">
+					<p>You can cast <i>Hunter's Mark </i>one additional time without expending a spell slot.</p>
+				</text>
+			</id-00015>
+			<id-00016>
+				<level type="number">10</level>
+				<locked type="number">1</locked>
+				<name type="string">Tireless</name>
+				<text type="formattedtext">
+					<p>Primal forces now help fuel you on your journeys, granting you the following benefits.</p>
+					<p>
+						<b>
+							<i>Temporary Hit Points. </i>
+						</b>As a Magic action, you can give yourself a number of Temporary Hit Points equal to 1d8 plus your Wisdom modifier (minimum of 1). You can use this action a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.</p>
+					<p>
+						<b>
+							<i>Decrease Exhaustion. </i>
+						</b>Whenever you finish a Short Rest, your Exhaustion level, if any, decreases by 1.</p>
+				</text>
+			</id-00016>
+			<id-00017>
+				<level type="number">11</level>
+				<locked type="number">1</locked>
+				<name type="string">Magic-User's Nemesis</name>
+				<text type="formattedtext">
+					<p>At 11th level, you gain the ability to thwart someone else's magic. When you see a creature casting a spell or teleporting within 60 feet of you, you can use your reaction to try to magically foil it. The creature must succeed on a Wisdom saving throw against your spell save DC, or its spell or teleport fails and is wasted.</p>
+					<p>Once you use this feature, you can't use it again until you finish a short or long rest.</p>
+				</text>
+			</id-00017>
+			<id-00018>
+				<level type="number">13</level>
+				<locked type="number">1</locked>
+				<name type="string">Relentless Hunter</name>
+				<text type="formattedtext">
+					<p>Taking damage can't break your Concentration on Hunter's Mark.</p>
+				</text>
+			</id-00018>
+			<id-00019>
+				<level type="number">13</level>
+				<locked type="number">1</locked>
+				<name type="string">Favored Enemy (L13)</name>
+				<text type="formattedtext">
+					<p>You can cast <i>Hunter's Mark </i>one additional time without expending a spell slot.</p>
+				</text>
+			</id-00019>
+			<id-00020>
+				<level type="number">14</level>
+				<locked type="number">1</locked>
+				<name type="string">Nature's Veil</name>
+				<text type="formattedtext">
+					<p>You invoke spirits of nature to magically hide yourself. As a Bonus Action, you can give yourself the Invisible condition until the end of your next turn.</p>
+					<p>You can use this feature a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.</p>
+				</text>
+			</id-00020>
+			<id-00021>
+				<level type="number">15</level>
+				<locked type="number">1</locked>
+				<name type="string">Slayer's Counter</name>
+				<text type="formattedtext">
+					<p>At 15th level, you gain the ability to counterattack when your prey tries to sabotage you. If the target of your Slayer's Prey forces you to make a saving throw, you can use your reaction to make one weapon attack against the quarry. You make this attack immediately before making the saving throw. If your attack hits, your save automatically succeeds, in addition to the attack's normal effects.</p>
+				</text>
+			</id-00021>
+		</featurelist>
+		<hp>
+			<deathsavefail type="number">0</deathsavefail>
+			<deathsavesuccess type="number">0</deathsavesuccess>
+			<temporary type="number">0</temporary>
+			<total type="number">180</total>
+			<wounds type="number">0</wounds>
+		</hp>
+		<initiative>
+			<misc type="number">0</misc>
+			<prof type="number">0</prof>
+			<temporary type="number">0</temporary>
+			<total type="number">3</total>
+		</initiative>
+		<inspiration type="number">0</inspiration>
+		<inventorylist />
+		<languagelist>
+			<id-00001>
+				<name type="string">Draconic</name>
+			</id-00001>
+			<id-00002>
+				<name type="string">Primordial</name>
+			</id-00002>
+		</languagelist>
+		<level type="number">16</level>
+		<locked type="number">1</locked>
+		<name type="string">Queequeg 2024</name>
+		<perception type="number">26</perception>
+		<perceptionmodifier type="number">0</perceptionmodifier>
+		<powergroup>
+			<id-00001>
+				<castertype type="string">memorization</castertype>
+				<name type="string">Spells (Ranger)</name>
+				<prepared type="number">12</prepared>
+				<stat type="string">wisdom</stat>
+			</id-00001>
+			<id-00002>
+				<name type="string">Hunter's Mark (Ranger)</name>
+				<stat type="string">wisdom</stat>
+			</id-00002>
+			<id-00003>
+				<name type="string">Class (Ranger)</name>
+			</id-00003>
+			<id-00004>
+				<name type="string">Feats</name>
+			</id-00004>
+			<id-00005>
+				<name type="string">Species (Tortle)</name>
+			</id-00005>
+		</powergroup>
+		<powermeta>
+			<pactmagicslots1>
+				<max type="number">0</max>
+			</pactmagicslots1>
+			<pactmagicslots2>
+				<max type="number">0</max>
+			</pactmagicslots2>
+			<pactmagicslots3>
+				<max type="number">0</max>
+			</pactmagicslots3>
+			<pactmagicslots4>
+				<max type="number">0</max>
+			</pactmagicslots4>
+			<pactmagicslots5>
+				<max type="number">0</max>
+			</pactmagicslots5>
+			<pactmagicslots6>
+				<max type="number">0</max>
+			</pactmagicslots6>
+			<pactmagicslots7>
+				<max type="number">0</max>
+			</pactmagicslots7>
+			<pactmagicslots8>
+				<max type="number">0</max>
+			</pactmagicslots8>
+			<pactmagicslots9>
+				<max type="number">0</max>
+			</pactmagicslots9>
+			<spellslots1>
+				<max type="number">4</max>
+			</spellslots1>
+			<spellslots2>
+				<max type="number">3</max>
+			</spellslots2>
+			<spellslots3>
+				<max type="number">3</max>
+			</spellslots3>
+			<spellslots4>
+				<max type="number">2</max>
+			</spellslots4>
+			<spellslots5>
+				<max type="number">0</max>
+			</spellslots5>
+			<spellslots6>
+				<max type="number">0</max>
+			</spellslots6>
+			<spellslots7>
+				<max type="number">0</max>
+			</spellslots7>
+			<spellslots8>
+				<max type="number">0</max>
+			</spellslots8>
+			<spellslots9>
+				<max type="number">0</max>
+			</spellslots9>
+		</powermeta>
+		<powers>
+			<id-00001>
+				<actions>
+					<id-00001>
+						<damagelist>
+							<id-00001>
+								<bonus type="number">0</bonus>
+								<dice type="dice">d4</dice>
+								<stat type="string">strength</stat>
+								<type type="string">slashing</type>
+							</id-00001>
+						</damagelist>
+						<order type="number">1</order>
+						<type type="string">damage</type>
+					</id-00001>
+				</actions>
+				<description type="formattedtext">
+					<p>You have claws that you can use to make unarmed strikes. When you hit with them, the strike deals 1d6 + your Strength modifier slashing damage, instead of the bludgeoning damage normal for an unarmed strike.</p>
+				</description>
+				<group type="string">Species (Tortle)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Claws</name>
+				<prepared type="number">0</prepared>
+			</id-00001>
+			<id-00002>
+				<actions>
+					<id-00001>
+						<durmod type="number">1</durmod>
+						<durunit type="string">hour</durunit>
+						<label type="string">Hold Breath</label>
+						<order type="number">1</order>
+						<targeting type="string">self</targeting>
+						<type type="string">effect</type>
+					</id-00001>
+				</actions>
+				<description type="formattedtext">
+					<p>You can hold your breath for up to 1 hour.</p>
+				</description>
+				<group type="string">Species (Tortle)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Hold Breath</name>
+				<prepared type="number">0</prepared>
+			</id-00002>
+			<id-00003>
+				<actions>
+					<id-00001>
+						<label type="string">Shell Defense; AC: 4; ADVSAV: constitution, strength; prone; Speed is zero; DISSAV: dexterity; no actions.</label>
+						<order type="number">1</order>
+						<targeting type="string">self</targeting>
+						<type type="string">effect</type>
+					</id-00001>
+				</actions>
+				<description type="formattedtext">
+					<p>You can withdraw into your shell as an action. Until you emerge, you gain a +4 bonus to your AC, and you have advantage on Strength and Constitution saving throws. While in your shell, you are prone, your speed is 0 and can't increase, you have disadvantage on Dexterity saving throws, you can't take reactions, and the only action you can take is a bonus action to emerge from your shell.</p>
+				</description>
+				<group type="string">Species (Tortle)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Shell Defense</name>
+				<prepared type="number">0</prepared>
+			</id-00003>
+			<id-00004>
+				<actions>
+					<id-00001>
+						<durmod type="number">1</durmod>
+						<durunit type="string">hour</durunit>
+						<label type="string">Hunter's Mark; (C)</label>
+						<order type="number">1</order>
+						<type type="string">effect</type>
+					</id-00001>
+					<id-00002>
+						<durmod type="number">1</durmod>
+						<durunit type="string">hour</durunit>
+						<label type="string">IFT: CUSTOM(Hunter's Mark); DMG: 1d6 force; (C)</label>
+						<order type="number">2</order>
+						<targeting type="string">self</targeting>
+						<type type="string">effect</type>
+					</id-00002>
+				</actions>
+				<castingtime type="string">Bonus Action</castingtime>
+				<components type="string">V</components>
+				<description type="formattedtext">
+					<p>You magically mark one creature you can see within range as your quarry. Until the spell ends, you deal an extra 1d6 Force damage to the target whenever you hit it with an attack roll. You also have Advantage on any Wisdom (Perception or Survival) check you make to find it.</p>
+					<p>If the target drops to 0 Hit Points before this spell ends, you can take a Bonus Action to move the mark to a new creature you can see within range.</p>
+					<p>
+						<b>Using a Higher-Level Spell Slot. </b>Your Concentration can last longer with a spell slot of level 3-4 (up to 8 hours) or 5+ (up to 24 hours).</p>
+				</description>
+				<duration type="string">Concentration, up to 1 hour</duration>
+				<group type="string">Spells (Ranger)</group>
+				<level type="number">1</level>
+				<locked type="number">1</locked>
+				<name type="string">Hunter's Mark</name>
+				<prepared type="number">0</prepared>
+				<range type="string">90 feet</range>
+				<ritual type="number">0</ritual>
+				<school type="string">Divination</school>
+				<source type="string">Ranger</source>
+				<version type="string">2024</version>
+			</id-00004>
+			<id-00005>
+				<actions />
+				<description type="formattedtext">
+					<p>You always have the <i>Hunter's Mark </i>spell prepared. You can cast it twice without expending a spell slot, and you regain all expended uses of this ability when you finish a Long Rest.</p>
+					<p>The number of times you can cast the spell without a spell slot increases when you reach certain Ranger levels, as shown in the Favored Enemy column of the Ranger Features table.</p>
+					<linklist>
+						<link class="power" recordname="spell.huntersmark@WOTC50PHB">Spell: Hunter's Mark</link>
+					</linklist>
+				</description>
+				<group type="string">Hunter's Mark (Ranger)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Favored Enemy</name>
+				<prepared type="number">2</prepared>
+				<version type="string">2024</version>
+			</id-00005>
+			<id-00006>
+				<actions />
+				<description type="formattedtext">
+					<p>Your training with weapons allows you to use the mastery properties of two kinds of weapons of your choice with which you have proficiency, such as Longbows and Shortswords.</p>
+					<p>Whenever you finish a Long Rest, you can change the kinds of weapons you chose. For example, you could switch to using the mastery properties of Scimitars and Longswords.</p>
+				</description>
+				<group type="string">Class (Ranger)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Weapon Mastery</name>
+				<prepared type="number">0</prepared>
+				<version type="string">2024</version>
+			</id-00006>
+			<id-00007>
+				<actions>
+					<id-00001>
+						<heallist>
+							<id-00001>
+								<bonus type="number">1</bonus>
+								<dice type="dice"></dice>
+							</id-00001>
+						</heallist>
+						<order type="number">1</order>
+						<type type="string">heal</type>
+					</id-00001>
+				</actions>
+				<castingtime type="string">Action</castingtime>
+				<components type="string">V, S, M (a sprig of mistletoe)</components>
+				<description type="formattedtext">
+					<p>Ten berries appear in your hand and are infused with magic for the duration. A creature can take a Bonus Action to eat one berry. Eating a berry restores 1 Hit Point, and the berry provides enough nourishment to sustain a creature for one day.</p>
+					<p>Uneaten berries disappear when the spell ends.</p>
+				</description>
+				<duration type="string">24 hours</duration>
+				<group type="string">Spells (Ranger)</group>
+				<level type="number">1</level>
+				<locked type="number">1</locked>
+				<name type="string">Goodberry</name>
+				<prepared type="number">1</prepared>
+				<range type="string">Self</range>
+				<ritual type="number">0</ritual>
+				<school type="string">Conjuration</school>
+				<source type="string">Druid, Ranger</source>
+				<version type="string">2024</version>
+			</id-00007>
+			<id-00008>
+				<actions>
+					<id-00001>
+						<durmod type="number">1</durmod>
+						<durunit type="string">minute</durunit>
+						<label type="string">Jump</label>
+						<order type="number">1</order>
+						<targeting type="string">self</targeting>
+						<type type="string">effect</type>
+					</id-00001>
+				</actions>
+				<castingtime type="string">Bonus Action</castingtime>
+				<components type="string">V, S, M (a grasshopper's hind leg)</components>
+				<description type="formattedtext">
+					<p>You touch a willing creature. Once on each of its turns until the spell ends, that creature can jump up to 30 feet by spending 10 feet of movement.</p>
+					<p>
+						<b>Using a Higher-Level Spell Slot. </b>You can target one additional creature for each spell slot level above 1.</p>
+				</description>
+				<duration type="string">1 minute</duration>
+				<group type="string">Spells (Ranger)</group>
+				<level type="number">1</level>
+				<locked type="number">1</locked>
+				<name type="string">Jump</name>
+				<prepared type="number">1</prepared>
+				<range type="string">Touch</range>
+				<ritual type="number">0</ritual>
+				<school type="string">Transmutation</school>
+				<source type="string">Druid, Ranger, Sorcerer, Wizard</source>
+				<version type="string">2024</version>
+			</id-00008>
+			<id-00009>
+				<actions>
+					<id-00001>
+						<durmod type="number">1</durmod>
+						<label type="string">Invisible</label>
+						<order type="number">1</order>
+						<targeting type="string">self</targeting>
+						<type type="string">effect</type>
+					</id-00001>
+				</actions>
+				<description type="formattedtext">
+					<p>You invoke spirits of nature to magically hide yourself. As a Bonus Action, you can give yourself the Invisible condition until the end of your next turn.</p>
+					<p>You can use this feature a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.</p>
+				</description>
+				<group type="string">Class (Ranger)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Nature's Veil</name>
+				<prepared type="number">1</prepared>
+				<version type="string">2024</version>
+			</id-00009>
+			<id-00010>
+				<actions>
+					<id-00001>
+						<apply type="string">roll</apply>
+						<durmod type="number">1</durmod>
+						<durunit type="string">minute</durunit>
+						<label type="string">DMG: 1d6 force; (C)</label>
+						<order type="number">1</order>
+						<targeting type="string">self</targeting>
+						<type type="string">effect</type>
+					</id-00001>
+					<id-00002>
+						<heallist>
+							<id-00001>
+								<bonus type="number">10</bonus>
+								<dice type="dice"></dice>
+							</id-00001>
+						</heallist>
+						<healtargeting type="string">self</healtargeting>
+						<healtype type="string">temp</healtype>
+						<order type="number">2</order>
+						<type type="string">heal</type>
+					</id-00002>
+				</actions>
+				<castingtime type="string">1 bonus action</castingtime>
+				<components type="string">V</components>
+				<description type="formattedtext">
+					<p>A nature spirit answers your call and transforms you into a powerful guardian. The transformation lasts until the spell ends. You choose one of the following forms to assume: Primal Beast or Great Tree.</p>
+					<p>
+						<b>
+							<i>Primal Beast. </i>
+						</b>Bestial fur covers your body, your facial features become feral, and you gain the following benefits:</p>
+					<list>
+						<li>Your walking speed increases by 10 feet.</li>
+						<li>You gain darkvision with a range of 120 feet.</li>
+						<li>You make Strength-based attack rolls with advantage.</li>
+						<li>Your melee weapon attacks deal an extra 1d6 force damage on a hit.</li>
+					</list>
+					<p>
+						<b>
+							<i>Great Tree. </i>
+						</b>Your skin appears barky, leaves sprout from your hair, and you gain the following benefits:</p>
+					<list>
+						<li>You gain 10 temporary hit points.</li>
+						<li>You make Constitution saving throws with advantage.</li>
+						<li>You make Dexterityand Wisdom-based attack rolls with advantage.</li>
+						<li>While you are on the ground, the ground within 15 feet of you is difficult terrain for your enemies.</li>
+					</list>
+				</description>
+				<duration type="string">Concentration, up to 1 minute</duration>
+				<group type="string">Spells (Ranger)</group>
+				<level type="number">4</level>
+				<locked type="number">1</locked>
+				<name type="string">Guardian of Nature</name>
+				<prepared type="number">1</prepared>
+				<range type="string">Self</range>
+				<ritual type="number">0</ritual>
+				<school type="string">Transmutation</school>
+				<source type="string">Druid, Ranger</source>
+			</id-00010>
+			<id-00011>
+				<actions />
+				<category type="string">General</category>
+				<description type="formattedtext">
+					<p>You gain the following benefits.</p>
+					<p>
+						<b>Ability Score Increase. </b>Increase your Strength or Dexterity score by 1, to a maximum of 20.</p>
+					<p>
+						<b>Enhanced Dual Wielding. </b>When you take the Attack action on your turn and attack with a weapon that has the Light property, you can make one extra attack as a Bonus Action later on the same turn with a different weapon, which must be a Melee weapon that lacks the Two-Handed property. You don't add your ability modifier to the extra attack's damage unless that modifier is negative.</p>
+					<p>
+						<b>Quick Draw. </b>You can draw or stow two weapons that lack the Two-Handed property when you would normally be able to draw or stow only one.</p>
+				</description>
+				<group type="string">Feats</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Dual Wielder (Enhanced Dual Wielding)</name>
+				<prepared type="number">0</prepared>
+				<prerequisite type="string">Strength or Dexterity 13+</prerequisite>
+				<repeatable type="number">0</repeatable>
+				<version type="string">2024</version>
+			</id-00011>
+			<id-00012>
+				<actions />
+				<category type="string">General</category>
+				<description type="formattedtext">
+					<p>You gain the following benefits.</p>
+					<p>
+						<b>Ability Score Increase. </b>Increase your Strength or Dexterity score by 1, to a maximum of 20.</p>
+					<p>
+						<b>Enhanced Dual Wielding. </b>When you take the Attack action on your turn and attack with a weapon that has the Light property, you can make one extra attack as a Bonus Action later on the same turn with a different weapon, which must be a Melee weapon that lacks the Two-Handed property. You don't add your ability modifier to the extra attack's damage unless that modifier is negative.</p>
+					<p>
+						<b>Quick Draw. </b>You can draw or stow two weapons that lack the Two-Handed property when you would normally be able to draw or stow only one.</p>
+				</description>
+				<group type="string">Feats</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Dual Wielder (Quick Draw)</name>
+				<prepared type="number">0</prepared>
+				<prerequisite type="string">Strength or Dexterity 13+</prerequisite>
+				<repeatable type="number">0</repeatable>
+				<version type="string">2024</version>
+			</id-00012>
+			<id-00013>
+				<actions />
+				<category type="string">General</category>
+				<description type="formattedtext">
+					<p>You gain the following benefits.</p>
+					<p>
+						<b>Ability Score Increase. </b>Increase your Dexterity or Constitution score by 1, to a maximum of 20.</p>
+					<p>
+						<b>Speed Increase. </b>Your Speed increases by 10 feet.</p>
+					<p>
+						<b>Dash over Difficult Terrain. </b>When you take the Dash action on your turn, Difficult Terrain doesn't cost you extra movement for the rest of that turn.</p>
+					<p>
+						<b>Agile Movement. </b>Opportunity Attacks have Disadvantage against you.</p>
+				</description>
+				<group type="string">Feats</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Speedy (Dash over Difficult Terrain)</name>
+				<prepared type="number">0</prepared>
+				<prerequisite type="string">Dexterity or Constitution 13+</prerequisite>
+				<repeatable type="number">0</repeatable>
+				<version type="string">2024</version>
+			</id-00013>
+			<id-00014>
+				<actions />
+				<group type="string">Class (Ranger)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Extra Attack</name>
+				<prepared type="number">0</prepared>
+				<version type="string">2024</version>
+			</id-00014>
+			<id-00015>
+				<actions>
+					<id-00001>
+						<durmod type="number">8</durmod>
+						<durunit type="string">hour</durunit>
+						<label type="string">VISION: 150 darkvision</label>
+						<order type="number">1</order>
+						<type type="string">effect</type>
+					</id-00001>
+				</actions>
+				<castingtime type="string">Action</castingtime>
+				<components type="string">V, S, M (a dried carrot)</components>
+				<description type="formattedtext">
+					<p>For the duration, a willing creature you touch has Darkvision with a range of 150 feet.</p>
+				</description>
+				<duration type="string">8 hours</duration>
+				<group type="string">Spells (Ranger)</group>
+				<level type="number">2</level>
+				<locked type="number">1</locked>
+				<name type="string">Darkvision</name>
+				<prepared type="number">1</prepared>
+				<range type="string">Touch</range>
+				<ritual type="number">0</ritual>
+				<school type="string">Transmutation</school>
+				<source type="string">Druid, Ranger, Sorcerer, Wizard</source>
+				<version type="string">2024</version>
+			</id-00015>
+			<id-00016>
+				<actions>
+					<id-00001>
+						<durmod type="number">1</durmod>
+						<durunit type="string">hour</durunit>
+						<label type="string">SKILL: 10 stealth; (C)</label>
+						<order type="number">1</order>
+						<type type="string">effect</type>
+					</id-00001>
+				</actions>
+				<castingtime type="string">Action</castingtime>
+				<components type="string">V, S, M (ashes from burned mistletoe)</components>
+				<description type="formattedtext">
+					<p>You radiate a concealing aura in a 30-foot Emanation for the duration. While in the aura, you and each creature you choose have a +10 bonus to Dexterity (Stealth) checks and leave no tracks.</p>
+				</description>
+				<duration type="string">Concentration, up to 1 hour</duration>
+				<group type="string">Spells (Ranger)</group>
+				<level type="number">2</level>
+				<locked type="number">1</locked>
+				<name type="string">Pass without Trace</name>
+				<prepared type="number">1</prepared>
+				<range type="string">Self</range>
+				<ritual type="number">0</ritual>
+				<school type="string">Abjuration</school>
+				<source type="string">Druid, Ranger</source>
+				<version type="string">2024</version>
+			</id-00016>
+			<id-00017>
+				<actions>
+					<id-00001>
+						<durmod type="number">1</durmod>
+						<durunit type="string">hour</durunit>
+						<label type="string">LIGHT: 60 light</label>
+						<order type="number">1</order>
+						<type type="string">effect</type>
+					</id-00001>
+				</actions>
+				<castingtime type="string">Action</castingtime>
+				<components type="string">V, S</components>
+				<description type="formattedtext">
+					<p>For the duration, sunlight spreads from a point within range and fills a 60-foot-radius Sphere. The sunlight's area is Bright Light and sheds Dim Light for an additional 60 feet.</p>
+					<p>Alternatively, you cast the spell on an object that isn't being worn or carried, causing the sunlight to fill a 60-foot Emanation originating from that object. Covering that object with something opaque, such as a bowl or helm, blocks the sunlight.</p>
+					<p>If any of this spell's area overlaps with an area of Darkness created by a spell of level 3 or lower, that other spell is dispelled.</p>
+				</description>
+				<duration type="string">1 hour</duration>
+				<group type="string">Spells (Ranger)</group>
+				<level type="number">3</level>
+				<locked type="number">1</locked>
+				<name type="string">Daylight</name>
+				<picture type="token">images/Daylight.webp@WOTC50PHB</picture>
+				<prepared type="number">1</prepared>
+				<range type="string">60 feet</range>
+				<ritual type="number">0</ritual>
+				<school type="string">Evocation</school>
+				<source type="string">Cleric, Druid, Paladin, Ranger, Sorcerer</source>
+				<version type="string">2024</version>
+			</id-00017>
+			<id-00018>
+				<actions>
+					<id-00001>
+						<durmod type="number">1</durmod>
+						<label type="string">Speedy (Agile Movement); GRANTDISATK</label>
+						<order type="number">1</order>
+						<type type="string">effect</type>
+					</id-00001>
+				</actions>
+				<category type="string">General</category>
+				<description type="formattedtext">
+					<p>You gain the following benefits.</p>
+					<p>
+						<b>Ability Score Increase. </b>Increase your Dexterity or Constitution score by 1, to a maximum of 20.</p>
+					<p>
+						<b>Speed Increase. </b>Your Speed increases by 10 feet.</p>
+					<p>
+						<b>Dash over Difficult Terrain. </b>When you take the Dash action on your turn, Difficult Terrain doesn't cost you extra movement for the rest of that turn.</p>
+					<p>
+						<b>Agile Movement. </b>Opportunity Attacks have Disadvantage against you.</p>
+				</description>
+				<group type="string">Feats</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Speedy (Agile Movement)</name>
+				<prepared type="number">0</prepared>
+				<prerequisite type="string">Dexterity or Constitution 13+</prerequisite>
+				<repeatable type="number">0</repeatable>
+				<version type="string">2024</version>
+			</id-00018>
+			<id-00019>
+				<actions>
+					<id-00001>
+						<heallist>
+							<id-00001>
+								<bonus type="number">0</bonus>
+								<dice type="dice">d8</dice>
+								<stat type="string">wisdom</stat>
+							</id-00001>
+						</heallist>
+						<healtargeting type="string">self</healtargeting>
+						<healtype type="string">temp</healtype>
+						<order type="number">1</order>
+						<type type="string">heal</type>
+					</id-00001>
+				</actions>
+				<description type="formattedtext">
+					<p>Primal forces now help fuel you on your journeys, granting you the following benefits.</p>
+					<p>
+						<b>
+							<i>Temporary Hit Points. </i>
+						</b>As a Magic action, you can give yourself a number of Temporary Hit Points equal to 1d8 plus your Wisdom modifier (minimum of 1). You can use this action a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.</p>
+					<p>
+						<b>
+							<i>Decrease Exhaustion. </i>
+						</b>Whenever you finish a Short Rest, your Exhaustion level, if any, decreases by 1.</p>
+				</description>
+				<group type="string">Class (Ranger)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Tireless (Temporary Hit Points)</name>
+				<prepared type="number">1</prepared>
+				<version type="string">2024</version>
+			</id-00019>
+			<id-00020>
+				<actions />
+				<description type="formattedtext">
+					<p>Primal forces now help fuel you on your journeys, granting you the following benefits.</p>
+					<p>
+						<b>
+							<i>Temporary Hit Points. </i>
+						</b>As a Magic action, you can give yourself a number of Temporary Hit Points equal to 1d8 plus your Wisdom modifier (minimum of 1). You can use this action a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses when you finish a Long Rest.</p>
+					<p>
+						<b>
+							<i>Decrease Exhaustion. </i>
+						</b>Whenever you finish a Short Rest, your Exhaustion level, if any, decreases by 1.</p>
+				</description>
+				<group type="string">Class (Ranger)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Tireless (Decrease Exhaustion)</name>
+				<prepared type="number">0</prepared>
+				<version type="string">2024</version>
+			</id-00020>
+			<id-00022>
+				<actions />
+				<category type="string">General</category>
+				<description type="formattedtext">
+					<p>You gain the following benefits.</p>
+					<p>
+						<b>Ability Score Increase. </b>Increase your Strength or Dexterity score by 1, to a maximum of 20.</p>
+					<p>
+						<b>Concentration Breaker. </b>When you damage a creature that is concentrating, it has Disadvantage on the saving throw it makes to maintain Concentration.</p>
+					<p>
+						<b>Guarded Mind. </b>If you fail an Intelligence, a Wisdom, or a Charisma saving throw, you can cause yourself to succeed instead. Once you use this benefit, you can't use it again until you finish a Short or Long Rest.</p>
+				</description>
+				<group type="string">Feats</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Mage Slayer (Guarded Mind)</name>
+				<prepared type="number">1</prepared>
+				<repeatable type="number">0</repeatable>
+				<usesperiod type="string">enc</usesperiod>
+				<version type="string">2024</version>
+			</id-00022>
+			<id-00023>
+				<actions />
+				<category type="string">General</category>
+				<description type="formattedtext">
+					<p>You gain the following benefits.</p>
+					<p>
+						<b>Ability Score Increase. </b>Increase your Intelligence or Wisdom score by 1, to a maximum of 20.</p>
+					<p>
+						<b>Keen Observer. </b>Choose one of the following skills: Insight, Investigation, or Perception. If you lack proficiency with the chosen skill, you gain proficiency in it, and if you already have proficiency in it, you gain Expertise in it.</p>
+					<p>
+						<b>Quick Search. </b>You can take the Search action as a Bonus Action.</p>
+				</description>
+				<group type="string">Feats</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Observant (Quick Search)</name>
+				<prepared type="number">0</prepared>
+				<prerequisite type="string">Intelligence or Wisdom 13+</prerequisite>
+				<repeatable type="number">0</repeatable>
+				<version type="string">2024</version>
+			</id-00023>
+			<id-00024>
+				<actions>
+					<id-00001>
+						<apply type="string">roll</apply>
+						<durmod type="number">1</durmod>
+						<label type="string">DMG: 1d6</label>
+						<order type="number">1</order>
+						<targeting type="string">self</targeting>
+						<type type="string">effect</type>
+					</id-00001>
+				</actions>
+				<castingtime type="string">1 reaction, which you take when you take acid, cold, fire, lightning, or thunder damage</castingtime>
+				<components type="string">S</components>
+				<description type="formattedtext">
+					<p>The spell captures some of the incoming energy, lessening its effect on you and storing it for your next melee attack. You have resistance to the triggering damage type until the start of your next turn. Also, the first time you hit with a melee attack on your next turn, the target takes an extra 1d6 damage of the triggering type, and the spell ends.</p>
+					<p>
+						<b>
+							<i>At Higher Levels. </i>
+						</b>When you cast this spell using a spell slot of 2nd level or higher, the extra damage increases by 1d6 for each slot level above 1st.</p>
+				</description>
+				<duration type="string">1 round</duration>
+				<group type="string">Spells (Ranger)</group>
+				<level type="number">1</level>
+				<locked type="number">1</locked>
+				<name type="string">Absorb Elements</name>
+				<prepared type="number">1</prepared>
+				<range type="string">Self</range>
+				<ritual type="number">0</ritual>
+				<school type="string">Abjuration</school>
+				<source type="string">Artificer</source>
+			</id-00024>
+			<id-00025>
+				<actions>
+					<id-00001>
+						<durmod type="number">10</durmod>
+						<durunit type="string">minute</durunit>
+						<label type="string">IFT: TYPE(aberration, celestial, elemental, fey, fiend, undead); GRANTDISATK; IMMUNE: charmed,frightened,possessed; (C)</label>
+						<order type="number">1</order>
+						<type type="string">effect</type>
+					</id-00001>
+				</actions>
+				<castingtime type="string">1 action</castingtime>
+				<components type="string">V, S, M (holy water or powdered silver and iron, which the spell consumes)</components>
+				<description type="formattedtext">
+					<p>Until the spell ends, one willing creature you touch is protected against certain types of creatures: aberrations, celestials, elementals, fey, fiends, and undead.</p>
+					<p>The protection grants several benefits. Creatures of those types have disadvantage on attack rolls against the target. The target also can't be charmed, frightened, or possessed by them. If the target is already charmed, frightened, or possessed by such a creature, the target has advantage on any new saving throw against the relevant effect.</p>
+				</description>
+				<duration type="string">Concentration up to 10 minutes</duration>
+				<group type="string">Spells (Ranger)</group>
+				<level type="number">1</level>
+				<locked type="number">1</locked>
+				<name type="string">Protection from Evil and Good</name>
+				<prepared type="number">1</prepared>
+				<range type="string">Touch</range>
+				<school type="string">Abjuration</school>
+				<source type="string">Cleric, Eldritch Knight, Paladin, Warlock, Wizard, Arcane Trickster</source>
+			</id-00025>
+			<id-00026>
+				<actions>
+					<id-00001>
+						<durmod type="number">10</durmod>
+						<durunit type="string">minute</durunit>
+						<label type="string">Zone of Truth</label>
+						<order type="number">1</order>
+						<targeting type="string">self</targeting>
+						<type type="string">effect</type>
+					</id-00001>
+					<id-00002>
+						<order type="number">2</order>
+						<savemagic type="number">1</savemagic>
+						<savetype type="string">charisma</savetype>
+						<type type="string">cast</type>
+					</id-00002>
+				</actions>
+				<castingtime type="string">1 action</castingtime>
+				<components type="string">V, S</components>
+				<description type="formattedtext">
+					<p>You create a magical zone that guards against deception in a 15-foot-radius sphere centered on a point of your choice within range. Until the spell ends, a creature that enters the spell's area for the first time on a turn or starts its turn there must make a Charisma saving throw. On a failed save, a creature can't speak a deliberate lie while in the radius. You know whether each creature succeeds or fails on its saving throw. An affected creature is aware of the spell and can thus avoid answering questions to which it would normally respond with a lie. Such a creature can be evasive in its answers as long as it remains within the boundaries of the truth.</p>
+				</description>
+				<duration type="string">10 minutes</duration>
+				<group type="string">Spells (Ranger)</group>
+				<level type="number">2</level>
+				<locked type="number">1</locked>
+				<name type="string">Zone of Truth</name>
+				<prepared type="number">1</prepared>
+				<range type="string">60 feet</range>
+				<school type="string">Enchantment</school>
+				<source type="string">Bard, Cleric, Paladin</source>
+			</id-00026>
+			<id-00027>
+				<actions>
+					<id-00001>
+						<order type="number">1</order>
+						<savemagic type="number">1</savemagic>
+						<savetype type="string">charisma</savetype>
+						<type type="string">cast</type>
+					</id-00001>
+					<id-00002>
+						<durmod type="number">1</durmod>
+						<durunit type="string">hour</durunit>
+						<label type="string">IFT: TYPE(aberration, celestial, elemental, fey, fiend, undead); GRANTDISATK; IMMUNE: charmed,frightened,possessed; [FIXED]</label>
+						<order type="number">2</order>
+						<type type="string">effect</type>
+					</id-00002>
+				</actions>
+				<castingtime type="string">1 minute</castingtime>
+				<components type="string">V, S, M (holy water or powdered silver and iron worth at least 100 gp, which the spell consumes)</components>
+				<description type="formattedtext">
+					<p>You create a 10-foot-radius, 20-foot-tall cylinder of magical energy centered on a point on the ground that you can see within range. Glowing runes appear wherever the cylinder intersects with the floor or other surface.</p>
+					<p>Choose one or more of the following types of creatures: celestials, elementals, fey, fiends, or undead. The circle affects a creature of the chosen type in the following ways:</p>
+					<list>
+						<li>The creature can't willingly enter the cylinder by nonmagical means. If the creature tries to use teleportation or interplanar travel to do so, it must first succeed on a Charisma saving throw.</li>
+						<li>The creature has disadvantage on attack rolls against targets within the cylinder.</li>
+						<li>Targets within the cylinder can't be charmed, frightened, or possessed by the creature.</li>
+					</list>
+					<p>When you cast this spell, you can elect to cause its magic to operate in the reverse direction, preventing a creature of the specified type from leaving the cylinder and protecting targets outside it.</p>
+					<p>
+						<b>At Higher Levels. </b>When you cast this spell using a spell slot of 4th level or higher, the duration increases by 1 hour for each slot level above 3rd.</p>
+				</description>
+				<duration type="string">1 hour</duration>
+				<group type="string">Spells (Ranger)</group>
+				<level type="number">3</level>
+				<locked type="number">1</locked>
+				<name type="string">Magic Circle</name>
+				<prepared type="number">1</prepared>
+				<range type="string">10 feet</range>
+				<school type="string">Abjuration</school>
+				<source type="string">Cleric, Eldritch Knight, Paladin, Warlock, Wizard, Arcane Trickster</source>
+			</id-00027>
+			<id-00028>
+				<actions>
+					<id-00001>
+						<durmod type="number">10</durmod>
+						<durunit type="string">minute</durunit>
+						<label type="string">Speak with Animals</label>
+						<order type="number">1</order>
+						<targeting type="string">self</targeting>
+						<type type="string">effect</type>
+					</id-00001>
+				</actions>
+				<castingtime type="string">Action or Ritual</castingtime>
+				<components type="string">V, S</components>
+				<description type="formattedtext">
+					<p>For the duration, you can comprehend and verbally communicate with Beasts, and you can use any of the Influence action's skill options with them.</p>
+					<p>Most Beasts have little to say about topics that don't pertain to survival or companionship, but at minimum, a Beast can give you information about nearby locations and monsters, including whatever it has perceived within the past day.</p>
+				</description>
+				<duration type="string">10 minutes</duration>
+				<group type="string">Spells (Ranger)</group>
+				<level type="number">1</level>
+				<locked type="number">1</locked>
+				<name type="string">Speak with Animals</name>
+				<picture type="token">images/Speak with Animals.webp@WOTC50PHB</picture>
+				<prepared type="number">1</prepared>
+				<range type="string">Self</range>
+				<ritual type="number">1</ritual>
+				<school type="string">Divination</school>
+				<source type="string">Bard, Druid, Ranger, Warlock</source>
+				<version type="string">2024</version>
+			</id-00028>
+			<id-00029>
+				<actions>
+					<id-00001>
+						<durmod type="number">10</durmod>
+						<durunit type="string">minute</durunit>
+						<label type="string">Speak with Plants</label>
+						<order type="number">1</order>
+						<targeting type="string">self</targeting>
+						<type type="string">effect</type>
+					</id-00001>
+				</actions>
+				<castingtime type="string">Action</castingtime>
+				<components type="string">V, S</components>
+				<description type="formattedtext">
+					<p>You imbue plants in an immobile 30-foot Emanation with limited sentience and animation, giving them the ability to communicate with you and follow your simple commands. You can question plants about events in the spell's area within the past day, gaining information about creatures that have passed, weather, and other circumstances.</p>
+					<p>You can also turn Difficult Terrain caused by plant growth (such as thickets and undergrowth) into ordinary terrain that lasts for the duration. Or you can turn ordinary terrain where plants are present into Difficult Terrain that lasts for the duration.</p>
+					<p>The spell doesn't enable plants to uproot themselves and move about, but they can move their branches, tendrils, and stalks for you.</p>
+					<p>If a Plant creature is in the area, you can communicate with it as if you shared a common language.</p>
+				</description>
+				<duration type="string">10 minutes</duration>
+				<group type="string">Spells (Ranger)</group>
+				<level type="number">3</level>
+				<locked type="number">1</locked>
+				<name type="string">Speak with Plants</name>
+				<prepared type="number">1</prepared>
+				<range type="string">Self</range>
+				<ritual type="number">0</ritual>
+				<school type="string">Transmutation</school>
+				<source type="string">Bard, Druid, Ranger</source>
+				<version type="string">2024</version>
+			</id-00029>
+			<id-00030>
+				<actions>
+					<id-00001>
+						<durmod type="number">24</durmod>
+						<durunit type="string">hour</durunit>
+						<label type="string">Air Bubble</label>
+						<order type="number">1</order>
+						<targeting type="string">self</targeting>
+						<type type="string">effect</type>
+					</id-00001>
+				</actions>
+				<castingtime type="string">1 action</castingtime>
+				<components type="string">S</components>
+				<description type="formattedtext">
+					<p>You create a spectral globe around the head of a willing creature you can see within range. The globe is filled with fresh air that lasts until the spell ends. If the creature has more than one head, the globe of air appears around only one of its heads (which is all the creature needs to avoid suffocation, assuming that all its heads share the same respiratory system).</p>
+					<p>
+						<b>
+							<i>At Higher Levels. </i>
+						</b>When you cast this spell using a spell slot of 3rd level or higher, you can create two additional globes of fresh air for each slot level above 2nd.</p>
+				</description>
+				<duration type="string">24 hours</duration>
+				<group type="string">Spells (Ranger)</group>
+				<level type="number">2</level>
+				<locked type="number">1</locked>
+				<name type="string">Air Bubble</name>
+				<prepared type="number">1</prepared>
+				<range type="string">60 feet</range>
+				<ritual type="number">0</ritual>
+				<school type="string">Conjuration</school>
+				<shortdescription type="string">Air Bubble</shortdescription>
+				<source type="string">Artificer, Druid, Ranger, Sorcerer, Wizard</source>
+			</id-00030>
+			<id-00031>
+				<actions>
+					<id-00001>
+						<durmod type="number">1</durmod>
+						<durunit type="string">minute</durunit>
+						<label type="string">Ashardalon's Stride; (C)</label>
+						<order type="number">1</order>
+						<targeting type="string">self</targeting>
+						<type type="string">effect</type>
+					</id-00001>
+					<id-00002>
+						<damagelist>
+							<id-00001>
+								<bonus type="number">0</bonus>
+								<dice type="dice">d6</dice>
+								<type type="string">fire</type>
+							</id-00001>
+						</damagelist>
+						<order type="number">2</order>
+						<type type="string">damage</type>
+					</id-00002>
+					<id-00003>
+						<damagelist>
+							<id-00001>
+								<bonus type="number">0</bonus>
+								<dice type="dice">d6</dice>
+								<type type="string">fire</type>
+							</id-00001>
+						</damagelist>
+						<order type="number">3</order>
+						<type type="string">damage</type>
+					</id-00003>
+				</actions>
+				<castingtime type="string">1 bonus action</castingtime>
+				<components type="string">V, S</components>
+				<description type="formattedtext">
+					<p>The billowing flames of a dragon blast from your feet, granting you explosive speed. For the duration, your speed increases by 20 feet and moving doesn't provoke opportunity attacks.</p>
+					<p>When you move within 5 feet of a creature or an object that isn't being worn or carried, it takes 1d6 fire damage from your trail of heat. A creature or object can take this damage only once during a turn.</p>
+					<p>
+						<b>
+							<i>At Higher Levels. </i>
+						</b>When you cast this spell using a spell slot of 4th level or higher, increase your speed by 5 feet for each spell slot level above 3rd. The spell deals an additional 1d6 fire damage for each slot level above 3rd.</p>
+				</description>
+				<duration type="string">Concentration, up to 1 minute</duration>
+				<group type="string">Spells (Ranger)</group>
+				<level type="number">3</level>
+				<locked type="number">1</locked>
+				<name type="string">Ashardalon's Stride</name>
+				<prepared type="number">1</prepared>
+				<range type="string">Self</range>
+				<ritual type="number">0</ritual>
+				<school type="string">Transmutation</school>
+				<source type="string">Artificer, Ranger, Sorcerer, Wizard</source>
+			</id-00031>
+			<id-00032>
+				<actions>
+					<id-00001>
+						<durmod type="number">1</durmod>
+						<durunit type="string">hour</durunit>
+						<label type="string">Hunter's Mark</label>
+						<order type="number">1</order>
+						<type type="string">effect</type>
+					</id-00001>
+					<id-00002>
+						<durmod type="number">1</durmod>
+						<durunit type="string">hour</durunit>
+						<label type="string">IFT: CUSTOM(Hunter's Mark); DMG: 1d6 force</label>
+						<order type="number">2</order>
+						<targeting type="string">self</targeting>
+						<type type="string">effect</type>
+					</id-00002>
+				</actions>
+				<description type="formattedtext">
+					<p>Taking damage can't break your Concentration on Hunter's Mark.</p>
+				</description>
+				<group type="string">Hunter's Mark (Ranger)</group>
+				<level type="number">0</level>
+				<locked type="number">1</locked>
+				<name type="string">Relentless Hunter</name>
+				<prepared type="number">0</prepared>
+				<version type="string">2024</version>
+			</id-00032>
+		</powers>
+		<profbonus type="number">5</profbonus>
+		<proficiencylist>
+			<id-00001>
+				<name type="string">Tool: Carpenter's Tools</name>
+			</id-00001>
+			<id-00002>
+				<name type="string">Armor: Light</name>
+			</id-00002>
+			<id-00003>
+				<name type="string">Armor: Medium</name>
+			</id-00003>
+			<id-00004>
+				<name type="string">Armor: Shields</name>
+			</id-00004>
+			<id-00005>
+				<name type="string">Weapon: Simple</name>
+			</id-00005>
+			<id-00006>
+				<name type="string">Weapon: Martial</name>
+			</id-00006>
+		</proficiencylist>
+		<race type="string">Tortle</race>
+		<racelink type="windowreference">
+			<class>reference_race</class>
+			<recordname>reference.racedata.id-00028@DD Monsters of the Multiverse Players</recordname>
+		</racelink>
+		<racename type="string">Tortle</racename>
+		<size type="string">Medium</size>
+		<skilllist>
+			<id-00001>
+				<misc type="number">0</misc>
+				<name type="string">Perception</name>
+				<prof type="number">2</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">wisdom</stat>
+				<total type="number">15</total>
+			</id-00001>
+			<id-00002>
+				<misc type="number">0</misc>
+				<name type="string">Animal Handling</name>
+				<prof type="number">2</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">wisdom</stat>
+				<total type="number">15</total>
+			</id-00002>
+			<id-00003>
+				<misc type="number">0</misc>
+				<name type="string">Nature</name>
+				<prof type="number">1</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">intelligence</stat>
+				<total type="number">4</total>
+			</id-00003>
+			<id-00004>
+				<misc type="number">0</misc>
+				<name type="string">Arcana</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">intelligence</stat>
+				<total type="number">-1</total>
+			</id-00004>
+			<id-00005>
+				<misc type="number">0</misc>
+				<name type="string">Persuasion</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">charisma</stat>
+				<total type="number">-1</total>
+			</id-00005>
+			<id-00006>
+				<misc type="number">0</misc>
+				<name type="string">Medicine</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">wisdom</stat>
+				<total type="number">5</total>
+			</id-00006>
+			<id-00007>
+				<misc type="number">0</misc>
+				<name type="string">Survival</name>
+				<prof type="number">2</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">wisdom</stat>
+				<total type="number">15</total>
+			</id-00007>
+			<id-00008>
+				<misc type="number">0</misc>
+				<name type="string">Performance</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">charisma</stat>
+				<total type="number">-1</total>
+			</id-00008>
+			<id-00009>
+				<misc type="number">0</misc>
+				<name type="string">Acrobatics</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">dexterity</stat>
+				<total type="number">3</total>
+			</id-00009>
+			<id-00010>
+				<misc type="number">0</misc>
+				<name type="string">Religion</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">intelligence</stat>
+				<total type="number">-1</total>
+			</id-00010>
+			<id-00011>
+				<misc type="number">0</misc>
+				<name type="string">Athletics</name>
+				<prof type="number">1</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">strength</stat>
+				<total type="number">12</total>
+			</id-00011>
+			<id-00012>
+				<misc type="number">0</misc>
+				<name type="string">Sleight of Hand</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">dexterity</stat>
+				<total type="number">3</total>
+			</id-00012>
+			<id-00013>
+				<misc type="number">0</misc>
+				<name type="string">Insight</name>
+				<prof type="number">2</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">wisdom</stat>
+				<total type="number">15</total>
+			</id-00013>
+			<id-00014>
+				<misc type="number">0</misc>
+				<name type="string">Intimidation</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">charisma</stat>
+				<total type="number">-1</total>
+			</id-00014>
+			<id-00015>
+				<misc type="number">0</misc>
+				<name type="string">Deception</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">charisma</stat>
+				<total type="number">-1</total>
+			</id-00015>
+			<id-00016>
+				<misc type="number">0</misc>
+				<name type="string">Investigation</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">intelligence</stat>
+				<total type="number">-1</total>
+			</id-00016>
+			<id-00017>
+				<misc type="number">0</misc>
+				<name type="string">Stealth</name>
+				<prof type="number">1</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">dexterity</stat>
+				<total type="number">8</total>
+			</id-00017>
+			<id-00018>
+				<misc type="number">0</misc>
+				<name type="string">History</name>
+				<prof type="number">0</prof>
+				<shortcut type="number">0</shortcut>
+				<stat type="string">intelligence</stat>
+				<total type="number">-1</total>
+			</id-00018>
+		</skilllist>
+		<speed>
+			<armor type="number">0</armor>
+			<base type="number">30</base>
+			<misc type="number">10</misc>
+			<special type="string">Swim, Climb</special>
+			<temporary type="number">0</temporary>
+			<total type="number">40</total>
+		</speed>
+		<subracelink type="windowreference">
+			<class />
+			<recordname />
+		</subracelink>
+		<traitlist>
+			<id-00001>
+				<locked type="number">1</locked>
+				<name type="string">Claws</name>
+				<text type="formattedtext">
+					<p>You have claws that you can use to make unarmed strikes. When you hit with them, the strike deals 1d6 + your Strength modifier slashing damage, instead of the bludgeoning damage normal for an unarmed strike.</p>
+				</text>
+			</id-00001>
+			<id-00002>
+				<locked type="number">1</locked>
+				<name type="string">Creature Type</name>
+				<text type="formattedtext">
+					<p>You are a Humanoid.</p>
+				</text>
+			</id-00002>
+			<id-00003>
+				<locked type="number">1</locked>
+				<name type="string">Hold Breath</name>
+				<text type="formattedtext">
+					<p>You can hold your breath for up to 1 hour.</p>
+				</text>
+			</id-00003>
+			<id-00004>
+				<locked type="number">1</locked>
+				<name type="string">Natural Armor</name>
+				<text type="formattedtext">
+					<p>Your shell provides you a base AC of 17 (your Dexterity modifier doesn't affect this number). You can't wear light, medium, or heavy armor, but if you are using a shield, you can apply the shield's bonus as normal.</p>
+				</text>
+			</id-00004>
+			<id-00005>
+				<locked type="number">1</locked>
+				<name type="string">Nature's Intuition</name>
+				<text type="formattedtext">
+					<p>Thanks to your mystical connection to nature, you gain proficiency with one of the following skills of your choice: Animal Handling, Medicine, Nature, Perception, Stealth, or Survival.</p>
+				</text>
+			</id-00005>
+			<id-00006>
+				<locked type="number">1</locked>
+				<name type="string">Shell Defense</name>
+				<text type="formattedtext">
+					<p>You can withdraw into your shell as an action. Until you emerge, you gain a +4 bonus to your AC, and you have advantage on Strength and Constitution saving throws. While in your shell, you are prone, your speed is 0 and can't increase, you have disadvantage on Dexterity saving throws, you can't take reactions, and the only action you can take is a bonus action to emerge from your shell.</p>
+				</text>
+			</id-00006>
+		</traitlist>
+		<weaponlist />
+	</character>
+</root>

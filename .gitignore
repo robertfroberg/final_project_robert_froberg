@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+kaggle.json
+data/
+results/
+.vscode/
+*.code-workspace

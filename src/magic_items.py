@@ -279,9 +279,22 @@ def main():
         print("Usage: python magic_items.py <MagicItemList.xlsx>")
         sys.exit(1)
 
+    # resolve paths relative to this script's directory
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    data_dir = os.path.join(script_dir, "..", "data")
+
+    # use only the filename provided; look for it in /data
+    xlsx_filename = os.path.basename(sys.argv[1])
+    file_path = os.path.join(data_dir, xlsx_filename)
+
+    # verify the file exists
+    if not os.path.exists(file_path):
+        print(f"Error: File not found in /data: {file_path}")
+        sys.exit(1)
+
     # load file into dataframe
     try:
-        df = load_magic_items(sys.argv[1])
+        df = load_magic_items(file_path)
     except Exception as e:
         print("Error loading file:", e)
         sys.exit(1)

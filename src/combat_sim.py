@@ -1,24 +1,18 @@
 # combat_sim.py
-# full version with recharge mechanics, per-fight averages, and correct simulation loops
-
+# recharge mechanics per-fight averages and simulation loops
 import random
 from collections import defaultdict
 from typing import Any, Dict, List, Optional, Tuple
 
 
-# ============================================================
-# Dice helpers
-# ============================================================
-
+# dice helpers
 def roll_d20(rng: Optional[random.Random] = None) -> int:
     rng = rng or random
     return rng.randint(1, 20)
 
 
+# roll damage for expressions like 2d6, d12, 1d10+4
 def roll_dice_expr(expr: str, rng: Optional[random.Random] = None, times: int = 1) -> int:
-    """
-    roll damage for expressions like '2d6', 'd12', '1d10+4'
-    """
     rng = rng or random
     if not expr:
         return 0
@@ -58,10 +52,7 @@ def roll_dice_expr(expr: str, rng: Optional[random.Random] = None, times: int = 
     return total
 
 
-# ============================================================
-# Recharge logic
-# ============================================================
-
+# ability recharge logic
 def get_recharge_threshold(recharge: str) -> int:
     """
     '5–6' → 5
@@ -81,9 +72,8 @@ def get_recharge_threshold(recharge: str) -> int:
 
     return 6
 
-
+# roll recharge for all actions that have recharge and are on cooldown
 def refresh_recharge_actions(creature: Any, rng: Optional[random.Random] = None) -> None:
-    """roll recharge for all actions that have recharge and are on cooldown"""
     rng = rng or random
     actions = getattr(creature, "actions", [])
     for action in actions:
@@ -104,10 +94,7 @@ def mark_recharge_used(action: Any) -> None:
         action._on_cooldown = True
 
 
-# ============================================================
-# Generic helpers (AC, HP, saves, resistance)
-# ============================================================
-
+# helpers for AC, HP, saves, resistance
 def get_initiative_bonus(creature: Any) -> int:
     for attr in ("init_bonus", "initiative_bonus", "initiative"):
         if hasattr(creature, attr):
@@ -188,7 +175,7 @@ def get_save_mod(creature: Any, ability: str) -> int:
         return 0
     abbr = ability.upper()[:3]
 
-    # explicit saves dict (PC)
+    # explicit saves dict PC
     if hasattr(creature, "saves"):
         saves = getattr(creature, "saves")
         for key in (ability.upper(), abbr, ability.title(), abbr.title()):
@@ -207,7 +194,7 @@ def get_save_mod(creature: Any, ability: str) -> int:
             except:
                 pass
 
-    # fallback: ability score
+    # fallback use ability score
     for attr in (abbr, abbr.lower(), f"{abbr}_score"):
         if hasattr(creature, attr):
             try:
@@ -219,29 +206,17 @@ def get_save_mod(creature: Any, ability: str) -> int:
     return 0
 
 
-# ============================================================
-# Attack selection for PC and Monster
-# ============================================================
-
+# attack selection for PC and monster
 def get_pc_attacks_for_turn(pc: Any) -> List[Any]:
-    """
-    for now, the pc only uses their primary attack option each turn:
-    the first entry in pc.attacks.
-
-    later, if we add extra attack info (e.g., pc.num_attacks), we can
-    duplicate this primary attack that many times.
-    """
     attacks = getattr(pc, "attacks", [])
     if not attacks:
         return []
 
     primary = attacks[0]
-    # single primary attack per turn for now
     return [primary]
 
 
 def get_monster_attacks_for_turn(monster: Any) -> List[Any]:
-    """use all offensive monster actions unless recharge is on cooldown"""
     usable = []
     for a in getattr(monster, "actions", []):
         if a.attack_bonus is not None or a.save_dc is not None:
@@ -251,10 +226,7 @@ def get_monster_attacks_for_turn(monster: Any) -> List[Any]:
     return usable
 
 
-# ============================================================
-# Attack resolution
-# ============================================================
-
+# attack resolution
 def resolve_attack_roll(attacker, defender, attack, rng=None, attacker_label="") -> Dict[str, Any]:
     rng = rng or random
 
@@ -301,35 +273,47 @@ def resolve_attack_roll(attacker, defender, attack, rng=None, attacker_label="")
     }
 
 
+# resolve if the target needs to make a saving throw
 def resolve_save_attack(attacker, defender, action, rng=None, attacker_label="") -> Dict[str, Any]:
     rng = rng or random
 
+    # extract save information from action
     save_ability = getattr(action, "save_ability", None)
     try:
         save_dc = int(getattr(action, "save_dc", None))
     except:
         save_dc = None
 
+    # if action does not require saving throw treat as normal attack
     if save_dc is None or not save_ability:
         return resolve_attack_roll(attacker, defender, action, rng, attacker_label)
 
+    # pull damage and behavior flags from action
     damage_dice = getattr(action, "damage_dice", "")
     dtype = getattr(action, "damage_type", "")
     half_on_success = bool(getattr(action, "half_on_success", False))
 
+    # defender attempts save
     d20 = roll_d20(rng)
     save_mod = get_save_mod(defender, save_ability)
     total_save = d20 + save_mod
     success = total_save >= save_dc
     hit = not success
 
+    # compute base damage from dice
     dmg = roll_dice_expr(damage_dice, rng=rng)
+
+    # apply half damage on success or no damage on success logic
     if success:
         dmg = dmg // 2 if half_on_success else 0
 
+    # apply defender resistances or vulnerabilities
     final_damage = damage_after_resistance(defender, dmg, dtype)
+
+    # if this action uses recharge mechanics expend
     mark_recharge_used(action)
 
+    # return result dictionary
     return {
         "kind": "save",
         "attacker": attacker_label,
@@ -346,16 +330,14 @@ def resolve_save_attack(attacker, defender, action, rng=None, attacker_label="")
     }
 
 
+# take offensive action
 def resolve_offensive_action(attacker, defender, action, rng=None, attacker_label=""):
     if getattr(action, "save_dc", None) is not None and getattr(action, "save_ability", None):
         return resolve_save_attack(attacker, defender, action, rng, attacker_label)
     return resolve_attack_roll(attacker, defender, action, rng, attacker_label)
 
 
-# ============================================================
-# Initiative
-# ============================================================
-
+# roll initiative
 def roll_initiative(pc, monster, rng=None) -> Tuple[str, int, int]:
     rng = rng or random
     pc_init = roll_d20(rng) + get_initiative_bonus(pc)
@@ -363,39 +345,46 @@ def roll_initiative(pc, monster, rng=None) -> Tuple[str, int, int]:
     return ("pc" if pc_init > m_init else "monster", pc_init, m_init)
 
 
-# ============================================================
-# One full fight
-# ============================================================
-
+# one fight logic
 def simulate_single_fight(
     pc: Any,
     monster: Any,
     rng: Optional[random.Random] = None,
     max_rounds: int = 1000,
 ) -> Dict[str, Any]:
+
     rng = rng or random
 
+    # get each combatants starting hit points
     pc_hp = get_max_hp(pc)
     m_hp = get_max_hp(monster)
 
+    # determine initiative
     order, pc_init, m_init = roll_initiative(pc, monster, rng)
 
     rounds = 0
     winner = None
 
+    # counters for hits and misses
     hits = {"pc": 0, "monster": 0}
     misses = {"pc": 0, "monster": 0}
+
+    # track damage grouped by attacker, attack name
     dmg_by_name: Dict[Tuple[str, str], List[int]] = defaultdict(list)
 
+    # main combat loop
     while pc_hp > 0 and m_hp > 0 and rounds < max_rounds:
         rounds += 1
 
+        # create ordered list of who won init
         turn_order = ["pc", "monster"] if order == "pc" else ["monster", "pc"]
 
+        # each participant takes a turn
         for acting in turn_order:
             if pc_hp <= 0 or m_hp <= 0:
                 break
 
+            # set attacker/defender references for turn
             if acting == "pc":
                 attacker = pc
                 defender = monster
@@ -409,27 +398,33 @@ def simulate_single_fight(
                 refresh_recharge_actions(monster, rng)
                 attacks = get_monster_attacks_for_turn(monster)
 
+            # execute each attack available
             for action in attacks:
                 if defender_hp <= 0:
                     break
 
                 r = resolve_offensive_action(attacker, defender, action, rng, acting)
 
+                # track hit/miss outcome
                 if r["hit"]:
                     hits[acting] += 1
                 else:
                     misses[acting] += 1
 
+                # apply damage from action
                 dmg = r["final_damage"]
                 if dmg > 0:
                     dmg_by_name[(acting, r["attack_name"])].append(dmg)
+
                 defender_hp -= dmg
 
+                # write updated HP back to correct combatant
                 if acting == "pc":
                     m_hp = defender_hp
                 else:
                     pc_hp = defender_hp
 
+                # check for end of fight
                 if defender_hp <= 0:
                     winner = acting
                     break
@@ -437,9 +432,11 @@ def simulate_single_fight(
         if winner:
             break
 
+    # if neither combatant won call it a draw - should not happen but here for troubleshooting
     if not winner:
         winner = "draw"
 
+    # return aggregated summary of fight
     return {
         "winner": winner,
         "rounds": rounds,
@@ -451,10 +448,7 @@ def simulate_single_fight(
     }
 
 
-# ============================================================
-# Monte Carlo Simulation
-# ============================================================
-
+# monte carlo sim logic
 def simulate_many_fights(
     pc: Any,
     monster: Any,

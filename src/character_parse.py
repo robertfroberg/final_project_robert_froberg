@@ -401,37 +401,24 @@ def parse_skills(character_elem, abilities, prof_bonus):
     return skills
 
 
-# main parser that reads the xml file and builds a character object
+# main parser that reads xml file and builds character object
 def parse_character(xml_path):
-    import os
+    
+    # src/
+    base_dir = os.path.dirname(__file__)
+    
+    # ../data/
+    data_dir = os.path.join(base_dir, "..", "data")
+    
+    # build full path inside data folder
+    resolved_path = (
+        xml_path if os.path.isabs(xml_path)
+        else os.path.join(data_dir, xml_path)
+    )
 
-    # if xml_path is absolute and exists, use it directly
-    if os.path.isabs(xml_path) and os.path.exists(xml_path):
-        resolved_path = xml_path
-    else:
-        # base directory is the folder this script is in (src/)
-        base_dir = os.path.dirname(__file__)
-
-        # candidate locations to search
-        candidates = [
-            os.path.join(base_dir, xml_path),                  # src/aeric20.xml
-            os.path.join(base_dir, "data", xml_path),          # src/data/aeric20.xml
-            os.path.join(base_dir, "..", "data", xml_path),    # ../data/aeric20.xml  (one level up)
-        ]
-
-        resolved_path = None
-        for cand in candidates:
-            if os.path.exists(cand):
-                resolved_path = cand
-                break
-
-        if resolved_path is None:
-            # helpful error message listing where was checked
-            raise FileNotFoundError(
-                "could not find xml file. tried:\n  " +
-                "\n  ".join(candidates)
-            )
-
+    if not os.path.exists(resolved_path):
+        raise FileNotFoundError(f"Could not find character XML at: {resolved_path}")
+    
     tree = ET.parse(resolved_path)
     root = tree.getroot()
 
@@ -550,7 +537,7 @@ if __name__ == "__main__":
 
     # detect if running inside jupyter nb
     if "ipykernel" in sys.modules:
-        # defaults to aeric20.xml as this project scope has ballooned a little bit
+        # defaults to aeric20.xml as project scope has ballooned a little bit
         pc = parse_character("aeric20.xml")
         display_character(pc)
     else:

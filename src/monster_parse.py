@@ -127,7 +127,6 @@ def parse_traits(block) -> List[Trait]:
 
 
 # parse actions section inside stat block
-# parser helpers
 def parse_actions(block):
     actions: List[Action] = []
 
@@ -146,13 +145,14 @@ def parse_actions(block):
         if not strong:
             continue
 
-        raw = strong.get_text(strip=True)          # e.g. "Lightning Breath (Recharge 5–6)."
-        raw_no_dot = raw.rstrip(".")               # drop trailing period if present
+        # remove extra characters
+        raw = strong.get_text(strip=True)
+        raw_no_dot = raw.rstrip(".")
 
-        # pull out any (...) parts from the name line
+        # pull out (...) from name line
         parens = re.findall(r"\(([^)]+)\)", raw_no_dot)
 
-        # strip all (...) from the base name
+        # strip all (...) from base name
         base_name = re.sub(r"\s*\([^)]*\)", "", raw_no_dot).strip()
 
         name = base_name
@@ -160,15 +160,15 @@ def parse_actions(block):
         recharge: Optional[str] = None
 
         for part in parens:
-            # e.g. "Recharge 5–6" or "Recharge 6"
+            # parse recharge logic
             if re.search(r"recharge", part, re.I):
                 m_rec = re.search(r"recharge\s*(.+)", part, re.I)
                 recharge = m_rec.group(1).strip(" .") if m_rec else part.strip(" .")
             else:
-                # e.g. "2/Day", "1/Day", "3/Day"
+                # parse times usable per day
                 usage = part.strip(" .")
 
-        # body text (everything after the bold name line)
+        # body text everything after bold name line
         body = re.sub(r"^" + re.escape(raw), "", txt, count=1).strip()
 
         # classify action
@@ -231,7 +231,7 @@ def parse_bonus_actions(block) -> List[BonusAction]:
         name = raw.rstrip(".")
         usage: Optional[str] = None
 
-        # pull out usage like Recharge 5–6 or 2/Day
+        # pull out usage like
         m_use = re.search(r"\(([^)]+)\)$", name)
         if m_use:
             usage = m_use.group(1)
@@ -266,7 +266,7 @@ def parse_legendary_actions(block) -> List[LegendaryAction]:
         name = raw.rstrip(".")
         usage: Optional[str] = None
 
-        # pull out usage ie 3/Day or 4 in Lair
+        # pull out usage
         m_use = re.search(r"\(([^)]+)\)$", name)
         if m_use:
             usage = m_use.group(1)
@@ -338,7 +338,7 @@ def parse_monster_file(html: str) -> List[Monster]:
                 m_hp = re.search(r"HP\s+(\d+)", txt)
                 hp = int(m_hp.group(1)) if m_hp else None
 
-        # helper extracts oneliners like speed, skills, etc
+        # helper extracts oneliners like speed skills etc
         def extract_line(key: str) -> Optional[str]:
             for p in ps:
                 strong = p.find("strong")
@@ -530,7 +530,64 @@ def get_monster_by_name(name: str, monsters: List[Monster]) -> Optional[Monster]
             return m
     return None
 
+# base url for stat block text files
+BASE_URL = "https://froberg5.wpcomstaging.com/wp-content/uploads/2025/11/"
 
+# filenames a.txt through z.txt plus animals.txt
+FILENAMES = [f"{chr(c)}.txt" for c in range(ord("a"), ord("z") + 1)]
+FILENAMES.append("animals.txt")
+
+
+# build full URLs for monster txt files
+def build_monster_urls(
+    base_url: str = BASE_URL,
+    filenames: List[str] = FILENAMES,
+) -> List[str]:
+    return [base_url + fn for fn in filenames]
+
+
+# parse all monster files and return list of monster objects
+def load_all_monsters() -> List["Monster"]:
+    urls = build_monster_urls()
+    all_monsters: List[Monster] = []
+
+    for url in urls:
+        try:
+            print(f"Downloading {url} ...")
+            resp = requests.get(url, timeout=30)
+            if resp.status_code != 200:
+                print(f"  http {resp.status_code}, skipping.")
+                continue
+
+            html = resp.content.decode("utf-8", errors="replace")
+            if "stat-block" not in html:
+                print("  Warning: No 'stat-block' found in this file, skipping.")
+                continue
+
+            monsters = parse_monster_file(html)
+            print(f"  Parsed {len(monsters)} monsters.")
+            all_monsters.extend(monsters)
+
+        except Exception as e:
+            print(f"  Error parsing {url}: {e}")
+
+    print(f"Total monsters loaded: {len(all_monsters)}")
+    return all_monsters
+
+
+# main exec for testing this module directly
+if __name__ == "__main__":
+    all_monsters = load_all_monsters()
+
+    if all_monsters:
+        print("Random sample of 10 monsters:")
+        sample_size = min(10, len(all_monsters))
+        sample = random.sample(all_monsters, sample_size)
+        for m in sample:
+            print(f"  - {m.name}")
+
+
+"""
 # main exec
 if __name__ == "__main__":
     # base url for stat block text files
@@ -579,3 +636,4 @@ if __name__ == "__main__":
 
         for m in sample:
             print(f"  - {m.name}")
+            """

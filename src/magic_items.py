@@ -5,8 +5,8 @@ import pandas as pd
 import openpyxl
 
 
+# load workbook and target sheet
 def load_magic_items(file_path):
-    # load workbook and target sheet
     workbook = openpyxl.load_workbook(file_path, data_only=True)
     sheet = workbook['Items_By_Rarity']
 
@@ -99,8 +99,8 @@ def load_magic_items(file_path):
     return df
 
 
+# list of stat book names
 def book_count(dataframe):
-    # list of stat book names
     book_names = [
         "Manual of Gainful Exercise",
         "Manual of Quickness of Action",
@@ -125,9 +125,8 @@ def book_count(dataframe):
 
     return results
 
-
+# pull unique owner names
 def list_owners_and_items(dataframe):
-    # pull unique owner names
     owners = dataframe['owner'].dropna().unique()
 
     if len(owners) == 0:
@@ -156,7 +155,6 @@ def list_owners_and_items(dataframe):
 
     # filter items for selected owner
     items = dataframe[dataframe['owner'] == owner]
-
     total = len(items)
     carried_total = items['carried'].sum()
     rarity_counts = items['rarity'].value_counts()
@@ -165,7 +163,6 @@ def list_owners_and_items(dataframe):
     print(f"\n=== Items for {owner} ===")
     print(f"Total items: {total}")
     print(f"Carried items: {carried_total}")
-
     print("Items by rarity:")
     for r, c in rarity_counts.items():
         print(f"  {r}: {c}")
@@ -178,8 +175,9 @@ def list_owners_and_items(dataframe):
         print(f"  {row['item_name']}{prop} {tag}")
 
 
+# function that looks through all times and returns alphabetized list of items willing to trade based on rarity without dups
 def generate_trade_list(dataframe):
-    # final rarity names
+    # rarity names
     rarity_map = {
         "common": "Common",
         "uncommon": "Uncommon",
@@ -272,22 +270,22 @@ def generate_rarity_summary_table(dataframe):
     print()
     return table
 
-
+# loads excel file from /data and runs interactive magic item menu
 def main():
     # require file argument
     if len(sys.argv) < 2:
         print("Usage: python magic_items.py <MagicItemList.xlsx>")
         sys.exit(1)
 
-    # resolve paths relative to this script's directory
+    # resolve paths relative to script's directory
     script_dir = os.path.dirname(os.path.abspath(__file__))
     data_dir = os.path.join(script_dir, "..", "data")
 
-    # use only the filename provided; look for it in /data
+    # use filename provided look in /data
     xlsx_filename = os.path.basename(sys.argv[1])
     file_path = os.path.join(data_dir, xlsx_filename)
 
-    # verify the file exists
+    # verify file exists
     if not os.path.exists(file_path):
         print(f"Error: File not found in /data: {file_path}")
         sys.exit(1)

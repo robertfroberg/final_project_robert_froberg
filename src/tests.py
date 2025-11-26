@@ -1,22 +1,14 @@
 # tests.py
-# simple driver to run combat sims and optional charts
-import matplotlib.pyplot as plt
+# simple driver to run combat sims, show text summary, optional charts, and pc magic items
 import argparse
 import os
 from combat_sim import simulate_many_fights
+from magic_items import load_default_magic_items, print_items_for_pc_name
 from visualize_outcomes import (
     load_pc,
     load_monster,
     print_header,
-    run_fights_for_analysis,
-    ensure_output_dir,
-    plot_win_distribution,
-    plot_hits_misses_totals,
-    plot_per_fight_averages,
-    plot_rounds_hist,
-    plot_initiative_vs_outcome,
-    plot_damage_per_attack,
-    plot_damage_per_fight_hist,
+    run_visuals,
 )
 
 
@@ -81,31 +73,6 @@ def print_basic_summary(pc, monster, stats) -> None:
     print(f"Average rounds: {avg_rounds:.2f}")
 
 
-# generate charts using helper functions in visualize_outcomes.py
-def run_visuals(pc, monster, num_fights, seed, outdir, prefix) -> None:
-    print_header("Running visualization analysis ...")
-
-    # run fight analysis for plots
-    stats, fights = run_fights_for_analysis(pc, monster, num_fights, seed)
-
-    # ensure results folder exists
-    ensure_output_dir(outdir)
-
-    # create charts
-    plot_win_distribution(stats, prefix, outdir)
-    plot_hits_misses_totals(stats, prefix, outdir)
-    plot_per_fight_averages(stats, prefix, outdir)
-    plot_rounds_hist(fights, prefix, outdir)
-    plot_initiative_vs_outcome(fights, prefix, outdir)
-    plot_damage_per_attack(stats, prefix, outdir)
-    plot_damage_per_fight_hist(fights, prefix, outdir)
-
-    print(f"Charts written to: {os.path.abspath(outdir)}")
-
-    # display figures
-    plt.show()
-
-
 # main
 def main() -> None:
     parser = argparse.ArgumentParser(description="combat simulation test driver")
@@ -113,15 +80,23 @@ def main() -> None:
     parser.add_argument("-m", "--monster-name", default=None, help="monster name (exact match) or None for random")
     parser.add_argument("-n", "--num-fights", type=int, default=1000, help="number of fights to run")
     parser.add_argument("--seed", type=int, default=None, help="random seed")
-    parser.add_argument("--visualize", action="store_true", help="also generate charts using visual_analysis.py")
+    parser.add_argument("--visualize", action="store_true", help="also generate charts using visualize_outcomes.py")
     parser.add_argument("--outdir", default=None, help="output folder for charts (default: project-level results/)")
     parser.add_argument("--prefix", default="analysis", help="filename prefix for charts")
+    parser.add_argument(
+        "--items-xlsx",
+        default="MagicItemList.xlsx",
+        help="magic item workbook filename (in data/)",
+    )
     args = parser.parse_args()
 
     # default output location ../results/
     if args.outdir is None:
         script_dir = os.path.dirname(__file__)
         args.outdir = os.path.join(script_dir, "..", "results")
+
+    # load magic item data once
+    items_df = load_default_magic_items(args.items_xlsx)
 
     # load PC + monster from xml
     print_header("Loading PC and Monster")
@@ -130,6 +105,11 @@ def main() -> None:
 
     monster = load_monster(args.monster_name)
     print(f"\nLoaded monster: {getattr(monster, 'name', 'Monster')}")
+
+    # print PC magic items if available
+    if items_df is not None:
+        pc_name = getattr(pc, "name", None)
+        print_items_for_pc_name(pc_name, items_df)
 
     # run monte carlo replics
     print_header(f"Running simulation with {args.num_fights} replications ...")

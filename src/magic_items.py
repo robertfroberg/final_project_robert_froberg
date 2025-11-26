@@ -3,6 +3,107 @@ import os
 import re
 import pandas as pd
 import openpyxl
+from difflib import get_close_matches
+
+
+# load default magic item workbook from ../data
+def load_default_magic_items(xlsx_filename="MagicItemList.xlsx"):
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    data_dir = os.path.join(script_dir, "..", "data")
+    file_path = os.path.join(data_dir, xlsx_filename)
+
+    if not os.path.exists(file_path):
+        print(f" Magic item file not found: {file_path}")
+        return None
+
+    try:
+        df = load_magic_items(file_path)
+        return df
+    except Exception as e:
+        print("Error loading magic items:", e)
+        return None
+
+
+# fuzzy match pc name against owner column
+def fuzzy_find_owner(target_name, owner_list, cutoff=0.6):
+    if not target_name:
+        return None
+
+    norm_target = target_name.strip().lower()
+    norm_list = [o.strip().lower() for o in owner_list]
+
+    matches = get_close_matches(norm_target, norm_list, n=1, cutoff=cutoff)
+    if not matches:
+        return None
+
+    idx = norm_list.index(matches[0])
+    return owner_list[idx]
+
+
+# get items for pc name using fuzzy owner match
+def get_items_for_pc_name(pc_name, dataframe, cutoff=0.6):
+    if dataframe is None or dataframe.empty:
+        return None, dataframe
+
+    if not pc_name:
+        return None, dataframe
+
+    owners = dataframe["owner"].dropna().unique()
+    matched_owner = fuzzy_find_owner(pc_name, owners, cutoff=cutoff)
+
+    if matched_owner is None:
+        return None, dataframe
+
+    items = dataframe[dataframe["owner"] == matched_owner]
+    return matched_owner, items
+
+
+# pretty print pc's magic items and summary
+def print_items_for_pc_name(pc_name, dataframe, cutoff=0.6):
+    print_header = lambda title: print("\n" + "=" * 60 + f"\n{title}\n" + "=" * 60)
+
+    print_header("Magic Item List")
+
+    if dataframe is None or dataframe.empty:
+        print("No magic item data loaded.")
+        return
+
+    if not pc_name:
+        print("PC name not found on character object.")
+        return
+
+    matched_owner, items = get_items_for_pc_name(pc_name, dataframe, cutoff=cutoff)
+
+    if matched_owner is None:
+        owners = dataframe["owner"].dropna().unique()
+        print(f"No owner found matching '{pc_name}'.")
+        print("Available owners:", ", ".join(owners))
+        return
+
+    if matched_owner != pc_name:
+        print(f"Matched '{pc_name}' → '{matched_owner}'")
+
+    print(f"Owner: {matched_owner}")
+
+    if items.empty:
+        print("No magic items found for this character.")
+        return
+
+    total = len(items)
+    carried_total = items["carried"].sum()
+    rarity_counts = items["rarity"].value_counts()
+
+    print(f"Total items: {total}")
+    print(f"Carried items: {carried_total}")
+    print("Items by rarity:")
+    for rarity, count in rarity_counts.items():
+        print(f"  {rarity}: {count}")
+
+    print("\nItem List:")
+    for _, row in items.iterrows():
+        tag = "*" if row["carried"] else ""
+        prop = f" ({row['spec_prop']})" if row["spec_prop"] else ""
+        print(f"  {row['item_name']}{prop} {tag}")
 
 
 # load workbook and target sheet

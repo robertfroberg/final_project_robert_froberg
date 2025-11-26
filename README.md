@@ -1,58 +1,108 @@
 # final\_project\_robert\_froberg
 
-Final Project for DSCI510 Fall 2025
+DSCI 510 Final Project
+Dungeons & Dragons Combat Simulator
+Monte Carlo Engine for Modeling 5E Combat Outcomes
 
+INTRODUCTION
+This project implements a Monte Carlo–based combat simulator for Dungeons & Dragons 5th Edition. It integrates three independent datasets—PC XML files, monster stat blocks, and magic item inventories—to build a complete computational model of one-on-one combat.
 
+The simulator runs thousands of automated combats between a Player Character and a Monster. Each combat resolves initiative, attack rolls, hit and miss outcomes, critical hits, recharge abilities, damage dice, and round-by-round combat resolution. The system produces statistical outputs such as win probability, average rounds per fight, hit percentages, damage distributions, and initiative effects.
 
-\# DSCI 510 Final Project – D\&D Combat Simulator
+DATA SOURCES
+This project uses three primary data sources:
 
+Player Character XML File
+Description: Full character sheet including AC, HP, ability scores, attacks, and features.
+Processing Approach: Parsed using a custom XML parser that extracts attack routines, ability modifiers, HP, AC, initiative, and damage formulas.
+Purpose: Provides the PC’s combat statistics.
 
+Monster Stat Blocks (HTML)
+Description: Monster AC, HP, actions, recharge abilities, resistances, saves, and action text.
+Processing Approach: Cleaned and parsed with BeautifulSoup, actions categorized into attacks or saving-throw-based abilities, recharge mechanics implemented, and structured into Monster dataclasses.
+Purpose: Defines enemy combat behavior.
 
-This project implements a Monte Carlo combat simulator for Fifth Edition Dungeons \& Dragons. Character data, magic items, and monster statistics are parsed and combined to estimate win probability, expected rounds of combat, and damage output for different scenarios.
+Magic Item Excel Workbook
+Description: Magic item inventory by character, including rarity, trade status, carried items, and special properties.
+Processing Approach: Loaded with openpyxl and pandas; font colors mapped to rarity; borders determine carried items; bold/italic text indicate rewards and certifications.
+Purpose: Generates inventory summaries, rarity tables, and trade lists.
 
+ANALYSIS
+The analysis includes several components:
 
+Data Cleaning and Integration
+Parsing XML, HTML, and Excel sources; normalizing dice expressions; extracting structured attack routines; and matching PC names to magic item inventories using fuzzy matching.
 
-Local files are used for character and item information, and monster data is retrieved from the Open5E API. The project is organized with separate modules for data parsing, API access, and simulation logic to keep the workflow modular and easy to test.
+Combat Simulation Logic
+A round-based system handles initiative, attack rolls, critical hits, damage, recharge mechanics, and defeat conditions when HP reaches zero.
 
+Monte Carlo Simulation
+The combat engine is repeated independently thousands of times, capturing hits, misses, critical hits, damage totals, rounds fought, and initiative results.
 
+Statistical Summaries
+Win/loss/draw percentages, hit/miss accuracy, average rounds per fight, damage distributions, and average performance of individual attacks.
 
-\## Project Structure
+Visualization
+Charts include win distribution, hits vs. misses, per-fight averages, round distribution histograms, initiative vs. outcome matrices, damage per attack, and damage per fight histograms.
 
-\- character\_parser.py  
+SUMMARY OF RESULTS
+Initial testing shows that PCs with high attack bonuses have significantly higher hit rates. Monster recharge abilities introduce substantial outcome variability. Early-round critical hits heavily influence win probability. Initiative bonuses correlate strongly with overall victory, and defensive builds tend to produce longer but more stable fights.
 
-\- item\_parser.py  
+HOW TO RUN
+Project Structure:
 
-\- open5e\_client.py  
+final_project
+main.py
+README.md
+requirements.txt
+data/
+aeric20.xml
+MagicItemList.xlsx
+results/
+src/
+tests.py
+character_parse.py
+combat_sim.py
+monster_parse.py
+magic_items.py
+visualize_outcomes.py
 
-\- simulator.py  
-
-\- tests.py  
-
-
-
-\## Installation
-
-Use the following command to install required packages:
+Dependencies:
+Install required packages using:
 
 pip install -r requirements.txt
 
+This installs matplotlib, pandas, openpyxl, requests, and beautifulsoup4.
 
+Data Requirements:
+Place the following files in the data folder:
 
-\## Running Tests
+PC XML file
 
-A simple test script is included:
+MagicItemList.xlsx
 
-python tests.py
+Monster stat block HTML files (a.txt through z.txt and animals.txt)
 
+Running the Project:
+From the project root:
 
+python main.py
 
-This runs basic checks for data loading, API connectivity, and a sample combat simulation.
+This executes the equivalent of:
 
+python src/tests.py aeric20.xml -m "Adult Blue Dragon" -n 1000 --visualize
 
+Running Directly from src:
 
-\## Usage
+python tests.py aeric20.xml -m "Adult Blue Dragon" -n 1000 --visualize
 
-After adding your character and item files to the local data folder, you can run simulations to analyze combat performance and compare different configurations.
+Output:
+Simulation summaries print in the console.
+Charts and analysis graphs are saved under the results folder.
+Magic item lists export to MagicItemList_items.csv.
+PC magic item summaries print to the console.
 
+API Keys:
+No API keys are required. All data is loaded from local XML, HTML, and Excel files.
 
-
+I attempted to use the Google Drive data workaround but Python couldn’t access my Google Drive files because, on my government computer, Google Drive cannot be mapped as a local file path without installing the Google Drive desktop application. I do not have permission to install, and when I asked to install my request to do so was denied. Hence the website hosting workaround.

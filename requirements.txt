@@ -1,5 +1,6 @@
 requests
-python-dotenv
 numpy
 pandas
 matplotlib
+openpyxl
+beautifulsoup4

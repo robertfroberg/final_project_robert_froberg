@@ -368,6 +368,26 @@ def plot_damage_per_fight_hist(fights: List[Dict[str, Any]], prefix: str, outdir
         plt.savefig(os.path.join(outdir, f"{prefix}_damage_per_fight_hist.png"), dpi=150)
 
 
+# wrapper to run analysis and generate all charts
+def run_visuals(pc, monster, num_fights, seed, outdir, prefix) -> None:
+    print_header("Running visualization analysis ...")
+
+    stats, fights = run_fights_for_analysis(pc, monster, num_fights, seed)
+
+    ensure_output_dir(outdir)
+
+    plot_win_distribution(stats, prefix, outdir)
+    plot_hits_misses_totals(stats, prefix, outdir)
+    plot_per_fight_averages(stats, prefix, outdir)
+    plot_rounds_hist(fights, prefix, outdir)
+    plot_initiative_vs_outcome(fights, prefix, outdir)
+    plot_damage_per_attack(stats, prefix, outdir)
+    plot_damage_per_fight_hist(fights, prefix, outdir)
+
+    print(f"Charts written to: {os.path.abspath(outdir)}")
+    plt.show()
+
+
 # main
 def main() -> None:
     # default output directory one level up in /results

@@ -57,7 +57,6 @@ README.md
 requirements.txt
 data/
 aeric20.xml
-MagicItemList.xlsx
 results/
 src/
 tests.py
@@ -66,6 +65,7 @@ combat_sim.py
 monster_parse.py
 magic_items.py
 visualize_outcomes.py
+config.py
 
 Dependencies:
 Install required packages using:
@@ -75,26 +75,14 @@ pip install -r requirements.txt
 This installs matplotlib, pandas, openpyxl, requests, and beautifulsoup4.
 
 Data Requirements:
-Place the following files in the data folder:
+Place the following file in the data folder:
 
 PC XML file
-
-MagicItemList.xlsx
-
-Monster stat block HTML files (a.txt through z.txt and animals.txt)
 
 Running the Project:
 From the project root:
 
 python main.py
-
-This executes the equivalent of:
-
-python src/tests.py aeric20.xml -m "Adult Blue Dragon" -n 1000 --visualize
-
-Running Directly from src:
-
-python tests.py aeric20.xml -m "Adult Blue Dragon" -n 1000 --visualize
 
 Output:
 Simulation summaries print in the console.
@@ -103,6 +91,6 @@ Magic item lists export to MagicItemList_items.csv.
 PC magic item summaries print to the console.
 
 API Keys:
-No API keys are required. All data is loaded from local XML, HTML, and Excel files.
+No API keys are required. All data except the XML file is loaded from an internet site.
 
-I attempted to use the Google Drive data workaround but Python couldn’t access my Google Drive files because, on my government computer, Google Drive cannot be mapped as a local file path without installing the Google Drive desktop application. I do not have permission to install, and when I asked to install my request to do so was denied. Hence the website hosting workaround.
+I attempted to use the Google Drive data workaround but Python couldn’t access my Google Drive files because, on my government computer, it needs to scan the files so when python attempts to download the file it gets an html like page with an error message. Since I cannot test the code without the government machine I feel it was better to have a project I knew that worked rather than a project that might work. I jully understand if points are deducted for my choice. I loaded the non-XMLs on the website I paid for a single month of hosting on to make this project work but XML files are not allowed to be hosted on their site.

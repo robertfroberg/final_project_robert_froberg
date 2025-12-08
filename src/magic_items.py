@@ -4,23 +4,40 @@ import re
 import pandas as pd
 import openpyxl
 from difflib import get_close_matches
+import requests
+
+from config import DATA_DIR, MAGIC_ITEM_URL
 
 
-# load default magic item workbook from ../data
+# download magic item workbook from url into data folder
+def download_magic_items_xlsx(local_path):
+    os.makedirs(os.path.dirname(local_path), exist_ok=True)
+    print(f"Downloading magic item workbook from URL to: {local_path}")
+    with requests.get(MAGIC_ITEM_URL, stream=True) as r:
+        r.raise_for_status()
+        with open(local_path, "wb") as f:
+            for chunk in r.iter_content(chunk_size=8192):
+                if chunk:
+                    f.write(chunk)
+    return local_path
+
+
+# load default magic item workbook from data folder, downloading if needed
 def load_default_magic_items(xlsx_filename="MagicItemList.xlsx"):
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    data_dir = os.path.join(script_dir, "..", "data")
-    file_path = os.path.join(data_dir, xlsx_filename)
+    file_path = os.path.join(DATA_DIR, xlsx_filename)
 
     if not os.path.exists(file_path):
-        print(f" Magic item file not found: {file_path}")
-        return None
+        try:
+            download_magic_items_xlsx(file_path)
+        except Exception as e:
+            print(f" Error downloading magic item file: {e}")
+            return None
 
     try:
         df = load_magic_items(file_path)
         return df
     except Exception as e:
-        print("Error loading magic items:", e)
+        print("error loading magic items:", e)
         return None
 
 
@@ -58,7 +75,7 @@ def get_items_for_pc_name(pc_name, dataframe, cutoff=0.6):
     return matched_owner, items
 
 
-# pretty print pc's magic items and summary
+# pretty print pc magic items and summary
 def print_items_for_pc_name(pc_name, dataframe, cutoff=0.6):
     print_header = lambda title: print("\n" + "=" * 60 + f"\n{title}\n" + "=" * 60)
 
@@ -109,37 +126,41 @@ def print_items_for_pc_name(pc_name, dataframe, cutoff=0.6):
 # load workbook and target sheet
 def load_magic_items(file_path):
     workbook = openpyxl.load_workbook(file_path, data_only=True)
-    sheet = workbook['Items_By_Rarity']
+    sheet = workbook["Items_By_Rarity"]
 
-    # prepare dataframe columns
-    df = pd.DataFrame(columns=[
-        'owner', 'item_name', 'spec_prop', 'rarity',
-        'carried', 'trade_will', 'reward', 'certed'
-    ])
+    df = pd.DataFrame(
+        columns=[
+            "owner",
+            "item_name",
+            "spec_prop",
+            "rarity",
+            "carried",
+            "trade_will",
+            "reward",
+            "certed",
+        ]
+    )
 
-    # loop through owner columns
+    # loop owner columns
     for col_index in range(2, sheet.max_column + 1):
         owner = sheet.cell(row=3, column=col_index).value
 
-        # loop through item rows
+        # loop item rows
         for row_index in range(4, sheet.max_row + 1):
             item_value = sheet.cell(row=row_index, column=col_index).value
             spec_prop = ""
 
-            # skip empty cells
             if pd.isna(item_value):
                 continue
 
-            # pull special property text inside parentheses
             text = str(item_value)
-            match = re.search(r'\((.*?)\)', text)
+            match = re.search(r"\((.*?)\)", text)
             if match:
                 spec_prop = match.group(1)
                 item_name = text.replace(f"({spec_prop})", "").strip()
             else:
                 item_name = text
 
-            # rarity based on font color
             font = sheet.cell(row=row_index, column=col_index).font
             rgb = getattr(font.color, "rgb", None)
 
@@ -156,7 +177,6 @@ def load_magic_items(file_path):
             else:
                 rarity = "Common"
 
-            # trade willingness via fill color index
             fill = sheet.cell(row=row_index, column=col_index).fill.start_color.index
             if fill == 2:
                 trade_will = "Untradeable"
@@ -168,34 +188,34 @@ def load_magic_items(file_path):
                 trade_will = "Green"
             else:
                 trade_will = "FAILED"
-                print(f"[WARN] Unexpected fill index ({fill}) at row {row_index}, col {col_index}")
+                print(f"[WARN] unexpected fill index ({fill}) at row {row_index}, col {col_index}")
 
-            # carried = full thin border box
             borders = sheet.cell(row=row_index, column=col_index).border
             carried = (
-                borders.top.style == "thin" and
-                borders.bottom.style == "thin" and
-                borders.left.style == "thin" and
-                borders.right.style == "thin"
+                borders.top.style == "thin"
+                and borders.bottom.style == "thin"
+                and borders.left.style == "thin"
+                and borders.right.style == "thin"
             )
 
-            # reward = italic text
             reward = font.italic
-
-            # certed = bold text
             certed = font.bold
 
-            # save item entry
             df.loc[len(df)] = [
-                owner, item_name, spec_prop, rarity,
-                carried, trade_will, reward, certed
+                owner,
+                item_name,
+                spec_prop,
+                rarity,
+                carried,
+                trade_will,
+                reward,
+                certed,
             ]
 
-    # export csv for review
     base_name, _ = os.path.splitext(file_path)
     csv_path = base_name + "_items.csv"
     df.to_csv(csv_path, index=False)
-    print("DataFrame saved to:", csv_path)
+    print("dataframe saved to:", csv_path)
 
     return df
 
@@ -208,17 +228,16 @@ def book_count(dataframe):
         "Manual of Bodily Health",
         "Tome of Clear Thought",
         "Tome of Understanding",
-        "Tome of Leadership and Influence"
+        "Tome of Leadership and Influence",
     ]
 
     print("\n=== Book Count (Tradeable Only) ===")
     results = {}
 
-    # count each book that is not untradeable
     for name in book_names:
         count = dataframe[
-            (dataframe['item_name'].str.contains(name, na=False)) &
-            (dataframe['trade_will'] != "Untradeable")
+            (dataframe["item_name"].str.contains(name, na=False))
+            & (dataframe["trade_will"] != "Untradeable")
         ].shape[0]
 
         results[name] = count
@@ -226,20 +245,19 @@ def book_count(dataframe):
 
     return results
 
+
 # pull unique owner names
 def list_owners_and_items(dataframe):
-    owners = dataframe['owner'].dropna().unique()
+    owners = dataframe["owner"].dropna().unique()
 
     if len(owners) == 0:
         print("No owners found.")
         return
 
-    # show owner menu
     print("\n=== Owners ===")
     for i, owner in enumerate(owners, 1):
         print(f"{i}. {owner}")
 
-    # accept name or number
     while True:
         choice = input("\nSelect a character (name or number): ").strip()
 
@@ -254,13 +272,11 @@ def list_owners_and_items(dataframe):
 
         print("Invalid selection. Try again.")
 
-    # filter items for selected owner
-    items = dataframe[dataframe['owner'] == owner]
+    items = dataframe[dataframe["owner"] == owner]
     total = len(items)
-    carried_total = items['carried'].sum()
-    rarity_counts = items['rarity'].value_counts()
+    carried_total = items["carried"].sum()
+    rarity_counts = items["rarity"].value_counts()
 
-    # item summary
     print(f"\n=== Items for {owner} ===")
     print(f"Total items: {total}")
     print(f"Carried items: {carried_total}")
@@ -268,33 +284,29 @@ def list_owners_and_items(dataframe):
     for r, c in rarity_counts.items():
         print(f"  {r}: {c}")
 
-    # full item list
     print("\nItem List:")
     for _, row in items.iterrows():
-        tag = "*" if row['carried'] else ""
-        prop = f" ({row['spec_prop']})" if row['spec_prop'] else ""
+        tag = "*" if row["carried"] else ""
+        prop = f" ({row['spec_prop']})" if row["spec_prop"] else ""
         print(f"  {row['item_name']}{prop} {tag}")
 
 
-# function that looks through all times and returns alphabetized list of items willing to trade based on rarity without dups
+# generate alphabetized trade list without duplicates
 def generate_trade_list(dataframe):
-    # rarity names
     rarity_map = {
         "common": "Common",
         "uncommon": "Uncommon",
         "rare": "Rare",
         "very rare": "Very Rare",
-        "legendary": "Legendary"
+        "legendary": "Legendary",
     }
 
-    # trade tiers that include lower tiers
     trade_map = {
-        "red":   ["Red", "Amber", "Green"],
+        "red": ["Red", "Amber", "Green"],
         "amber": ["Amber", "Green"],
-        "green": ["Green"]
+        "green": ["Green"],
     }
 
-    # validate menu input
     def ask(prompt, options):
         while True:
             val = input(prompt).strip().lower()
@@ -308,29 +320,24 @@ def generate_trade_list(dataframe):
 
     print("\n=== Trade List Generator ===")
 
-    # rarity choice
     rarity_opts = list(rarity_map.keys())
     rarity_sel = ask(f"Select rarity ({', '.join(rarity_opts)}): ", rarity_opts)
     rarity_label = rarity_map[rarity_sel]
 
-    # trade tier choice
     trade_opts = list(trade_map.keys())
     trade_sel = ask(f"Select trade tier ({', '.join(trade_opts)}): ", trade_opts)
     allowed_tiers = trade_map[trade_sel]
 
-    # filter by rarity and trade tier
     subset = dataframe[
-        (dataframe['rarity'] == rarity_label) &
-        (dataframe['trade_will'].isin(allowed_tiers))
+        (dataframe["rarity"] == rarity_label)
+        and (dataframe["trade_will"].isin(allowed_tiers))
     ]
 
-    # collect unique item names
     names = set()
     for _, row in subset.iterrows():
-        prop = f" ({row['spec_prop']})" if row['spec_prop'] else ""
+        prop = f" ({row['spec_prop']})" if row["spec_prop"] else ""
         names.add(f"{row['item_name']}{prop}")
 
-    # output result
     print()
     if names:
         print(f"{rarity_label} Trade Items ({', '.join(allowed_tiers)}):")
@@ -341,29 +348,32 @@ def generate_trade_list(dataframe):
 
 
 def generate_rarity_summary_table(dataframe):
-    # count items by rarity
-    total = dataframe['rarity'].value_counts().sort_index()
-    carried = dataframe[dataframe['carried']]['rarity'].value_counts().sort_index()
-    untrade = dataframe[dataframe['trade_will'] == "Untradeable"]['rarity'].value_counts().sort_index()
+    total = dataframe["rarity"].value_counts().sort_index()
+    carried = dataframe[dataframe["carried"]]["rarity"].value_counts().sort_index()
+    untrade = (
+        dataframe[dataframe["trade_will"] == "Untradeable"]["rarity"]
+        .value_counts()
+        .sort_index()
+    )
 
-    # build summary dataframe
-    table = pd.DataFrame({
-        "Total": total,
-        "Red": dataframe[dataframe['trade_will'] == "Red"]['rarity'].value_counts(),
-        "Amber": dataframe[dataframe['trade_will'] == "Amber"]['rarity'].value_counts(),
-        "Green": dataframe[dataframe['trade_will'] == "Green"]['rarity'].value_counts(),
-        "Untradeable": untrade,
-        "Carried": carried,
-    }).fillna(0).astype(int)
+    table = pd.DataFrame(
+        {
+            "Total": total,
+            "Red": dataframe[dataframe["trade_will"] == "Red"]["rarity"].value_counts(),
+            "Amber": dataframe[dataframe["trade_will"] == "Amber"]["rarity"].value_counts(),
+            "Green": dataframe[dataframe["trade_will"] == "Green"]["rarity"].value_counts(),
+            "Untradeable": untrade,
+            "Carried": carried,
+        }
+    ).fillna(0).astype(int)
 
-    # add totals row
     table.loc["Sum"] = [
         table["Total"].sum(),
         table["Red"].sum(),
         table["Amber"].sum(),
         table["Green"].sum(),
         table["Untradeable"].sum(),
-        table["Carried"].sum()
+        table["Carried"].sum(),
     ]
 
     print("\n=== Rarity Summary Table ===")
@@ -371,34 +381,29 @@ def generate_rarity_summary_table(dataframe):
     print()
     return table
 
-# loads excel file from /data and runs interactive magic item menu
+
+# interactive tool entry point
 def main():
-    # require file argument
     if len(sys.argv) < 2:
-        print("Usage: python magic_items.py <MagicItemList.xlsx>")
+        print("usage: python magic_items.py <MagicItemList.xlsx>")
         sys.exit(1)
 
-    # resolve paths relative to script's directory
     script_dir = os.path.dirname(os.path.abspath(__file__))
     data_dir = os.path.join(script_dir, "..", "data")
 
-    # use filename provided look in /data
     xlsx_filename = os.path.basename(sys.argv[1])
     file_path = os.path.join(data_dir, xlsx_filename)
 
-    # verify file exists
     if not os.path.exists(file_path):
-        print(f"Error: File not found in /data: {file_path}")
+        print(f"error: file not found in /data: {file_path}")
         sys.exit(1)
 
-    # load file into dataframe
     try:
         df = load_magic_items(file_path)
     except Exception as e:
-        print("Error loading file:", e)
+        print("error loading file:", e)
         sys.exit(1)
 
-    # main menu loop
     while True:
         print("\n=== Magic Item Tool ===")
         print("1. Book count")

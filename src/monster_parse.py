@@ -1,10 +1,14 @@
+# monster_parse.py
+
 # imports
 import re
-from dataclasses import dataclass, field
-from typing import List, Optional
 import random
 import requests
+from dataclasses import dataclass, field
+from typing import List, Optional
 from bs4 import BeautifulSoup
+
+from config import MONSTER_BASE_URL, MONSTER_FILENAMES
 
 
 # data classes
@@ -34,7 +38,7 @@ class Action:
     text: str
     category: Optional[str] = None
     usage: Optional[str] = None
-    recharge: Optional[str] = None   # e.g. "5–6" or "6"
+    recharge: Optional[str] = None   # ex "5–6" or "6"
 
     attack_bonus: Optional[int] = None
     damage_dice: Optional[str] = None
@@ -48,16 +52,13 @@ class Action:
 
 @dataclass
 class Monster:
-    # monster name
     name: str
 
-    # type and alignment
     mtype: Optional[str] = None
     size: Optional[str] = None
     creature_type: Optional[str] = None
     alignment: Optional[str] = None
 
-    # basic stats
     ac: Optional[int] = None
     initiative: Optional[int] = None
     hp: Optional[int] = None
@@ -71,7 +72,6 @@ class Monster:
     pb: Optional[str] = None
     passive_perception: Optional[int] = None
 
-    # ability scores and saves
     STR_score: Optional[str] = None
     STR_mod: Optional[str] = None
     STR_save: Optional[str] = None
@@ -91,17 +91,15 @@ class Monster:
     CHA_mod: Optional[str] = None
     CHA_save: Optional[str] = None
 
-    # structured sections
     traits: List[Trait] = field(default_factory=list)
     actions: List[Action] = field(default_factory=list)
     bonus_actions: List[BonusAction] = field(default_factory=list)
     legendary_actions: List[LegendaryAction] = field(default_factory=list)
 
 
-# parse traits section inside statblock
+# parse traits
 def parse_traits(block) -> List[Trait]:
     traits: List[Trait] = []
-
     header = block.find("p", class_="monster-header", string=re.compile("Traits", re.I))
     if not header:
         return traits
@@ -126,7 +124,7 @@ def parse_traits(block) -> List[Trait]:
     return traits
 
 
-# parse actions section inside stat block
+# parse actions
 def parse_actions(block):
     actions: List[Action] = []
 
@@ -145,33 +143,25 @@ def parse_actions(block):
         if not strong:
             continue
 
-        # remove extra characters
         raw = strong.get_text(strip=True)
         raw_no_dot = raw.rstrip(".")
 
-        # pull out (...) from name line
         parens = re.findall(r"\(([^)]+)\)", raw_no_dot)
-
-        # strip all (...) from base name
         base_name = re.sub(r"\s*\([^)]*\)", "", raw_no_dot).strip()
 
         name = base_name
-        usage: Optional[str] = None
-        recharge: Optional[str] = None
+        usage = None
+        recharge = None
 
         for part in parens:
-            # parse recharge logic
             if re.search(r"recharge", part, re.I):
                 m_rec = re.search(r"recharge\s*(.+)", part, re.I)
                 recharge = m_rec.group(1).strip(" .") if m_rec else part.strip(" .")
             else:
-                # parse times usable per day
                 usage = part.strip(" .")
 
-        # body text everything after bold name line
         body = re.sub(r"^" + re.escape(raw), "", txt, count=1).strip()
 
-        # classify action
         if re.search(r"Attack Roll", txt):
             category = "attack"
         elif re.search(r"Saving Throw", txt):
@@ -179,13 +169,10 @@ def parse_actions(block):
         else:
             category = "other"
 
-        # attack extraction
         m_hit = re.search(r"Attack(?: Roll)?:\s*([+-]\d+)", txt)
         m_dmg = re.search(r"\(([\dd+\-\s]+)\)\s*([A-Za-z]+) damage", txt)
         m_reach = re.search(r"reach\s+([0-9]+(?:\s*ft\.)?)", txt)
         m_range = re.search(r"range\s+([0-9/ ]+ft\.)", txt)
-
-        # save extraction
         m_save = re.search(r"([A-Za-z]+)\s+Saving Throw:\s*DC\s*(\d+)", txt)
 
         actions.append(
@@ -208,7 +195,7 @@ def parse_actions(block):
     return actions
 
 
-# parse bonus actions inside statblock
+# parse bonus actions
 def parse_bonus_actions(block) -> List[BonusAction]:
     bonus: List[BonusAction] = []
 
@@ -229,9 +216,8 @@ def parse_bonus_actions(block) -> List[BonusAction]:
 
         raw = strong.get_text(strip=True)
         name = raw.rstrip(".")
-        usage: Optional[str] = None
+        usage = None
 
-        # pull out usage like
         m_use = re.search(r"\(([^)]+)\)$", name)
         if m_use:
             usage = m_use.group(1)
@@ -243,7 +229,7 @@ def parse_bonus_actions(block) -> List[BonusAction]:
     return bonus
 
 
-# parse legendary actions inside stat block
+# parse legendary actions
 def parse_legendary_actions(block) -> List[LegendaryAction]:
     legs: List[LegendaryAction] = []
 
@@ -264,9 +250,8 @@ def parse_legendary_actions(block) -> List[LegendaryAction]:
 
         raw = strong.get_text(strip=True)
         name = raw.rstrip(".")
-        usage: Optional[str] = None
+        usage = None
 
-        # pull out usage
         m_use = re.search(r"\(([^)]+)\)$", name)
         if m_use:
             usage = m_use.group(1)
@@ -278,30 +263,27 @@ def parse_legendary_actions(block) -> List[LegendaryAction]:
     return legs
 
 
-# main monster parser
+# main stat block parser
 def parse_monster_file(html: str) -> List[Monster]:
     soup = BeautifulSoup(html, "html.parser")
     monsters: List[Monster] = []
 
-    # find heading for start of monster using h2/h3/h4
     for block in soup.find_all("div", class_=lambda c: c and "stat-block" in c):
-        header = block.find(["h2", "h3", "h4"], class_=re.compile("heading-anchor")) or \
-                 block.find(["h2", "h3", "h4"])
+        header = block.find(["h2", "h3", "h4"], class_=re.compile("heading-anchor")) \
+                 or block.find(["h2", "h3", "h4"])
 
         if not header:
             continue
 
-        # get monster name from tooltip link or header text
         name_tag = header.select_one("a.monster-tooltip") or header.find("a")
         name = name_tag.get_text(strip=True) if name_tag else header.get_text(" ", strip=True)
 
-        # get size/type/alignment data
         type_p = header.find_next("p")
         mtype = type_p.get_text(" ", strip=True) if type_p else None
 
-        size: Optional[str] = None
-        creature_type: Optional[str] = None
-        alignment: Optional[str] = None
+        size = None
+        creature_type = None
+        alignment = None
 
         if mtype:
             parts = mtype.split(",", 1)
@@ -316,12 +298,11 @@ def parse_monster_file(html: str) -> List[Monster]:
                 size = words[0]
                 creature_type = " ".join(words[1:])
 
-        # read <p> tags inside stat block for core stats
         ps = block.find_all("p")
 
-        ac: Optional[int] = None
-        init: Optional[int] = None
-        hp: Optional[int] = None
+        ac = None
+        init = None
+        hp = None
 
         for p in ps:
             strong = p.find("strong")
@@ -338,8 +319,7 @@ def parse_monster_file(html: str) -> List[Monster]:
                 m_hp = re.search(r"HP\s+(\d+)", txt)
                 hp = int(m_hp.group(1)) if m_hp else None
 
-        # helper extracts oneliners like speed skills etc
-        def extract_line(key: str) -> Optional[str]:
+        def extract_line(key: str):
             for p in ps:
                 strong = p.find("strong")
                 if strong and strong.get_text(strip=True) == key:
@@ -347,7 +327,6 @@ def parse_monster_file(html: str) -> List[Monster]:
                     return re.sub(rf"^{key}\s*", "", full).strip()
             return None
 
-        # extract core lines
         speed = extract_line("Speed")
         skills = extract_line("Skills")
         resistances = extract_line("Resistances")
@@ -356,18 +335,16 @@ def parse_monster_file(html: str) -> List[Monster]:
         languages = extract_line("Languages")
         cr_text = extract_line("CR")
 
-        pb: Optional[str] = None
-        cr: Optional[str] = None
+        pb = None
+        cr = None
 
-        # parse CR line for CR and PB
         if cr_text:
             m_pb = re.search(r"PB\s*([+-]\d+)", cr_text)
             pb = m_pb.group(1) if m_pb else None
             m_cr = re.search(r"([0-9]+(?:/[0-9]+)?)", cr_text)
             cr = m_cr.group(1) if m_cr else None
 
-        # parse passive percep out of senses
-        passive: Optional[int] = None
+        passive = None
         if senses:
             m_pass = re.search(r"Passive Perception\s*(\d+)", senses)
             if m_pass:
@@ -376,14 +353,12 @@ def parse_monster_file(html: str) -> List[Monster]:
                 if senses == "":
                     senses = None
 
-        # set up ability fields
         ability_fields = {
             f"{abbr}_{field}": None
             for abbr in ("STR", "DEX", "CON", "INT", "WIS", "CHA")
             for field in ("score", "mod", "save")
         }
 
-        # parse physical and mental ability tables
         for tbl_class in ("physical abilities-saves", "mental abilities-saves"):
             tbl = block.find("table", class_=tbl_class)
             if tbl and tbl.tbody:
@@ -400,13 +375,11 @@ def parse_monster_file(html: str) -> List[Monster]:
                         ability_fields[f"{abbr}_mod"] = cells[1].get_text(" ", strip=True)
                         ability_fields[f"{abbr}_save"] = cells[2].get_text(" ", strip=True)
 
-        # parse sections including traits, actions, bonus actions, legendary actions
         traits = parse_traits(block)
         actions = parse_actions(block)
         bonus_actions = parse_bonus_actions(block)
         legendary_actions = parse_legendary_actions(block)
 
-        # build monster object
         monster = Monster(
             name=name,
             mtype=mtype,
@@ -431,7 +404,6 @@ def parse_monster_file(html: str) -> List[Monster]:
             legendary_actions=legendary_actions,
         )
 
-        # attach ability scores and saves to monster
         for key, value in ability_fields.items():
             setattr(monster, key, value)
 
@@ -440,7 +412,7 @@ def parse_monster_file(html: str) -> List[Monster]:
     return monsters
 
 
-# pretty print readable stat block for one monstre
+# pretty print monster
 def pretty_print_monster(m: Monster) -> None:
     print("=" * 70)
     print(m.name)
@@ -499,30 +471,25 @@ def pretty_print_monster(m: Monster) -> None:
             if a.usage:
                 tags.append(a.usage)
 
-            if tags:
-                print(f"  • {a.name} ({'; '.join(tags)}): {a.text}")
-            else:
-                print(f"  • {a.name}: {a.text}")
+            tag_text = f" ({'; '.join(tags)})" if tags else ""
+            print(f"  • {a.name}{tag_text}: {a.text}")
 
     if m.bonus_actions:
         print("\nBonus Actions:")
         for b in m.bonus_actions:
-            if b.usage:
-                print(f"  • {b.name} ({b.usage}): {b.text}")
-            else:
-                print(f"  • {b.name}: {b.text}")
+            tag = f" ({b.usage})" if b.usage else ""
+            print(f"  • {b.name}{tag}: {b.text}")
 
     if m.legendary_actions:
         print("\nLegendary Actions:")
         for l in m.legendary_actions:
-            if l.usage:
-                print(f"  • {l.name} ({l.usage}): {l.text}")
-            else:
-                print(f"  • {l.name}: {l.text}")
+            tag = f" ({l.usage})" if l.usage else ""
+            print(f"  • {l.name}{tag}: {l.text}")
 
     print("=" * 70)
 
-# find monster with case-insensitive exact name match
+
+# find monster by exact name
 def get_monster_by_name(name: str, monsters: List[Monster]) -> Optional[Monster]:
     target = name.lower().strip()
     for m in monsters:
@@ -530,24 +497,17 @@ def get_monster_by_name(name: str, monsters: List[Monster]) -> Optional[Monster]
             return m
     return None
 
-# base url for stat block text files
-BASE_URL = "https://froberg5.wpcomstaging.com/wp-content/uploads/2025/11/"
-
-# filenames a.txt through z.txt plus animals.txt
-FILENAMES = [f"{chr(c)}.txt" for c in range(ord("a"), ord("z") + 1)]
-FILENAMES.append("animals.txt")
-
 
 # build full URLs for monster txt files
 def build_monster_urls(
-    base_url: str = BASE_URL,
-    filenames: List[str] = FILENAMES,
+    base_url: str = MONSTER_BASE_URL,
+    filenames: List[str] = MONSTER_FILENAMES,
 ) -> List[str]:
     return [base_url + fn for fn in filenames]
 
 
-# parse all monster files and return list of monster objects
-def load_all_monsters() -> List["Monster"]:
+# download + parse all monsters
+def load_all_monsters() -> List[Monster]:
     urls = build_monster_urls()
     all_monsters: List[Monster] = []
 
@@ -575,65 +535,11 @@ def load_all_monsters() -> List["Monster"]:
     return all_monsters
 
 
-# main exec for testing this module directly
+# main exec for debugging
 if __name__ == "__main__":
     all_monsters = load_all_monsters()
-
     if all_monsters:
         print("Random sample of 10 monsters:")
-        sample_size = min(10, len(all_monsters))
-        sample = random.sample(all_monsters, sample_size)
+        sample = random.sample(all_monsters, min(10, len(all_monsters)))
         for m in sample:
             print(f"  - {m.name}")
-
-
-"""
-# main exec
-if __name__ == "__main__":
-    # base url for stat block text files
-    base_url = "https://froberg5.wpcomstaging.com/wp-content/uploads/2025/11/"
-
-    # build list of filenames a.txt through z.txt plus animals.txt
-    filenames = [f"{chr(c)}.txt" for c in range(ord("a"), ord("z") + 1)]
-    filenames.append("animals.txt")
-
-    # join base url and filenames into full urls
-    urls = [base_url + fn for fn in filenames]
-
-    # list holding all monsters from all files
-    all_monsters: List[Monster] = []
-
-    # download and parse files
-    for url in urls:
-        try:
-            print(f"Downloading {url} ...")
-            resp = requests.get(url, timeout=30)
-            if resp.status_code != 200:
-                print(f"  http {resp.status_code}, skipping.")
-                continue
-
-            # decode utf-8 and keep going even if bytes are weird
-            html = resp.content.decode("utf-8", errors="replace")
-            if "stat-block" not in html:
-                print("  Warning: No 'stat-block' found in this file, skipping.")
-                continue
-
-            monsters = parse_monster_file(html)
-            print(f"  Parsed {len(monsters)} monsters.")
-            all_monsters.extend(monsters)
-        except Exception as e:
-            print(f"  Error parsing {url}: {e}")
-
-    # final summary of how many monsters were loaded
-    print(f"Total monsters loaded: {len(all_monsters)}")
-
-    # show random sample of 10 monsters
-    if all_monsters:
-        print("Random sample of 10 monsters:")
-
-        sample_size = min(10, len(all_monsters))
-        sample = random.sample(all_monsters, sample_size)
-
-        for m in sample:
-            print(f"  - {m.name}")
-            """

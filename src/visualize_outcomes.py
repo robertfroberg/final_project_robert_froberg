@@ -1,28 +1,30 @@
 # visualize_outcomes.py
-# charts and graphics for the combat simulator
+# charts and graphics for combat simulator
+
 import argparse
 import os
 import random
 from collections import defaultdict
 from typing import Any, Dict, List, Tuple
+
 import matplotlib.pyplot as plt
 from character_parse import parse_character
 import monster_parse
 from combat_sim import simulate_single_fight
 
 
-# all parsed monsters
+# cache for parsed monsters
 ALL_MONSTERS: List[Any] = []
 
 
-# formatted section header for screen output readablitiy
+# print simple section header
 def print_header(title: str) -> None:
     print("\n" + "=" * 60)
     print(title)
     print("=" * 60)
 
 
-# one-time monster load using monster_parse
+# one-time monster load
 def ensure_monsters_loaded() -> None:
     global ALL_MONSTERS
     if ALL_MONSTERS:
@@ -32,34 +34,34 @@ def ensure_monsters_loaded() -> None:
     ALL_MONSTERS = monster_parse.load_all_monsters()
 
 
-# look up one monster by name (case-insensitive exact match)
+# look up monster by name
 def get_monster_by_name_from_all(name: str) -> Any:
     ensure_monsters_loaded()
     m = monster_parse.get_monster_by_name(name, ALL_MONSTERS)
     if m is None:
-        raise ValueError(f"Monster '{name}' not found")
+        raise ValueError(f"monster '{name}' not found")
     return m
 
 
-# pick random monster from full list
+# pick random monster
 def get_random_monster_from_all() -> Any:
     ensure_monsters_loaded()
     return random.choice(ALL_MONSTERS)
 
 
-# parse pc xml looks inside /data
+# load pc from xml filename in /data
 def load_pc(pc_xml: str) -> Any:
     return parse_character(pc_xml)
 
 
-# load chosen monster or random if name is none
+# load chosen monster or random
 def load_monster(monster_name: str | None) -> Any:
     if monster_name:
         return get_monster_by_name_from_all(monster_name)
     return get_random_monster_from_all()
 
 
-# run n_fights single combats and build stats for plotting
+# run n_fights and collect stats
 def run_fights_for_analysis(
     pc: Any,
     monster: Any,
@@ -67,38 +69,30 @@ def run_fights_for_analysis(
     seed: int | None = None,
 ) -> tuple[Dict[str, Any], List[Dict[str, Any]]]:
 
-    # rng for reproducible monte carlo sim
     rng = random.Random(seed) if seed is not None else random.Random()
 
-    # store per fight results
     fights: List[Dict[str, Any]] = []
 
-    # global tallies
     wins = {"pc": 0, "monster": 0, "draw": 0}
     init_wins = {"pc": 0, "monster": 0}
     hits = {"pc": 0, "monster": 0}
     misses = {"pc": 0, "monster": 0}
     total_rounds = 0
 
-    # damage samples keyed by (side, attack_name)
     damage_samples: Dict[Tuple[str, str], List[int]] = defaultdict(list)
 
-    # per fight totals to compute averages
     sum_attacks_per_fight = {"pc": 0, "monster": 0}
     sum_hits_per_fight = {"pc": 0, "monster": 0}
     sum_misses_per_fight = {"pc": 0, "monster": 0}
     sum_hit_rate_per_fight = {"pc": 0.0, "monster": 0.0}
 
-    # main sim loop
     for _ in range(n_fights):
         result = simulate_single_fight(pc, monster, rng=rng)
         fights.append(result)
 
-        # winner tally
         winner = result["winner"]
         wins[winner] += 1
 
-        # initiative tally
         if result["pc_init"] > result["monster_init"]:
             init_wins["pc"] += 1
         else:
@@ -106,7 +100,6 @@ def run_fights_for_analysis(
 
         total_rounds += result["rounds"]
 
-        # hit/miss and per fight tracking
         for side in ("pc", "monster"):
             side_hits = result["hits"].get(side, 0)
             side_misses = result["misses"].get(side, 0)
@@ -122,23 +115,23 @@ def run_fights_for_analysis(
             if side_attacks > 0:
                 sum_hit_rate_per_fight[side] += side_hits / side_attacks
 
-        # damage samples for each attack name
         for key, samples in result["attack_damage_by_name"].items():
             damage_samples[key].extend(samples)
 
-    # average damage per attack across all fights
     avg_damage_per_attack = {
         key: (sum(vals) / len(vals) if vals else 0.0)
         for key, vals in damage_samples.items()
     }
 
-    # per fight averages if any fights were run
     if n_fights > 0:
         avg_rounds = total_rounds / n_fights
         avg_attacks_per_fight = {s: sum_attacks_per_fight[s] / n_fights for s in ("pc", "monster")}
         avg_hits_per_fight = {s: sum_hits_per_fight[s] / n_fights for s in ("pc", "monster")}
         avg_misses_per_fight = {s: sum_misses_per_fight[s] / n_fights for s in ("pc", "monster")}
-        avg_hit_rate_per_fight = {s: (sum_hit_rate_per_fight[s] / n_fights * 100.0) for s in ("pc", "monster")}
+        avg_hit_rate_per_fight = {
+            s: (sum_hit_rate_per_fight[s] / n_fights * 100.0)
+            for s in ("pc", "monster")
+        }
     else:
         avg_rounds = 0.0
         avg_attacks_per_fight = {"pc": 0.0, "monster": 0.0}
@@ -146,7 +139,6 @@ def run_fights_for_analysis(
         avg_misses_per_fight = {"pc": 0.0, "monster": 0.0}
         avg_hit_rate_per_fight = {"pc": 0.0, "monster": 0.0}
 
-    # final stats dict used by all plots
     stats = {
         "total_fights": n_fights,
         "wins": wins,
@@ -164,7 +156,7 @@ def run_fights_for_analysis(
     return stats, fights
 
 
-# sum all damage by pc and monster for single fight
+# sum damage per side for one fight
 def compute_total_damage_by_side_for_fight(result: Dict[str, Any]) -> Dict[str, int]:
     totals = {"pc": 0, "monster": 0}
     for (side, _attack), samples in result["attack_damage_by_name"].items():
@@ -172,13 +164,13 @@ def compute_total_damage_by_side_for_fight(result: Dict[str, Any]) -> Dict[str, 
     return totals
 
 
-# make sure output directory exists before saving plots
+# ensure output folder exists
 def ensure_output_dir(path: str) -> None:
     if path and not os.path.exists(path):
         os.makedirs(path, exist_ok=True)
 
 
-# bar chart of win counts for pc monster and draws (which will [well should] not happen)
+# win distribution chart
 def plot_win_distribution(stats: Dict[str, Any], prefix: str, outdir: str) -> None:
     wins = stats["wins"]
     labels = ["PC Wins", "Monster Wins", "Draws"]
@@ -194,7 +186,7 @@ def plot_win_distribution(stats: Dict[str, Any], prefix: str, outdir: str) -> No
         plt.savefig(os.path.join(outdir, f"{prefix}_win_distribution.png"), dpi=150)
 
 
-# grouped bar chart of hits and misses for pc and monster
+# hits and misses totals
 def plot_hits_misses_totals(stats: Dict[str, Any], prefix: str, outdir: str) -> None:
     hits = stats["hits"]
     misses = stats["misses"]
@@ -207,8 +199,8 @@ def plot_hits_misses_totals(stats: Dict[str, Any], prefix: str, outdir: str) -> 
     width = 0.35
 
     plt.figure()
-    plt.bar([i - width/2 for i in x], hits_vals, width=width, label="Hits")
-    plt.bar([i + width/2 for i in x], miss_vals, width=width, label="Misses")
+    plt.bar([i - width / 2 for i in x], hits_vals, width=width, label="Hits")
+    plt.bar([i + width / 2 for i in x], miss_vals, width=width, label="Misses")
     plt.xticks(list(x), labels)
     plt.ylabel("Total Attacks")
     plt.title("Hits vs Misses")
@@ -219,7 +211,7 @@ def plot_hits_misses_totals(stats: Dict[str, Any], prefix: str, outdir: str) -> 
         plt.savefig(os.path.join(outdir, f"{prefix}_hits_misses_totals.png"), dpi=150)
 
 
-# bar charts of per fight avearge and hit rate
+# per fight averages and hit rate
 def plot_per_fight_averages(stats: Dict[str, Any], prefix: str, outdir: str) -> None:
     avg_attacks = stats["avg_attacks_per_fight"]
     avg_hits = stats["avg_hits_per_fight"]
@@ -243,7 +235,6 @@ def plot_per_fight_averages(stats: Dict[str, Any], prefix: str, outdir: str) -> 
     if outdir:
         plt.savefig(os.path.join(outdir, f"{prefix}_per_fight_averages.png"), dpi=150)
 
-    # separate chart for hit rate percent
     plt.figure()
     plt.bar(labels, [avg_hit_rate[s.lower()] for s in labels])
     plt.ylabel("Percent")
@@ -254,7 +245,7 @@ def plot_per_fight_averages(stats: Dict[str, Any], prefix: str, outdir: str) -> 
         plt.savefig(os.path.join(outdir, f"{prefix}_per_fight_hit_rate.png"), dpi=150)
 
 
-# histogram of fight length in rounds
+# histogram of fight length
 def plot_rounds_hist(fights: List[Dict[str, Any]], prefix: str, outdir: str) -> None:
     rounds = [f["rounds"] for f in fights]
 
@@ -269,7 +260,7 @@ def plot_rounds_hist(fights: List[Dict[str, Any]], prefix: str, outdir: str) -> 
         plt.savefig(os.path.join(outdir, f"{prefix}_rounds_hist.png"), dpi=150)
 
 
-# bar chart relating initiative winner and fight winner
+# initiative vs outcome chart
 def plot_initiative_vs_outcome(fights: List[Dict[str, Any]], prefix: str, outdir: str) -> None:
     counts = {
         ("pc", "pc"): 0,
@@ -313,7 +304,7 @@ def plot_initiative_vs_outcome(fights: List[Dict[str, Any]], prefix: str, outdir
         plt.savefig(os.path.join(outdir, f"{prefix}_initiative_vs_outcome.png"), dpi=150)
 
 
-# horizontal bar charts of average damage per attack name
+# average damage per attack name
 def plot_damage_per_attack(stats: Dict[str, Any], prefix: str, outdir: str) -> None:
     dmg = stats["avg_damage_per_attack"]
 
@@ -345,7 +336,7 @@ def plot_damage_per_attack(stats: Dict[str, Any], prefix: str, outdir: str) -> N
             plt.savefig(os.path.join(outdir, f"{prefix}_monster_damage_per_attack.png"), dpi=150)
 
 
-# histogram of total damage per fight for pc and monster
+# histogram of total damage per fight
 def plot_damage_per_fight_hist(fights: List[Dict[str, Any]], prefix: str, outdir: str) -> None:
     pc_totals = []
     mon_totals = []
@@ -368,9 +359,9 @@ def plot_damage_per_fight_hist(fights: List[Dict[str, Any]], prefix: str, outdir
         plt.savefig(os.path.join(outdir, f"{prefix}_damage_per_fight_hist.png"), dpi=150)
 
 
-# wrapper to run analysis and generate all charts
+# wrapper for full visualization run
 def run_visuals(pc, monster, num_fights, seed, outdir, prefix) -> None:
-    print_header("Running visualization analysis ...")
+    print_header("Running visualization analysis. Please wait ...")
 
     stats, fights = run_fights_for_analysis(pc, monster, num_fights, seed)
 
@@ -384,17 +375,21 @@ def run_visuals(pc, monster, num_fights, seed, outdir, prefix) -> None:
     plot_damage_per_attack(stats, prefix, outdir)
     plot_damage_per_fight_hist(fights, prefix, outdir)
 
-    print(f"Charts written to: {os.path.abspath(outdir)}")
+    print(f"Charts saved to: {os.path.abspath(outdir)}")
     plt.show()
 
 
-# main
+# main function
 def main() -> None:
-    # default output directory one level up in /results
     default_results = os.path.join(os.path.dirname(__file__), "..", "results")
-    
+
     parser = argparse.ArgumentParser(description="visual analysis for combat simulator")
-    parser.add_argument("pc_xml", help="PC XML filename (in data/)")
+    parser.add_argument(
+        "pc_xml",
+        nargs="?",
+        default="aeric20.xml",
+        help="pc xml filename in data/ (default: aeric20.xml)",
+    )
     parser.add_argument("-m", "--monster-name", default=None, help="monster name (exact match)")
     parser.add_argument("-n", "--num-fights", type=int, default=1000, help="number of simulations")
     parser.add_argument("--seed", type=int, default=None, help="random seed")
@@ -406,15 +401,14 @@ def main() -> None:
 
     print_header("Load PC and Monster")
     pc = load_pc(args.pc_xml)
-    print(f"loaded pc: {getattr(pc, 'name', 'PC')}")
+    print(f"Loaded PC: {getattr(pc, 'name', 'PC')}")
 
     monster = load_monster(args.monster_name)
-    print(f"loaded monster: {getattr(monster, 'name', 'Monster')}")
+    print(f"Loaded Monster: {getattr(monster, 'name', 'Monster')}")
 
-    print_header("Running Simulations")
+    print_header("Running simulations . . . ")
     stats, fights = run_fights_for_analysis(pc, monster, args.num_fights, args.seed)
 
-    # generate all charts
     plot_win_distribution(stats, args.prefix, args.outdir)
     plot_hits_misses_totals(stats, args.prefix, args.outdir)
     plot_per_fight_averages(stats, args.prefix, args.outdir)
@@ -423,8 +417,8 @@ def main() -> None:
     plot_damage_per_attack(stats, args.prefix, args.outdir)
     plot_damage_per_fight_hist(fights, args.prefix, args.outdir)
 
-    print_header("Charts Saved")
-    print(f"charts written to: {os.path.abspath(args.outdir)}")
+    print_header("Charts saved")
+    print(f"Charts saved to: {os.path.abspath(args.outdir)}")
 
     plt.show()
 

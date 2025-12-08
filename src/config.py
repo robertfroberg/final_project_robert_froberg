@@ -6,6 +6,7 @@ import os
 # folder names inside project root
 DATA_DIR_NAME = "data"
 DEFAULT_RESULTS_DIR_NAME = "results"
+XML_DIR_NAME = "xml"
 
 # resolve src and project root based on this file location
 SRC_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -13,6 +14,7 @@ PROJECT_ROOT = os.path.dirname(SRC_DIR)
 
 # full path to data folder
 DATA_DIR = os.path.join(PROJECT_ROOT, DATA_DIR_NAME)
+XML_DIR = os.path.join(PROJECT_ROOT, XML_DIR_NAME)
 
 # url for the magic item workbook
 MAGIC_ITEM_URL = (

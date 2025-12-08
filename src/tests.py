@@ -4,7 +4,7 @@
 import os
 import random
 
-from config import DATA_DIR, DEFAULT_PC_XML_FILENAME
+from config import XML_DIR, DATA_DIR, DEFAULT_PC_XML_FILENAME
 from character_parse import parse_character
 import monster_parse
 from combat_sim import simulate_single_fight, simulate_many_fights
@@ -28,7 +28,7 @@ def test_character_parse() -> None:
     print_header("Test: Character_parse")
 
     xml_filename = DEFAULT_PC_XML_FILENAME
-    xml_path = os.path.join(DATA_DIR, xml_filename)
+    xml_path = os.path.join(XML_DIR, xml_filename)
     print(f"Using PC file: {xml_path}")
 
     pc = parse_character(xml_filename)

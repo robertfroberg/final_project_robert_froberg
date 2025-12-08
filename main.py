@@ -85,13 +85,13 @@ def main() -> None:
         "pc_xml",
         nargs="?",
         default="aeric20.xml",
-        help="pc xml filename in data/ (default: aeric20.xml)",
+        help="pc xml filename in xml/ (default: aeric20.xml)",
     )
     parser.add_argument(
         "-m",
         "--monster-name",
-        default=None,
-        help="monster name (exact match) or none for random",
+        default="Adult Blue Dragon",
+        help='monster name (default: "Adult Blue Dragon")',
     )
     parser.add_argument(
         "-n",
@@ -118,6 +118,10 @@ def main() -> None:
     )
     args = parser.parse_args()
 
+    # if user provided nothing but main.py, turn visualization on
+    if len(sys.argv) == 1:
+        args.visualize = True
+    
     # set output dir default
     if args.outdir is None:
         args.outdir = os.path.join(project_root, DEFAULT_RESULTS_DIR_NAME)

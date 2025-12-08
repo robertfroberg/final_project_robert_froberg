@@ -5,7 +5,7 @@ from dataclasses import dataclass, field
 import xml.etree.ElementTree as ET
 import os
 
-from config import DATA_DIR
+from config import XML_DIR
 
 
 # helper converts values to ints
@@ -387,9 +387,10 @@ def parse_skills(character_elem, abilities, prof_bonus):
     return skills
 
 
-# load pc xml from /data
+# load pc xml from /xml since I cannot load google drive files from my work computer - as I mentioned in my readme.md I would rather 
+# have a working program I can test then one that might work I cannot. I feel this maximizes my opportunity for points.
 def parse_character(xml_filename: str):
-    path = os.path.join(DATA_DIR, xml_filename)
+    path = os.path.join(XML_DIR, xml_filename)
 
     if not os.path.exists(path):
         raise FileNotFoundError(f"PC XML not found: {path}")
